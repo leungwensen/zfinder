@@ -1,6 +1,6 @@
-# ZFinder
+# zfinder
 
-[ZFinder](https://github.com/leungwensen/zfinder) is designed to replace the finder.app in Mac (or file explorer in Windows). with the magic of modern Browsers, we can do a lot more.
+[Zfinder](https://github.com/leungwensen/zfinder) is designed to replace the finder.app in Mac (or file explorer in Windows). With the magic of modern Browsers, we can do a lot more.
 
 ## usage
 
@@ -15,7 +15,7 @@ zfinder -h
 
 ## thanks to
 
-This project is built on top of all these fantastic projects:
+Zfinder is built on top of all these fantastic projects:
 
 * [avoidwork/filesize.js](https://github.com/avoidwork/filesize.js)
 * [chjj/marked](https://github.com/chjj/marked)
