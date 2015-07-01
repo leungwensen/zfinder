@@ -1,11 +1,11 @@
 {
     "name": "zfinder",
     "productName": "zfinder",
-    "version": "0.0.20150702",
+    "version": "0.0.20150703",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
-    "repository": "leungwensen/lab",
+    "repository": "leungwensen/zfinder",
     "author": {
         "name": "绝云",
         "email": "wensen.lws@alibaba-inc.com",
