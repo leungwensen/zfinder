@@ -1,7 +1,7 @@
 {
     "name": "zfinder",
     "productName": "zfinder",
-    "version": "0.0.2",
+    "version": "0.0.20150701",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
@@ -10,6 +10,9 @@
         "name": "绝云",
         "email": "wensen.lws@alibaba-inc.com",
         "url": "leungwensen.com"
+    },
+    "bin": {
+        "zfinder": "./app.js"
     },
     "engines": {
         "node": ">=0.10.0"
