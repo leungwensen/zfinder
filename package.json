@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
-    "main": "app.js",
+    "main": "./app.js",
     "repository": "leungwensen/lab",
     "author": {
         "name": "绝云",
