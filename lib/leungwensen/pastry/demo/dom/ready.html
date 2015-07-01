@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom/ready</title>
+<script src="../../src/amd-loader.js"></script>
+<script type="text/javascript">
+    require([
+        'pastry/dom/query',
+        'pastry/dom/ready'
+    ], function(
+        query,
+        domready
+    ) {
+        'use strict';
+        domready(function () {
+            query.one('#title').innerHTML = 'domready';
+            domready(function () {
+                query.one('#title').innerHTML += '✓';
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <h1 id="title"></h1>
+</body>
+</html>

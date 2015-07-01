@@ -1,0 +1,44 @@
+{
+    "name": "zfinder",
+    "productName": "zfinder",
+    "version": "0.0.1-20150701",
+    "description": "finder in the browser, with front-end magics.",
+    "license": "MIT",
+    "main": "app.js",
+    "repository": "leungwensen/lab",
+    "author": {
+        "name": "绝云",
+        "email": "wensen.lws@alibaba-inc.com",
+        "url": "leungwensen.com"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "files": [
+        "app.js",
+        "index.html"
+    ],
+    "keywords": [
+        "electron-app"
+    ],
+    "dependencies": {
+        "connect": "*",
+        "glob": "*",
+        "http-errors": "*",
+        "marked": "*",
+        "mime-types": "*",
+        "minimist": "*",
+        "open": "*",
+        "pastry": "*",
+        "serve-static": "*"
+    },
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-watch": "*",
+        "load-grunt-config": "*"
+    }
+}

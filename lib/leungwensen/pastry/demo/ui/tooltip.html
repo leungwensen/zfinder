@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component/Tooltip</title>
+    <link rel="stylesheet" href="../../build/pastry.css">
+    <link rel="stylesheet" href="../../build/ui.css">
+    <link rel="stylesheet" href="../../build/font/css/font-awesome.css">
+    <link rel="stylesheet" href="../../build/theme/default.css">
+<style>
+    div.group {
+        width            : auto;
+        height           : auto;
+        margin           : auto;
+        background-color : yellow;
+        display          : inline-block;
+    }
+</style>
+</head>
+<body>
+<div class="group">
+    <button class="btn" data-tooltip="button1">button</button>
+    <button class="btn" data-tooltip="button2">button</button>
+    <button class="btn" data-tooltip="button3">button</button>
+</div>
+<script src="../../src/amd-loader.js"></script>
+<script>
+    require([
+        'pastry/dom/data',
+        'pastry/dom/event',
+        'pastry/dom/query',
+        'pastry/ui/Tooltip'
+    ], function (
+        domData,
+        domEvent,
+        domQuery,
+        Tooltip
+    ) {
+        var tooltip = new Tooltip();
+        domEvent.on('.group', 'mouseover', '.btn', function (e) {
+            var btn = e.delegateTarget;
+            tooltip.show(domData.get(btn, 'tooltip'), btn, { });
+        });
+        domEvent.on('.group', 'mouseout', '.btn', function (e) {
+            tooltip.hide();
+        });
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+
+.tree-node {
+    &.selected {
+        background-color: lightyellow;
+    }
+    span {
+        display : inline-block;
+        &.tree-node-indenter {
+            cursor : pointer;
+            width  : 12px;
+        }
+    }
+}
+table.tree-wrapper {
+    .user-select(none);
+    tbody {
+        tr.tree-node {
+            td {
+                padding : 3px 5px;
+                span, label {
+                    margin-right: 5px;
+                }
+            }
+            &.dragover {
+                border: 1px dashed #2ecc71;
+            }
+        }
+    }
+}
+

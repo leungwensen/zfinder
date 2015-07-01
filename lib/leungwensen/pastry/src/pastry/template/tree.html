@@ -1,0 +1,13 @@
+<table class="tree-wrapper table table-hover" id="{%= id %}">
+    {% if (hasHead) { %}
+        <thead>
+            <tr>
+                <th>{%= treeColumnName %}</th>
+                {% helper.each(extraColumns, function (col) { %}
+                    <th>{%= col.label %}</th>
+                {% }); %}
+            </tr>
+        </thead>
+    {% } %}
+    <tbody></tbody>
+</table>

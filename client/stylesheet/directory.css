@@ -1,0 +1,217 @@
+.directory-header {
+  color: #2c3e50;
+  background-color: #e0e0e0;
+  border: 1px solid #cbcbcb;
+  padding: 5px;
+}
+.directory-header .title {
+  max-width: 50%;
+}
+.directory-header:hover {
+  color: inherit;
+}
+#file-search {
+  color: #2c3e50;
+}
+#file-search:hover {
+  color: #3498db;
+}
+#ls {
+  padding: 8px;
+}
+table.tree-wrapper {
+  color: #333;
+  /*border: none;*/
+  width: 100%;
+}
+table.tree-wrapper thead th {
+  font-weight: normal;
+  /*padding: 4px;*/
+}
+table.tree-wrapper thead th:nth-last-child(1) {
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+table.tree-wrapper thead th:nth-last-child(2) {
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+table.tree-wrapper tbody {
+  cursor: pointer;
+}
+table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
+  background-color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-expander,
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-icon {
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node td:nth-last-child(1) {
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+table.tree-wrapper tbody tr.tree-node td:nth-last-child(2) {
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+table.tree-wrapper tbody td {
+  border: none;
+}
+table.tree-wrapper .tree-node-icon {
+  color: grey;
+}
+table.tree-wrapper .tree-node-icon.fa-folder,
+table.tree-wrapper .tree-node-icon.fa-folder-open {
+  color: #3498db;
+}
+table.tree-wrapper .tree-node-expander {
+  color: grey;
+}
+#search-dialog {
+  background-color: #ecf0f1;
+  box-shadow: 0px 0px 25px 1px #2c3e50;
+  border-radius: 3px;
+  top: 20px;
+  width: 800px;
+  left: 0;
+  right: 0;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  transform: translateY(-200%);
+  transition: all 0.3s;
+  z-index: 99;
+}
+#search-dialog.show {
+  transform: translateY(0);
+}
+#search-dialog .header,
+#search-dialog header.align-center {
+  color: lightgrey;
+  font-size: 18px;
+  text-align: center;
+}
+#search-dialog .header:hover,
+#search-dialog header.align-center:hover {
+  color: #2c3e50;
+}
+#search-dialog div.body {
+  height: 640px;
+}
+#search-dialog .fa-close {
+  cursor: pointer;
+}
+#search-dialog .fa-close:hover {
+  color: #e74c3c;
+}
+#search-dialog .flex-col-left {
+  border-right: none;
+}
+#search-query {
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 2px 12px;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #555;
+  background-color: #fefefe;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#search-result .result {
+  display: table;
+  min-width: 100%;
+}
+#search-result .search-result {
+  display: table-row;
+  padding: 0 3px;
+  line-height: 30px;
+  overflow: hidden;
+  width: 200%;
+  vertical-align: bottom;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#search-result .search-result:nth-of-type(odd) {
+  background-color: #fefefe;
+}
+#search-result .search-result:nth-of-type(even) {
+  background-color: #ecf0f1;
+}
+#search-result .search-result header .fa {
+  color: grey;
+  margin: 0 3px;
+}
+#search-result .search-result header .fa-folder {
+  color: #3498db;
+}
+#search-result .search-result header a {
+  text-decoration: none;
+  color: #2980b9;
+}
+#search-result .search-result section.body {
+  padding: 0 0 0 16px;
+  height: auto;
+}
+#search-result .search-result section.body .line {
+  color: grey;
+  margin: 0 5px;
+  line-height: 16px;
+  font-size: 11px;
+}
+#search-result .search-result section.body .line-number {
+  color: grey;
+  margin-right: 5px;
+}
+#search-result .search-result section.body .highlight {
+  padding: 0 2px;
+  border: 1px solid #3498db;
+  border-radius: 2px;
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+}
+#search-result section.body {
+  height: 575px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+#search-result .loading-spinner,
+#search-result .no-result {
+  margin-top: 40px;
+  color: #2c3e50;
+}
+#submit-search {
+  position: absolute;
+  cursor: pointer;
+  color: #ecf0f1;
+  top: 35px;
+  right: 12px;
+  font-size: 24px;
+}
+#submit-search:hover {
+  color: #2c3e50;
+}

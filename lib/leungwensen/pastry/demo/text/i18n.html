@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n</title>
+</head>
+<body>
+<script src="../../src/amd-loader.js"></script>
+<script>
+    define([
+        'pastry/text/i18n',
+    ], function (
+        i18n
+    ) {
+        i18n.load({
+            test: 'hello, %s, welcome to use i18n feature'
+        });
+        i18n.load({
+            test: '你好，%s，欢迎使用国际化特性'
+        }, 'zh_cn');
+        i18n.load({
+            test: 'こんにちは、%s、国際化機能を試して、ありがとうございます'
+        }, 'ja_jp');
+
+        console.log(i18n.translate('test', 'leung'));
+        console.log(i18n.setLocale('zh_cn').translate('test', 'leung'));
+        console.log(i18n.setLocale('ja_jp').translate('test', 'leung'));
+        console.log(i18n.setLocale().set('foo', 'bar %s').translate('foo', 'leung'));
+        console.log(i18n.translate('hello, %s, you are an undefined-message', 'leung'));
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<tr data-id="{%= id %}" class="tree-node {% if (isSelected) { %}selected{% } %}" {% if (isDraggable) { %} draggable="true" {% } %} {% if (isDroppable) { %} droppable="true" {% } %}>
+    <td>
+        <span class="tree-node-indenter" style="margin-left: {%= indent %}px;">
+            {% if (isBranch) { %}
+                {% if (hasExpanderIcon) { %}
+                    <span class="tree-node-expander {%= expanderIconClass %}" data-id="{%= id %}"></span>
+                {% } else { %}
+                    <span class="tree-node-expander" data-id="{%= id %}">{%= expanderText %}</span>
+                {% } %}
+            {% } %}
+        </span>
+        {% if (hasCheckbox) { %}
+            <label class="tree-node-checkbox checkbox-inline">
+                <input type="checkbox" value="{%= id %}">
+            </label>
+        {% } %}
+        {% if (hasIcon) { %}
+            <span class="tree-node-icon {%= iconClass %}"></span>
+        {% } %}
+        <span class="tree-node-label" {% if (title) { %} title="{%= title %}" {% } %}>{%= label %}</span>
+    </td>
+    {% if (extraColumns) { %}
+        {% helper.each(extraColumns, function (col) { %}
+            <td>{%= obj[col.key] %}</td>
+        {% }); %}
+    {% } %}
+</tr>

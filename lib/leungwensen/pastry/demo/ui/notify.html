@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component/Notify</title>
+    <link rel="stylesheet" href="../../build/pastry.css">
+    <link rel="stylesheet" href="../../build/ui.css">
+    <link rel="stylesheet" href="../../build/font/css/font-awesome.css">
+    <link rel="stylesheet" href="../../build/theme/default.css">
+</head>
+<body>
+<script src="../../src/amd-loader.js"></script>
+<script>
+    require([
+        'pastry/ui/Notify'
+    ], function (
+        Notify
+    ) {
+        var notify = new Notify();
+        notify.log({
+            'text': 'hello, world'
+        });
+    });
+</script>
+</body>
+</html>

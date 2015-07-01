@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%= title %}</title>
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/sindresorhus/github-markdown-css/github-markdown.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/base.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
+</head>
+<body>
+    <article class="markdown-container">
+        <header class="markdown-header">
+            <span class="title text-limit-len" title="{%= title %}">
+                {%= title %}
+            </span>
+        </header>
+        <section class="markdown-body">
+            {%= content %}
+        </section>
+    </article>
+</body>
+</html>

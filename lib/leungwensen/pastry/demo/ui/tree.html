@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component/Tree</title>
+    <link rel="stylesheet" href="../../build/pastry.css">
+    <link rel="stylesheet" href="../../build/ui.css">
+    <link rel="stylesheet" href="../../build/font/css/font-awesome.css">
+    <link rel="stylesheet" href="../../build/theme/default.css">
+</head>
+<body>
+<div class="btn-group">
+    <button class="btn btn-default" id="randomMove">random move</button>
+    <button class="btn btn-default" id="autoRandomMove">auto random move</button>
+    <button class="btn btn-default" id="stopAutoRandomMove">stop auto random move</button>
+</div>
+<script src="../../src/amd-loader.js"></script>
+<script>
+    require([
+        'pastry/dom/event',
+        'pastry/dom/query',
+        'pastry/io/ajax',
+        'pastry/ui/Tree'
+    ], function (
+        domEvent,
+        domQuery,
+        ajax,
+        Tree
+    ) {
+        var body = document.body,
+            tree = new Tree({
+                hasHead: true,
+                canDnD: true,
+                treeColumnName: '树表格',
+                extraColumns: [{
+                    label: 'id',
+                    key: 'id'
+                }, {
+                    label: '描述',
+                    key: 'name'
+                }],
+                hasIcon: true,
+                hasCheckbox: true,
+                hasExpanderIcon: true,
+                // getExpanderIconClass: function (node) {
+                // },
+                onExpand: function (node) {
+                    console.log(node);
+                },
+                onContextmenu: function (node) {
+                    alert('contextmenu ', node.name);
+                },
+                onClick: function (node) {
+                    // alert('clicked ', node.name);
+                },
+                onDblclick: function (node) {
+                    alert('dblclicked ', node.name);
+                },
+            });
+        tree.addNodes([{
+            id: 0,
+            name: '<h3> hello </h3><input type="text"/>'
+        }, {
+            id: 1,
+            name: 'branch1',
+            parentId: 0
+        }, {
+            id: 2,
+            isBranch: true,
+            isExpanded: false,
+            name: 'branch-no-child',
+            parentId: 1
+        }]);
+
+        tree.placeAt(body);
+
+        tree.addNodes([{
+            id: 3,
+            name: 'leaf',
+            isLeaf: true
+        }, {
+            id: 4,
+            name: 'leaf',
+            parentId: 5
+        }, {
+            id: 5,
+            name: 'branch5',
+            parentId: 1
+        }]);
+
+        var secondTree;
+
+        ajax('../../data/json/sampleTreeNodes.json', {
+            type   : 'json',
+            success : function (data) {
+                secondTree = new Tree({
+                    canDnD         : true,
+                    hasHead        : true,
+                    hasIcon        : true,
+                    treeColumnName : '单一根节点树',
+                    data           : data
+                }).placeAt(body);
+            }
+        });
+
+        var interval;
+        function getRandomIndex (length) {
+            var index = Math.floor(Math.random() * length);
+            if (index === length) {
+                index --;
+            }
+            return index;
+        }
+        function randomMoveNodes () {
+            var t1Nodes = tree.nodes,
+                t2Nodes = secondTree.nodes,
+                l1      = t1Nodes.length,
+                l2      = t2Nodes.length;
+
+            t1Nodes[getRandomIndex(l1)].moveTo(t1Nodes[getRandomIndex(l1)]);
+            t2Nodes[getRandomIndex(l2)].moveTo(t2Nodes[getRandomIndex(l2)]);
+        }
+
+        domEvent.on(domQuery.one('#randomMove'), 'click', function () {
+            randomMoveNodes();
+        });
+
+        domEvent.on(domQuery.one('#autoRandomMove'), 'click', function () {
+            interval = setInterval(function () {
+                randomMoveNodes();
+            }, 500);
+        });
+        domEvent.on(domQuery.one('#stopAutoRandomMove'), 'click', function () {
+            clearInterval(interval);
+        });
+    });
+</script>
+</body>
+</html>

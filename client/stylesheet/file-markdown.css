@@ -1,0 +1,21 @@
+.markdown-container {
+  min-width: 200px;
+  max-width: 790px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+.markdown-container .markdown-header {
+  background-color: #f5f5f5;
+  color: grey;
+  padding: 5px;
+}
+.markdown-container .markdown-header .title {
+  max-width: 50%;
+}
+.markdown-container .markdown-header:hover {
+  color: inherit;
+}
+.markdown-container .markdown-body {
+  padding: 16px;
+}

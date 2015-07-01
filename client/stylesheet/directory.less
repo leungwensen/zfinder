@@ -1,0 +1,218 @@
+@import './variables.less';
+
+.directory-header {
+    color: @color-1;
+    background-color: #e0e0e0;
+    border: 1px solid #cbcbcb;
+    padding: 5px;
+    .title {
+        max-width: 50%;
+    }
+    &:hover {
+        color: inherit;;
+    }
+}
+
+#file-search {
+    color: @color-1;
+    &:hover {
+        color: @color-4;
+    }
+}
+
+.right-limit-len(@width) {
+    width: @width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+#ls {
+    padding: 8px;
+}
+
+table.tree-wrapper {
+    color: #333;
+    /*border: none;*/
+    width: 100%;
+    thead {
+        th {
+            font-weight: normal;
+            /*padding: 4px;*/
+            &:nth-last-child(1) {
+                .right-limit-len(60px);
+            }
+            &:nth-last-child(2) {
+                .right-limit-len(90px);
+            }
+        }
+    }
+    tbody {
+        cursor: pointer;
+        tr.tree-node {
+            &:nth-of-type(even) {
+                background-color: @color-3;
+            }
+            &.selected {
+                background-color: @color-5;
+                color: @color-3;
+                .tree-node-expander, .tree-node-icon {
+                    color: @color-3;
+                }
+            }
+            td:nth-last-child(1) {
+                .right-limit-len(60px);
+            }
+            td:nth-last-child(2) {
+                .right-limit-len(90px);
+            }
+        }
+        td {
+            border: none;
+        }
+    }
+    .tree-node-icon {
+        color: grey;
+        &.fa-folder, &.fa-folder-open {
+            color: @color-4;
+        }
+    }
+    .tree-node-expander {
+        color: grey;
+    }
+}
+#search-dialog {
+    background-color: @color-3;
+    box-shadow: 0px 0px 25px 1px @color-1;
+    border-radius: 3px;
+    top: 20px;
+    width: 800px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 5px;
+    transform: translateY(-200%);
+    transition: all 0.3s;
+    z-index: 99;
+    &.show {
+        transform: translateY(0);
+    }
+    .header, header.align-center {
+        color: lightgrey;
+        font-size: 18px;
+        text-align: center;
+        &:hover {
+            color: @color-1;
+        }
+    }
+    div.body {
+        height: 640px;
+    }
+    .fa-close {
+        cursor: pointer;
+        &:hover {
+            color: @color-2;
+        }
+    }
+    .flex-col-left {
+        border-right: none;
+    }
+}
+#search-query {
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 2px 12px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #555;
+    background-color: #fefefe;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing : border-box;
+    box-sizing : border-box;
+}
+#search-result {
+    .result {
+        display: table;
+        min-width: 100%;
+    }
+    .search-result {
+        display: table-row;
+        padding: 0 3px;
+        line-height: 30px;
+        overflow: hidden;
+        width: 200%;
+        vertical-align: bottom;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:nth-of-type(odd) {
+            background-color: #fefefe;
+        }
+        &:nth-of-type(even) {
+            background-color: @color-3;
+        }
+        header {
+            .fa {
+                color: grey;
+                margin: 0 3px;
+            }
+            .fa-folder {
+                color: @color-4;
+            }
+            a {
+                text-decoration: none;
+                color: @color-5;
+            }
+        }
+        section.body {
+            padding: 0 0 0 16px;
+            height: auto;
+            .line {
+                color: grey;
+                margin: 0 5px;
+                line-height: 16px;
+                font-size: 11px;
+            }
+            .line-number {
+                color: grey;
+                margin-right: 5px;
+            }
+            .highlight {
+                padding: 0 2px;
+                border: 1px solid @color-4;
+                border-radius: 2px;
+                background-color: @color-2;
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+    section.body {
+        height: 575px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+    .loading-spinner, .no-result {
+        margin-top: 40px;
+        color: @color-1;
+    }
+}
+#submit-search {
+    position: absolute;
+    cursor: pointer;
+    color: @color-3;
+    top: 35px;
+    right: 12px;
+    font-size: 24px;
+    &:hover {
+        color: @color-1;
+    }
+}

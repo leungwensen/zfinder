@@ -1,0 +1,19 @@
+<div class="notify-message notify-message-{%= type %}" id="{%= id %}">
+    <div class="notify-message-inner">
+        <div class="notify-icon notify-icon-{%= type %}">
+            {% if (type === 'info') { %}
+                <span class="icon icon-info-o"></span>
+            {% } %}
+            {% if (type === 'error') { %}
+                <span class="icon icon-close-o"></span>
+            {% } %}
+            {% if (type === 'warning') { %}
+                <span class="icon icon-warning-o"></span>
+            {% } %}
+            {% if (type === 'success') { %}
+                <span class="icon icon-ok-o"></span>
+            {% } %}
+        </div>
+        <div class="notify-text"> {%= text %} </div>
+    </div>
+</div>
