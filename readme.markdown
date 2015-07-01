@@ -9,6 +9,10 @@ npm install -g zfinder
 zfinder -h
 ```
 
+## screenshot
+
+![screenshot-0.0.5](https://raw.github.com/leungwensen/zfinder/master/assets/zfinder-0.0.5.gif)
+
 ## thanks to
 
 This project is built on top of all these fantastic projects:
