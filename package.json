@@ -1,7 +1,7 @@
 {
     "name": "zfinder",
     "productName": "zfinder",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
@@ -45,6 +45,7 @@
         "load-grunt-config": "*"
     },
     "files": [
+        "app.js",
         "client",
         "lib",
         "server"
