@@ -57,17 +57,15 @@ define([
             });
         },
         globSearch: function(query) {
-            return buildApiFetch('GET', '/search', {
-                query: query,
-                type: 'glob'
+            return buildApiFetch('GET', '/search/glob', {
+                query: query
             }).then(function(data) {
                 return data.glob;
             });
         },
         contentSearch: function(query) {
-            return buildApiFetch('GET', '/search', {
-                query: query,
-                type: 'content'
+            return buildApiFetch('GET', '/search/content', {
+                query: query
             }).then(function(data) {
                 return data.content;
             });

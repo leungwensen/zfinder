@@ -9,7 +9,7 @@ define([
     'pastry/dom/hotkey',
     'pastry/dom/query',
     './iconByExtname',
-    '../cgi/directory',
+    '../cgi/api',
     '../component/LoadingSpinner',
     '../global/CONST',
     '../template/searchResult'
@@ -21,7 +21,7 @@ define([
     domHotkey,
     domQuery,
     iconByExtname,
-    directoryCgi,
+    api,
     LoadingSpinner,
     CONST,
     tmplSearchResult
@@ -62,7 +62,7 @@ define([
             },
             searchGlob: function(query) {
                 new LoadingSpinner().placeAt(domNodeGlobResult, 'only');
-                directoryCgi.globSearch(query)
+                api.globSearch(query)
                     .then(function(files) {
                         domNodeGlobResult.innerHTML = noResultHtml;
                         var result = tmplSearchResult({
@@ -76,7 +76,7 @@ define([
             },
             searchContent: function(query) {
                 new LoadingSpinner().placeAt(domNodeContentResult, 'only');
-                directoryCgi.contentSearch(query)
+                api.contentSearch(query)
                     .then(function(files) {
                         domNodeContentResult.innerHTML = noResultHtml;
                         var result = tmplSearchResult({

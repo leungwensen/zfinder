@@ -9,10 +9,12 @@ var server = require('./server/main'),
             port: 9090,
             root: process.cwd(),
             version: false,
+            dev: false,
             // NOTICE {
                 // * these options SHOULD NOT BE USED unless you are one of the contributors
                 // * these paths should not appears in the specified root
                 apiRoot: '/__ZFINDER_API_ROOT__',
+                appRoot: '/__ZFINDER_APP_ROOT__',
                 serverRoot: '/__ZFINDER_SERVER_ROOT__',
             // }
         },

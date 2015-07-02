@@ -10,6 +10,7 @@ var fs = require('fs'),
     pastry = require('pastry'),
         each = pastry.each,
         extend = pastry.extend,
+        filter = pastry.filter,
         json = pastry.json,
         lc = pastry.lc,
     path = require('path'),
@@ -28,6 +29,11 @@ each(binaryExtnames, function(ext) {
 module.exports = {
     extname: extname,
     readFile: readFile,
+    removeHidden: function(files) {
+        return filter(files, function(file){
+            return '.' != file[0];
+        });
+    },
     isBinaryPath: function(filepath) {
         return extname(filepath) in binaryExts;
     },
@@ -35,6 +41,12 @@ module.exports = {
         var body = json.stringify(data),
             buf = new Buffer(body, 'utf8');
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Content-Length', buf.length);
+        res.end(buf);
+    },
+    genHTMLRes: function(data, res) {
+        var buf = new Buffer(data);
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.setHeader('Content-Length', buf.length);
         res.end(buf);
     },
@@ -52,3 +64,4 @@ module.exports = {
         });
     }
 };
+

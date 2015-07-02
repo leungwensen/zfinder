@@ -41,6 +41,8 @@
     "devDependencies": {
         "grunt": "*",
         "grunt-contrib-less": "*",
+        "grunt-concurrent": "*",
+        "grunt-nodemon": "*",
         "grunt-contrib-watch": "*",
         "load-grunt-config": "*"
     },

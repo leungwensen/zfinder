@@ -1,17 +1,16 @@
 options:
-  spawn: false
-
+    spawn: false
 templates:
-  files:
-    - client/template/*.html
-    - client/template/*.ptmpl
-  tasks:
-    - compileTemplates
+    files:
+        - client/template/*.html
+        - client/template/*.ptmpl
+    tasks:
+        - compileTemplates
 
 stylesheet:
-  files:
-    - client/**/*.less
-    - client/main.less
-    - client/directory.less
-  tasks:
-    - less
+    files:
+        - client/**/*.less
+        - client/main.less
+        - client/directory.less
+    tasks:
+        - less

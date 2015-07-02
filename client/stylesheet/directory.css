@@ -141,6 +141,22 @@ table.tree-wrapper .tree-node-expander {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+#search-query::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ecf0f1;
+}
+#search-query:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ecf0f1;
+}
+#search-query::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ecf0f1;
+}
+#search-query:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ecf0f1;
+}
 #search-result .result {
   display: table;
   min-width: 100%;

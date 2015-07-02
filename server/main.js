@@ -3,7 +3,7 @@
 
 var pkg = require('../package.json'),
     connect = require('connect'),
-    open = require("open"),
+    open = require('open'),
     pastry = require('pastry'),
     path = require('path'),
     serveStatic = require('serve-static'),
@@ -21,8 +21,8 @@ module.exports = {
         if (opts.version) {
             return dump(pkg.version);
         }
-        var server = connect(),
-            sprintf = pastry.sprintf;
+        var sprintf = pastry.sprintf,
+            server = connect();
 
         // middlewares {
             server.use( // serve directories
@@ -50,7 +50,9 @@ module.exports = {
             server.listen(opts.port);
         // }
         // open in browser {
-            open(sprintf('http://127.0.0.1:%d/', opts.port));
+            if (!opts.dev) {
+                open(sprintf('http://127.0.0.1:%d/', opts.port));
+            }
         // }
     }
 };

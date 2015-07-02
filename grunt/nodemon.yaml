@@ -1,0 +1,8 @@
+dev:
+    script: app.js
+    options:
+        args:
+            - '--dev'
+        watch:
+            - server/**/*.*
+            - app.js

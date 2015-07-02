@@ -137,6 +137,18 @@ table.tree-wrapper {
     -webkit-box-sizing : border-box;
     -moz-box-sizing : border-box;
     box-sizing : border-box;
+    &::-webkit-input-placeholder { /* WebKit browsers */
+        color: @color-3;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: @color-3;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: @color-3;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: @color-3;
+    }
 }
 #search-result {
     .result {
