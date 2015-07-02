@@ -13,6 +13,13 @@ zfinder -h
 
 ![screenshot-0.0.5](https://raw.github.com/leungwensen/zfinder/master/assets/zfinder-0.0.5.gif)
 
+## features
+
+* content search
+* glob search
+* markdown preview
+* static html server
+
 ## thanks to
 
 Zfinder is built on top of all these fantastic projects:

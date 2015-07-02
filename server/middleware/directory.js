@@ -10,6 +10,7 @@ var fs = require('fs'),
     url = require('url'),
         parseUrl = url.parse,
     pastry = require('pastry'),
+        some = pastry.some,
         extend = pastry.extend,
         json = pastry.json,
         template = pastry.template,
@@ -47,6 +48,28 @@ module.exports = function(root, options) {
             if (err) {
                 switch (err.code) {
                     case 'ENOENT':
+                        // if exists, redirect to html/htm/md/markdown {
+                            var tryFilePath;
+                            some([
+                                'html',
+                                'htm',
+                                'markdown',
+                                'md'
+                            ], function(ext) {
+                                tryFilePath = currentPath + '.' + ext;
+                                try {
+                                    if (fs.statSync(tryFilePath)) {
+                                        res.writeHead(301, {
+                                            Location: dir + '.' + ext
+                                        });
+                                        res.end();
+                                    }
+                                    return true;
+                                } catch (e) {
+                                    return false;
+                                }
+                            });
+                        // }
                         return next();
                     case 'ENAMETOOLONG':
                         err.status = 414;

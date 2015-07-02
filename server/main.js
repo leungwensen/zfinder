@@ -48,6 +48,8 @@ module.exports = {
         // }
         // start server {
             server.listen(opts.port);
+        // }
+        // open in browser {
             open(sprintf('http://127.0.0.1:%d/', opts.port));
         // }
     }
