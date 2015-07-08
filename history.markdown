@@ -17,3 +17,7 @@
 ## 0.0.7
 
 * markdown editor;
+
+## 0.0.8
+
+* bugfix in markdown editor;
