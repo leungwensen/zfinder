@@ -31,9 +31,10 @@ define([
      * @author      : 绝云（wensen.lws）
      * @description : description
      */
-    function noop() {
-    }
-    var domNodes = {
+    function noop(){}
+
+    var indexOf = pastry.indexOf,
+        domNodes = {
             editor: domQuery.one('#editor'),
             previewer: domQuery.one('#previewer'),
             btnNew: domQuery.one('#btn-new'),
@@ -41,6 +42,7 @@ define([
             btnSave: domQuery.one('#btn-save'),
             btnUndo: domQuery.one('#btn-undo'),
             btnRedo: domQuery.one('#btn-redo'),
+            selectKeymap: domQuery.one('#switch-keymap'),
         },
         codeEditor = CodeMirror(domNodes.editor, {
             autofocus: true,
@@ -65,6 +67,7 @@ define([
                 });
                 return markdownEditor
                     .refresh()
+                    .resumeSetting()
                     .resumeContent();
             },
             refresh: function() {
@@ -76,15 +79,15 @@ define([
                 codeEditor.refresh();// hack gutter height
                 return markdownEditor;
             },
-            setFilename: function(filename) {
-                store.set('current-filename', filename);
-            },
-            setValue: function(value) {
-                store.set('old-value', value);
-                codeEditor.setValue(value);
+            resumeSetting: function() {
+                // keymap {
+                    var keymap = store.get('key-map', 'default');
+                    markdownEditor.setKeymap(keymap);
+                // }
+                return markdownEditor;
             },
             resumeContent: function() {
-                var qs = querystring.parse(window.location.search.replace(/^\?/, ''));
+                var qs = querystring.parse(location.search.replace(/^\?/, ''));
                 if (qs.file) {
                     markdownEditor.openFilename(qs.file);
                 } else {
@@ -93,6 +96,25 @@ define([
                     markdownEditor.update();
                 }
                 return markdownEditor;
+            },
+            setKeymap: function(type) {
+                if (indexOf([
+                    'default',
+                    'emacs',
+                    'sublime',
+                    'vim',
+                ], type) > -1) {
+                    codeEditor.setOption('keyMap', type);
+                }
+                utils.setSelectValue(domNodes.selectKeymap, type);
+                store.set('key-map', type);
+            },
+            setFilename: function(filename) {
+                store.set('current-filename', filename);
+            },
+            setValue: function(value) {
+                store.set('old-value', value);
+                codeEditor.setValue(value);
             },
             update: function() {
                 var currentValue = codeEditor.getValue() || '',
@@ -156,6 +178,9 @@ define([
         event.on('update', function() {
             markdownEditor.update();
         });
+        event.on('set-keymap', function(keymap) {
+            markdownEditor.setKeymap(keymap);
+        });
     // }
     // codeMirror events {
         codeEditor.on('change', function() {
@@ -180,6 +205,9 @@ define([
         });
         domEvent.on(domNodes.btnRedo, 'click', function() {
             event.trigger('redo');
+        });
+        domEvent.on(domNodes.selectKeymap, 'change', function() {
+            event.trigger('set-keymap', utils.getSelectValue(domNodes.selectKeymap));
         });
     // }
     // shortcuts {

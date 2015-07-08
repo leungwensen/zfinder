@@ -25,6 +25,17 @@
                             <li class="menu-item"><span id="btn-save" class="menu-link fa fa-save"></span></li>
                             <li class="menu-item"><span id="btn-undo" class="menu-link fa fa-undo"></span></li>
                             <li class="menu-item"><span id="btn-redo" class="menu-link fa fa-repeat"></span></li>
+                            <li class="menu-item">
+                                <div class="key-map">
+                                    <span>Keymap: </span>
+                                    <select id="switch-keymap" name="keymap">
+                                        <option value="default">Default</option>
+                                        <option value="vim">Vim</option>
+                                        <option value="emacs">Emacs</option>
+                                        <option value="sublime">Sublime Text</option>
+                                    </select>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -44,6 +55,7 @@
     <script src="{%= options.serverRoot %}/lib/codemirror/CodeMirror/addon/edit/matchbrackets.js"></script>
     <script src="{%= options.serverRoot %}/lib/codemirror/CodeMirror/keymap/vim.js"></script>
     <script src="{%= options.serverRoot %}/lib/codemirror/CodeMirror/keymap/emacs.js"></script>
+    <script src="{%= options.serverRoot %}/lib/codemirror/CodeMirror/keymap/sublime.js"></script>
     <script src="{%= options.serverRoot %}/lib/leungwensen/pastry/src/amd-loader.js"></script>
     <script src="{%= options.serverRoot %}/client/markdownEditor/main.js"></script>
 </body>

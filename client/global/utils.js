@@ -14,8 +14,9 @@ define([
      * @description : description
      */
     var lc = pastry.lc,
-        toArray = pastry.toArray,
-        isPlainObject = pastry.isPlainObject;
+        isPlainObject = pastry.isPlainObject,
+        some = pastry.some,
+        toArray = pastry.toArray;
     return {
         getIconClass: function(node) {
             if (node.name === '..') {
@@ -42,6 +43,18 @@ define([
             } catch(e) {
                 console.log('history api is not supported!');
             }
+        },
+        setSelectValue: function(selectDomNode, value) {
+            some(selectDomNode.options, function(option, i) {
+                if (option.value === value + '') {
+                    selectDomNode.selectedIndex = i;
+                    return true;
+                }
+                return false;
+            });
+        },
+        getSelectValue: function(selectDomNode) {
+            return selectDomNode.options[selectDomNode.selectedIndex].value;
         },
     };
 });
