@@ -1,7 +1,7 @@
 {
     "name": "zfinder",
     "productName": "zfinder",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
