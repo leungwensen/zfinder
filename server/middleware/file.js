@@ -8,22 +8,20 @@ var fs = require('fs'),
     url = require('url'),
         parseUrl = url.parse,
     pastry = require('pastry'),
-        template = pastry.template,
     marked = require('marked'),
     utils = require('../utils/middleware'),
         extname = utils.extname,
         readFile = utils.readFile,
         genHTMLRes = utils.genHTMLRes,
-
-    genTemplateRender = function(filename) {
-        return template.compile(readFile(join(__dirname, filename)));
-    },
+        genTemplateRender = utils.genTemplateRender,
     nameByExt = {
         markdown: 'markdown',
         md: 'markdown'
     },
     templateByName = {
-        markdown: genTemplateRender('../template/file-markdown.html')
+        markdown: genTemplateRender(
+            join(__dirname, '../template/file-markdown.html')
+        )
     };
 
 module.exports = function(options) {
@@ -36,11 +34,12 @@ module.exports = function(options) {
         if (fs.existsSync(pathname)) {
             switch (nameByExt[ext]) {
                 case 'markdown':
+                    var filename = relative(options.root, pathname);
                     genHTMLRes(
                         templateByName.markdown({
+                            content: marked(readFile(pathname)),
                             options: options,
-                            title: relative(options.root, pathname),
-                            content: marked(readFile(pathname))
+                            filename: filename,
                         }, pastry, true),
                         res
                     );

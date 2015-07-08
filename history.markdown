@@ -14,3 +14,6 @@
 * fix [issue 1](https://github.com/leungwensen/zfinder/issues/1);
 * fix [issue 2](https://github.com/leungwensen/zfinder/issues/2);
 
+## 0.0.7
+
+* markdown editor;

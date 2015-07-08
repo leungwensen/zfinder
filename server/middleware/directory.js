@@ -13,13 +13,13 @@ var fs = require('fs'),
         some = pastry.some,
         extend = pastry.extend,
         json = pastry.json,
-        template = pastry.template,
     createError = require('http-errors'),
     utils = require('../utils/middleware'),
-        readFile = utils.readFile,
+        genTemplateRender = utils.genTemplateRender,
 
-    pageTemplate = readFile(join(__dirname, '../template/directory.html')),
-    pageRender = template.compile(pageTemplate);
+    pageRender = genTemplateRender(
+        join(__dirname, '../template/directory.html')
+    );
 
 module.exports = function(root, options) {
     options = options || {};
@@ -92,7 +92,7 @@ module.exports = function(root, options) {
                     url: url,
                 }, options),
                 buf = new Buffer(pageRender({
-                    data: variables,
+                    options: variables,
                     jsonStr: json.stringify(variables),
                 }, pastry, true), 'utf8');
             res.setHeader('Content-Type', 'text/html; charset=utf-8');

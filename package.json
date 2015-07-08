@@ -28,6 +28,7 @@
         "electron-app"
     ],
     "dependencies": {
+        "body-parser": "*",
         "connect": "*",
         "glob": "*",
         "http-errors": "*",
@@ -36,7 +37,8 @@
         "minimist": "*",
         "open": "*",
         "pastry": "*",
-        "serve-static": "*"
+        "serve-static": "*",
+        "touch": "*"
     },
     "devDependencies": {
         "grunt": "*",

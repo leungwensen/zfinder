@@ -25,6 +25,7 @@ module.exports = function (grunt) {
                     'client/stylesheet/base.css': 'client/stylesheet/base.less',
                     'client/stylesheet/directory.css': 'client/stylesheet/directory.less',
                     'client/stylesheet/file-markdown.css': 'client/stylesheet/file-markdown.less',
+                    'client/stylesheet/app-markdownEditor.css': 'client/stylesheet/app-markdownEditor.less',
                 }
             }
         }

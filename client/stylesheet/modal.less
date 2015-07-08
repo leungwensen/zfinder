@@ -1,0 +1,37 @@
+@import './variables.less';
+
+.modal {
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px #ccc;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    top: 36px;
+    min-width: 320px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 5px;
+    transform: translateY(-200%);
+    transition: all 0.3s;
+    z-index: 99;
+    &.show {
+        transform: translateY(0);
+    }
+    .modal-header {
+        color: lightgrey;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+        &:hover {
+            color: @color-1;
+        }
+    }
+    .fa-close {
+        cursor: pointer;
+        &:hover {
+            color: @color-2;
+        }
+    }
+}

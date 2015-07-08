@@ -1,18 +1,24 @@
 /* jshint strict: false, undef: true, unused: true */
 /* global require, module, Buffer */
 
-var fs = require('fs'),
-    readFile = function(filename) {
-        return fs.readFileSync(filename, {
-            encoding: 'utf8'
-        });
-    },
+var touch = require('touch'),
+    fs = require('fs'),
+        readFile = function(filename) {
+            return fs.readFileSync(filename, {
+                encoding: 'utf8'
+            });
+        },
+        writeFile = function(filename, content) {
+            touch.sync(filename);
+            fs.writeFileSync(filename, content);
+        },
     pastry = require('pastry'),
         each = pastry.each,
         extend = pastry.extend,
         filter = pastry.filter,
         json = pastry.json,
         lc = pastry.lc,
+        template = pastry.template,
     path = require('path'),
         join = path.join,
         relative = path.relative,
@@ -29,6 +35,7 @@ each(binaryExtnames, function(ext) {
 module.exports = {
     extname: extname,
     readFile: readFile,
+    writeFile: writeFile,
     removeHidden: function(files) {
         return filter(files, function(file){
             return '.' != file[0];
@@ -49,6 +56,9 @@ module.exports = {
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.setHeader('Content-Length', buf.length);
         res.end(buf);
+    },
+    genTemplateRender: function(filename) {
+        return template.compile(readFile(filename));
     },
     processFile: function(currentPath, root, filename) {
         var filePath = join(currentPath, filename),

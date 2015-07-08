@@ -1,4 +1,32 @@
 @import './variables.less';
+@import './tree.less';
+
+/* tree */
+.right-limit-len(@width) {
+    width: @width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.tree-wrapper {
+    thead th {
+        &:nth-last-child(1) {
+            .right-limit-len(60px);
+        }
+        &:nth-last-child(2) {
+            .right-limit-len(90px);
+        }
+    }
+    tbody tr.tree-node {
+        td:nth-last-child(1) {
+            .right-limit-len(60px);
+        }
+        td:nth-last-child(2) {
+            .right-limit-len(90px);
+        }
+    }
+}
 
 .directory-header {
     color: @color-1;
@@ -20,68 +48,10 @@
     }
 }
 
-.right-limit-len(@width) {
-    width: @width;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: right;
-}
-
 #ls {
     padding: 8px;
 }
 
-table.tree-wrapper {
-    color: #333;
-    /*border: none;*/
-    width: 100%;
-    thead {
-        th {
-            font-weight: normal;
-            /*padding: 4px;*/
-            &:nth-last-child(1) {
-                .right-limit-len(60px);
-            }
-            &:nth-last-child(2) {
-                .right-limit-len(90px);
-            }
-        }
-    }
-    tbody {
-        cursor: pointer;
-        tr.tree-node {
-            &:nth-of-type(even) {
-                background-color: @color-3;
-            }
-            &.selected {
-                background-color: @color-5;
-                color: @color-3;
-                .tree-node-expander, .tree-node-icon {
-                    color: @color-3;
-                }
-            }
-            td:nth-last-child(1) {
-                .right-limit-len(60px);
-            }
-            td:nth-last-child(2) {
-                .right-limit-len(90px);
-            }
-        }
-        td {
-            border: none;
-        }
-    }
-    .tree-node-icon {
-        color: grey;
-        &.fa-folder, &.fa-folder-open {
-            color: @color-4;
-        }
-    }
-    .tree-node-expander {
-        color: grey;
-    }
-}
 #search-dialog {
     background-color: @color-3;
     box-shadow: 0px 0px 25px 1px @color-1;
@@ -228,3 +198,4 @@ table.tree-wrapper {
         color: @color-1;
     }
 }
+

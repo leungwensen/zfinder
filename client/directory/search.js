@@ -8,10 +8,10 @@ define([
     'pastry/dom/event',
     'pastry/dom/hotkey',
     'pastry/dom/query',
-    './iconByExtname',
     '../cgi/api',
     '../component/LoadingSpinner',
     '../global/CONST',
+    '../global/utils',
     '../template/searchResult'
 ], function(
     pastry,
@@ -20,10 +20,10 @@ define([
     domEvent,
     domHotkey,
     domQuery,
-    iconByExtname,
     api,
     LoadingSpinner,
     CONST,
+    utils,
     tmplSearchResult
 ) {
     'use strict';
@@ -40,8 +40,7 @@ define([
         domNodeSubmit = domQuery.one('#submit-search'),
         processFiles = function (files) {
             return map(files, function(file) {
-                file.iconClass = file.isBranch ?
-                    'fa fa-folder' : iconByExtname[file.extname] || 'fa fa-file-text-o';
+                file.iconClass = utils.getIconClass(file);
                 return file;
             });
         },

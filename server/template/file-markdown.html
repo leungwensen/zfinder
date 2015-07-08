@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{%= title %}</title>
+    <title>{%= filename %}</title>
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/font/css/font-awesome.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/sindresorhus/github-markdown-css/github-markdown.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/base.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
@@ -10,10 +11,10 @@
 <body>
     <article class="markdown-container">
         <header class="markdown-header">
-            <span class="title text-limit-len" title="{%= title %}">
-                {%= title %}
+            <span class="title text-limit-len" title="{%= filename %}">
+                {%= filename %}
             </span>
-            <a class="float-right" href="">
+            <a class="float-right" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}">
                 <span class="fa fa-pencil-square-o " title="edit"></span>
             </a>
         </header>

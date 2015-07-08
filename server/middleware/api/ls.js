@@ -4,9 +4,13 @@
 var fs = require('fs'),
     url = require('url'),
         urlParse = url.parse,
+    join = require('path').join,
     pastry = require('pastry'),
+        each = pastry.each,
+        indexOf = pastry.indexOf,
         map = pastry.map,
     utils = require('../../utils/middleware'),
+        extname = utils.extname,
         processFile = utils.processFile,
         removeHidden = utils.removeHidden,
         genJSONRes = utils.genJSONRes;
@@ -27,32 +31,44 @@ module.exports = function(req, res, next, options) {
             if (!query.hidden) {
                 files = removeHidden(files);
             }
-            if (query.type) {
-                switch (query.type) {
-                    case 'file':
-                        files = files.filter(function(file) {
-                            try {
-                                return fs.statSync(file).isFile();
-                            } catch (e) {
-                                return false;
-                            }
-                        });
-                        break;
-                    case 'directory':
-                        files = files.filter(function(file) {
-                            try {
-                                return fs.statSync(file).isDirectory();
-                            } catch (e) {
-                                return false;
-                            }
-                        });
-                        break;
-                    default:
-                        break;
-                }
+            if (!!query.filter) {
+                each(query.filter.split(','), function(type) {
+                    switch (type) {
+                        case 'file':
+                            result = result.concat(files.filter(function(file) {
+                                try {
+                                    return fs.statSync(join(currentPath, file)).isFile();
+                                } catch (e) {
+                                    return false;
+                                }
+                            }));
+                            break;
+                        case 'directory':
+                            result = result.concat(files.filter(function(file) {
+                                try {
+                                    return fs.statSync(join(currentPath, file)).isDirectory();
+                                } catch (e) {
+                                    return false;
+                                }
+                            }));
+                            break;
+                        case 'markdown':
+                            result = result.concat(files.filter(function(file) {
+                                return indexOf([
+                                    'markdown',
+                                    'md'
+                                ], extname(file)) > -1;
+                            }));
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            } else {
+                result = files;
             }
-            files.reverse();
-            result = map(files, function(filename) {
+            result.reverse();
+            result = map(result, function(filename) {
                 return processFile(currentPath, root, filename);
             });
             genJSONRes(result, res);

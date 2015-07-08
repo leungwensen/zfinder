@@ -3,6 +3,7 @@
 
 var pkg = require('../package.json'),
     connect = require('connect'),
+    bodyParser = require('body-parser'),
     open = require('open'),
     pastry = require('pastry'),
     path = require('path'),
@@ -10,6 +11,7 @@ var pkg = require('../package.json'),
     dump = require('./utils/dump'),
     help = require('./utils/help'),
     serveApis = require('./middleware/api'),
+    serveApps = require('./middleware/app'),
     serveDirectories = require('./middleware/directory'),
     serveFiles = require('./middleware/file');
 
@@ -25,12 +27,20 @@ module.exports = {
             server = connect();
 
         // middlewares {
+            server.use(bodyParser.urlencoded({
+                extended: true
+            }));
+
             server.use( // serve directories
                 serveDirectories(opts.root, opts)
             );
             server.use( // apis
                 opts.apiRoot,
                 serveApis(opts)
+            );
+            server.use( // apps
+                opts.appRoot,
+                serveApps(opts)
             );
             server.use( // specified files
                 serveFiles(opts)

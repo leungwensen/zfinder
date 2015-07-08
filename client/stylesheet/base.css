@@ -11,6 +11,13 @@
 .align-center {
   text-align: center;
 }
+.align-right {
+  text-align: right;
+}
+.form input[type=text].error,
+.form input[type=text].error:focus {
+  border-color: #a94442;
+}
 /*! Hint.css - v1.3.5 - 2015-06-16
 * http://kushagragour.in/lab/hint/
 * Copyright (c) 2015 Kushagra Gour; Licensed MIT */
@@ -431,4 +438,83 @@
   display: table-cell;
   vertical-align: middle;
   animation: kf-spin 2s infinite linear;
+}
+.modal {
+  background-color: white;
+  box-shadow: 0px 0px 10px 1px #ccc;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  top: 36px;
+  min-width: 320px;
+  left: 0;
+  right: 0;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  transform: translateY(-200%);
+  transition: all 0.3s;
+  z-index: 99;
+}
+.modal.show {
+  transform: translateY(0);
+}
+.modal .modal-header {
+  color: lightgrey;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.modal .modal-header:hover {
+  color: #2c3e50;
+}
+.modal .fa-close {
+  cursor: pointer;
+}
+.modal .fa-close:hover {
+  color: #e74c3c;
+}
+.btn-success,
+.btn-error,
+.btn-warning,
+.btn-secondary {
+  border-radius: 4px;
+}
+.btn-success {
+  color: darkgreen;
+  background-color: #eeffee;
+}
+.btn-error {
+  color: darkred;
+  background-color: #ffeeee;
+}
+.btn-warning {
+  color: darkgoldenrod;
+  background-color: #ffffee;
+}
+.btn-secondary {
+  color: darkblue;
+  background-color: #eeefff;
+}
+.btn-primary {
+  color: white;
+  background-color: #0099ff;
+}
+.btn-group {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+}
+.btn-group .btn:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.btn-group .btn:not(:last-child) {
+  border-right: 1px solid #aaa;
+}
+.btn-group .btn:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-group .btn:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

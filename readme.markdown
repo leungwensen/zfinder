@@ -26,6 +26,7 @@ Zfinder is built on top of all these fantastic projects:
 
 * [avoidwork/filesize.js](https://github.com/avoidwork/filesize.js)
 * [chjj/marked](https://github.com/chjj/marked)
+* [codemirror/CodeMirror](https://github.com/codemirror/CodeMirror.git)
 * [expressjs/serve-static](https://github.com/expressjs/serve-static)
 * [isaacs/node-glob](https://github.com/isaacs/node-glob)
 * [jshttp/http-errors](https://github.com/jshttp/http-errors)
@@ -37,4 +38,6 @@ Zfinder is built on top of all these fantastic projects:
 * [substack/minimist](https://github.com/substack/minimist)
 
 ## [history](history.markdown)
+
+## [MIT License](license.markdown)
 

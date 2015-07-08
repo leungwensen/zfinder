@@ -49,11 +49,26 @@ define([
     }
 
     return {
-        ls: function(path, type) {
+        getApiUrl: getApiUrl,
+        buildApiFetch: buildApiFetch,
+        ls: function(path, filter) {
             path = path || CONST.root;
+            filter = filter || '';
             return buildApiFetch('GET', '/ls', {
                 path: path,
-                type: type
+                filter: filter,
+            });
+        },
+        getFile: function(path) {
+            return buildApiFetch('GET', '/file', {
+                path: path
+            });
+        },
+        saveFile: function(path, content) {
+            content = content || '';
+            return buildApiFetch('POST', '/file', {
+                path: path,
+                content: content
             });
         },
         globSearch: function(query) {

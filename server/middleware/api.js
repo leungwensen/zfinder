@@ -2,9 +2,10 @@
 /* global require, module */
 
 var url = require('url'),
+    apiLs = require('./api/ls'),
     contentSearch = require('./api/contentSearch'),
     globSearch = require('./api/globSearch'),
-    apiLs = require('./api/ls');
+    fileApi = require('./api/file');
 
 module.exports = function(options) {
     'use strict';
@@ -22,6 +23,9 @@ module.exports = function(options) {
                 break;
             case '/search/content':
                 contentSearch(req, res, next, options);
+                break;
+            case '/file':
+                fileApi(req, res, next, options);
                 break;
             default:
                 return next();

@@ -1,3 +1,68 @@
+table.tree-wrapper {
+  color: #333;
+  /*border: none;*/
+  width: 100%;
+}
+table.tree-wrapper thead th {
+  font-weight: normal;
+  /*padding: 4px;*/
+}
+table.tree-wrapper tbody {
+  cursor: pointer;
+}
+table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
+  background-color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-expander,
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-icon {
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody td {
+  border: none;
+}
+table.tree-wrapper .tree-node-icon {
+  color: grey;
+}
+table.tree-wrapper .tree-node-icon.fa-folder,
+table.tree-wrapper .tree-node-icon.fa-folder-open {
+  color: #3498db;
+}
+table.tree-wrapper .tree-node-expander {
+  color: grey;
+}
+/* tree */
+.tree-wrapper thead th:nth-last-child(1) {
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.tree-wrapper thead th:nth-last-child(2) {
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.tree-wrapper tbody tr.tree-node td:nth-last-child(1) {
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.tree-wrapper tbody tr.tree-node td:nth-last-child(2) {
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
 .directory-header {
   color: #2c3e50;
   background-color: #e0e0e0;
@@ -18,70 +83,6 @@
 }
 #ls {
   padding: 8px;
-}
-table.tree-wrapper {
-  color: #333;
-  /*border: none;*/
-  width: 100%;
-}
-table.tree-wrapper thead th {
-  font-weight: normal;
-  /*padding: 4px;*/
-}
-table.tree-wrapper thead th:nth-last-child(1) {
-  width: 60px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-}
-table.tree-wrapper thead th:nth-last-child(2) {
-  width: 90px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-}
-table.tree-wrapper tbody {
-  cursor: pointer;
-}
-table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
-  background-color: #ecf0f1;
-}
-table.tree-wrapper tbody tr.tree-node.selected {
-  background-color: #2980b9;
-  color: #ecf0f1;
-}
-table.tree-wrapper tbody tr.tree-node.selected .tree-node-expander,
-table.tree-wrapper tbody tr.tree-node.selected .tree-node-icon {
-  color: #ecf0f1;
-}
-table.tree-wrapper tbody tr.tree-node td:nth-last-child(1) {
-  width: 60px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-}
-table.tree-wrapper tbody tr.tree-node td:nth-last-child(2) {
-  width: 90px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-}
-table.tree-wrapper tbody td {
-  border: none;
-}
-table.tree-wrapper .tree-node-icon {
-  color: grey;
-}
-table.tree-wrapper .tree-node-icon.fa-folder,
-table.tree-wrapper .tree-node-icon.fa-folder-open {
-  color: #3498db;
-}
-table.tree-wrapper .tree-node-expander {
-  color: grey;
 }
 #search-dialog {
   background-color: #ecf0f1;
