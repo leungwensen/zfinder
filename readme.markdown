@@ -38,6 +38,8 @@ Zfinder is built on top of all these fantastic projects:
 * [sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
 * [substack/minimist](https://github.com/substack/minimist)
 
+## [TODO](todo.markdown)
+
 ## [history](history.markdown)
 
 ## [MIT License](license.markdown)
