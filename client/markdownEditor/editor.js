@@ -6,6 +6,7 @@ define([
     'pastry/dom/event',
     'pastry/dom/query',
     'pastry/dom/style',
+    'pastry/fmt/sprintf',
     'pastry/url/querystring',
     '../cgi/api',
     '../global/utils',
@@ -18,6 +19,7 @@ define([
     domEvent,
     domQuery,
     domStyle,
+    sprintf,
     querystring,
     api,
     utils,
@@ -143,6 +145,7 @@ define([
                     markdownEditor.setFilename(filename);
                     markdownEditor.setValue(data.content);
                     markdownEditor.update();
+                    utils.pushState(sprintf('?file=%s', filename));
                 });
             },
             save: function(callback, confirm) {
