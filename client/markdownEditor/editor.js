@@ -89,7 +89,7 @@ define([
             resumeContent: function() {
                 var qs = querystring.parse(location.search.replace(/^\?/, ''));
                 if (qs.file) {
-                    markdownEditor.openFilename(qs.file);
+                    markdownEditor.openFile(qs.file);
                 } else {
                     markdownEditor.setFilename('');
                     markdownEditor.setValue('');

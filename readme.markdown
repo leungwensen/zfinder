@@ -18,6 +18,7 @@ zfinder -h
 * content search
 * glob search
 * markdown preview
+* markdown editor
 * static html server
 
 ## thanks to
