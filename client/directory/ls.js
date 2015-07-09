@@ -41,6 +41,9 @@ define([
                             ls.tree.addNodes(nodes);
                         });
                     },
+                    onCollapse: function(node) {
+                        node.removeChildren();
+                    },
                     onDblclick: function(node) {
                         if (node.isBranch || node.name === '..') {
                             window.location.href = '/' + node.relativePathname;

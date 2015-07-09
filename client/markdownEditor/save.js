@@ -75,6 +75,9 @@ define([
                         saveDialog.tree.addNodes(nodes);
                     });
                 },
+                onCollapse: function(node) {
+                    node.removeChildren();
+                },
                 onSelect: function(node) {
                     if (node.isBranch) {
                         saveLocation = node.id;

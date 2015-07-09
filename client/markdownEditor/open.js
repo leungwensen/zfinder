@@ -56,6 +56,9 @@ define([
                         openDialog.tree.addNodes(nodes);
                     });
                 },
+                onCollapse: function(node) {
+                    node.removeChildren();
+                },
                 onSelect: function(node) {
                     if (node.isLeaf) {
                         openFilename = node.relativePathname;
