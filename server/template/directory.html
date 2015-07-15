@@ -22,34 +22,6 @@
         </header>
         <section id="ls">
         </section>
-        <section id="search-dialog">
-            <header class="header">
-                <span class="title">Search</span>
-                <span class="float-right fa fa-close close"></span>
-            </header>
-            <div class="body">
-                <input id="search-query" type="text" placeholder="Press 'ENTER' to search, at least 1 character. Press 'ESC' to quit.">
-                <span class="fa fa-search" id="submit-search"></span>
-                <div class="flex-container" id="search-result">
-                    <div class="flex-col-left">
-                        <header class="align-center">
-                            In Path Names
-                        </header>
-                        <section class="body">
-                            <div class="result" id="search-glob-result"></div>
-                        </section>
-                    </div>
-                    <div class="flex-col-right">
-                        <header class="align-center">
-                            In File Contents
-                        </header>
-                        <section class="body">
-                            <div class="result" id="search-content-result"></div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
     <script>
         var GLOBAL_CONST = JSON.parse('{%= jsonStr %}');

@@ -10,8 +10,11 @@ define([
     'pastry/dom/query',
     '../cgi/api',
     '../component/LoadingSpinner',
+    '../component/Modal',
     '../global/CONST',
     '../global/utils',
+    '../template/noSearchResult',
+    '../template/searchDialogBody',
     '../template/searchResult'
 ], function(
     pastry,
@@ -22,8 +25,11 @@ define([
     domQuery,
     api,
     LoadingSpinner,
+    Modal,
     CONST,
     utils,
+    tmplNoSearchResult,
+    tmplSearchDialogBody,
     tmplSearchResult
 ) {
     'use strict';
@@ -32,8 +38,21 @@ define([
      * @description : description
      */
     var map = pastry.map,
-        domNodeBtn = domQuery.one('#file-search'),
-        domNodeDialog = domQuery.one('#search-dialog'),
+        dialog = new Modal({
+            classname: 'search-dialog',
+            title: 'Search',
+            width: '800px',
+            onShow: function() {
+                domNodeQuery.focus();
+            }
+        });
+
+    domConstruct.place(
+        domConstruct.toDom(tmplSearchDialogBody()),
+        dialog.domNodes.body
+    );
+
+    var domNodeBtn = domQuery.one('#file-search'),
         domNodeQuery = domQuery.one('#search-query'),
         domNodeGlobResult = domQuery.one('#search-glob-result'),
         domNodeContentResult = domQuery.one('#search-content-result'),
@@ -44,54 +63,42 @@ define([
                 return file;
             });
         },
-        noResultHtml = '<div class="no-result align-center"><span>No Result</span></div>',
+        noResultHtml = tmplNoSearchResult(),
         search = {
-            isShown: false,
-            show: function() {
-                domClass.add(domNodeDialog, 'show');
-                domNodeQuery.focus();
-                search.isShown = true;
-            },
-            hide: function() {
-                domClass.remove(domNodeDialog, 'show');
-                search.isShown = false;
-            },
             toggle: function() {
-                search[search.isShown ? 'hide' : 'show']();
+                dialog[dialog.isShown ? 'hide' : 'show']();
             },
             searchGlob: function(query) {
                 new LoadingSpinner().placeAt(domNodeGlobResult, 'only');
-                api.globSearch(query)
-                    .then(function(files) {
-                        domNodeGlobResult.innerHTML = noResultHtml;
-                        var result = tmplSearchResult({
-                            files: processFiles(files),
-                            options: CONST
-                        }, true);
-                        if (result) {
-                            domConstruct.place(result, domNodeGlobResult, 'only');
-                        }
-                    });
+                api.globSearch(query).then(function(files) {
+                    domNodeGlobResult.innerHTML = noResultHtml;
+                    var result = tmplSearchResult({
+                        files: processFiles(files),
+                        options: CONST
+                    }, true);
+                    if (result) {
+                        domConstruct.place(result, domNodeGlobResult, 'only');
+                    }
+                });
             },
             searchContent: function(query) {
                 new LoadingSpinner().placeAt(domNodeContentResult, 'only');
-                api.contentSearch(query)
-                    .then(function(files) {
-                        domNodeContentResult.innerHTML = noResultHtml;
-                        var result = tmplSearchResult({
-                            files: processFiles(files),
-                            options: CONST
-                        }, true);
-                        if (result) {
-                            domConstruct.place(result, domNodeContentResult, 'only');
-                        }
-                    });
+                api.contentSearch(query).then(function(files) {
+                    domNodeContentResult.innerHTML = noResultHtml;
+                    var result = tmplSearchResult({
+                        files: processFiles(files),
+                        options: CONST
+                    }, true);
+                    if (result) {
+                        domConstruct.place(result, domNodeContentResult, 'only');
+                    }
+                });
             }
         };
 
     // shortcuts {
         domHotkey.on('esc', function() {
-            search.hide();
+            dialog.hide();
         });
         domHotkey.on('ctrl+f', function() {
             search.toggle();
@@ -106,10 +113,7 @@ define([
             }
         }
         domEvent.on(domNodeBtn, 'click', function() {
-            search.show();
-        });
-        domEvent.on(domNodeDialog, 'click', '.close', function() {
-            search.hide();
+            dialog.show();
         });
         domEvent.on(domNodeQuery, 'keyup', function(e) {
             if (e.keyCode === 13) {

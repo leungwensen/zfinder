@@ -212,6 +212,9 @@ define([
         domEvent.on(domNodes.selectKeymap, 'change', function() {
             event.trigger('set-keymap', utils.getSelectValue(domNodes.selectKeymap));
         });
+        window.onbeforeunload = function() {
+            return store.get('is-saved', true) ? null : 'You have unsaved changes!';
+        };
     // }
     // shortcuts {
     // }
