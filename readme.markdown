@@ -15,9 +15,9 @@ zfinder -r $path/to/root
 
 - [x] content search
 - [x] glob search
-* [ ] context menu
-* [ ] application list (editors, etc)
-* [ ] help info;
+- [ ] context menu
+- [ ] application list (editors, etc)
+- [ ] help info;
 
 #### static server
 
@@ -33,7 +33,7 @@ zfinder -r $path/to/root
 #### file editor
 
 - [x] markdown editor
-* [ ] universal code editor
+- [ ] universal code editor
 - [ ] image editor
 - [ ] xmind editor
 
