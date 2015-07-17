@@ -25,6 +25,7 @@ zfinder -h
 
 Zfinder is built on top of all these fantastic projects:
 
+* [Khan/KaTeX](https://github.com/Khan/KaTeX)
 * [avoidwork/filesize.js](https://github.com/avoidwork/filesize.js)
 * [chjj/marked](https://github.com/chjj/marked)
 * [codemirror/CodeMirror](https://github.com/codemirror/CodeMirror.git)
@@ -32,6 +33,7 @@ Zfinder is built on top of all these fantastic projects:
 * [isaacs/node-glob](https://github.com/isaacs/node-glob)
 * [jshttp/http-errors](https://github.com/jshttp/http-errors)
 * [jshttp/mime-types](https://github.com/jshttp/mime-types)
+* [knsv/mermaid](https://github.com/knsv/mermaid)
 * [moment/moment](https://github.com/moment/moment)
 * [pwnall/node-open](https://github.com/pwnall/node-open)
 * [senchalabs/connect](https://github.com/senchalabs/connect)

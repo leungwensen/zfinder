@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true, newcap: false */
-/* global define, CodeMirror, window, marked, location */
+/* global define, CodeMirror, window, location, mermaid */
 
 define([
     'pastry/pastry',
@@ -10,6 +10,7 @@ define([
     'pastry/url/querystring',
     '../cgi/api',
     '../global/utils',
+    '../component/marked',
     './event',
     './open',
     './save',
@@ -23,6 +24,7 @@ define([
     querystring,
     api,
     utils,
+    marked,
     event,
     openDialog,
     saveDialog,
@@ -123,7 +125,10 @@ define([
                     oldValue = store.get('old-value', '');
                 store.set('current-value', currentValue);
                 store.set('is-saved', currentValue === oldValue);
-                domNodes.previewer.innerHTML = marked(currentValue);
+                // TODO 解释diagram、math typesetting等 {
+                    domNodes.previewer.innerHTML = marked(currentValue);
+                    mermaid.init(); // render graphs
+                // }
             },
             new: function() {
                 markdownEditor.save(function() {

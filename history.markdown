@@ -21,3 +21,11 @@
 ## 0.0.8
 
 * bugfix in markdown editor;
+
+## 0.0.9
+
+* markdown editor enhancement:
+  * support diagrams drawing;
+  * support math typesetting;
+  * github-like task list;
+
