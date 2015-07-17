@@ -8,7 +8,6 @@ var fs = require('fs'),
     url = require('url'),
         parseUrl = url.parse,
     pastry = require('pastry'),
-    marked = require('marked'),
     utils = require('../utils/middleware'),
         extname = utils.extname,
         readFile = utils.readFile,
@@ -37,7 +36,7 @@ module.exports = function(options) {
                     var filename = relative(options.root, pathname);
                     genHTMLRes(
                         templateByName.markdown({
-                            content: marked(readFile(pathname)),
+                            content: readFile(pathname),
                             options: options,
                             filename: filename,
                         }, pastry, true),

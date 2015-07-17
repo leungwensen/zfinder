@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/font/css/font-awesome.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/sindresorhus/github-markdown-css/github-markdown.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/base.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.forest.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
 </head>
 <body>
@@ -18,9 +21,18 @@
                 <span class="fa fa-pencil-square-o " title="edit"></span>
             </a>
         </header>
-        <section class="markdown-body">
-            {%= content %}
+        <section class="markdown-body" id="markdown-previewer">
         </section>
     </article>
+    <script id="markdown-content" type="text/template">
+        {%= content %}
+    </script>
+    <!-- markdown { -->
+        <script src="{%= options.serverRoot %}/lib/chjj/marked/lib/marked.js"></script>
+        <script src="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.js"></script>
+        <script src="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.js"></script>
+    <!-- } -->
+    <script src="{%= options.serverRoot %}/lib/leungwensen/pastry/src/amd-loader.js"></script>
+    <script src="{%= options.serverRoot %}/client/markdownPreviewer/main.js"></script>
 </body>
 </html>
