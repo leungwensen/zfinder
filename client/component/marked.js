@@ -5,6 +5,7 @@ define([
     'pastry/pastry',
     'pastry/fmt/sprintf',
     'pastry/html/escape',
+    '../template/markedFlowchart',
     '../template/markedMath',
     '../template/markedMermaidGraph',
     '../template/markedTaskListItem'
@@ -12,9 +13,10 @@ define([
     pastry,
     sprintf,
     htmlEscape,
+    tmplFlowchart,
     tmplMath,
     tmplMermaidGraph,
-    tmpTaskListItem
+    tmplTaskListItem
 ) {
     'use strict';
     /*
@@ -23,6 +25,8 @@ define([
      */
     var mermaidError,
         each = pastry.each,
+        lc = pastry.lc,
+        map = pastry.map,
         trim = pastry.trim,
         Renderer = marked.Renderer,
         RendererPrototype = Renderer.prototype,
@@ -38,10 +42,10 @@ define([
             return marked.Renderer.prototype.listitem(text);
         }
         // task list item {
-            return tmpTaskListItem({
+            return tmplTaskListItem({
                 checked: /^\[x\]\s/.test(text),
                 text: text.substring(3)
-            });
+            }, true);
         // }
     };
 
@@ -62,7 +66,7 @@ define([
 
     renderer.code = function(code, lang, escaped, lineNumber) { // code block
         code = trim(code);
-        var firstLine = trim(code.split(/\n/)[0]);
+        var firstLine = lc(trim(code.split(/\n/)[0]));
         if (firstLine === 'math') { // math typesetting
             var tex = '';
             each(code.replace(/^math\s*/, '').split(/\n\n/), function(line){
@@ -84,10 +88,10 @@ define([
             }, true);
         } else if ( // graphs
             firstLine === 'gantt' ||
-            firstLine === 'sequenceDiagram' ||
-            firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)
+            firstLine === 'sequencediagram' ||
+            firstLine.match(/^graph (?:tb|bt|rl|lr|td);?$/)
         ){
-            if(firstLine === 'sequenceDiagram') {
+            if(firstLine === 'sequencediagram') {
                 code += '\n'; // empty line in the end or error
             }
             var valid = mermaid.parse(code);
@@ -96,6 +100,15 @@ define([
                 error: mermaidError,
                 lineNumber: lineNumber,
                 valid: valid,
+            }, true);
+        } else if (firstLine === 'flowchart') {
+            code = map(code
+                .replace(new RegExp('^' + firstLine + '\n', 'ig'), '')
+                .replace(/^\n/, '').split(/\n/), function(line) {
+                    return trim(line);
+                }).join('\n');
+            return tmplFlowchart({
+                code: code
             }, true);
         }
         return RendererPrototype.code.apply(this, arguments);

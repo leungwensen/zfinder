@@ -74,10 +74,13 @@ table.tree-wrapper .tree-node-expander {
 .directory-header:hover {
   color: inherit;
 }
-#file-search {
+#file-search,
+#application-list {
+  margin-left: 10px;
   color: #2c3e50;
 }
-#file-search:hover {
+#file-search:hover,
+#application-list:hover {
   color: #3498db;
 }
 #ls {

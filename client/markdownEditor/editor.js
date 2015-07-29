@@ -10,6 +10,7 @@ define([
     'pastry/url/querystring',
     '../cgi/api',
     '../global/utils',
+    '../component/drawFlowcharts',
     '../component/marked',
     './event',
     './open',
@@ -24,6 +25,7 @@ define([
     querystring,
     api,
     utils,
+    drawFlowcharts,
     marked,
     event,
     openDialog,
@@ -128,6 +130,7 @@ define([
                 // TODO 解释diagram、math typesetting等 {
                     domNodes.previewer.innerHTML = marked(currentValue);
                     mermaid.init(); // render graphs
+                    drawFlowcharts(domNodes.previewer);
                 // }
             },
             new: function() {

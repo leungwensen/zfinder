@@ -4,10 +4,12 @@
 define([
     'pastry/pastry',
     'pastry/dom/query',
+    '../component/drawFlowcharts',
     '../component/marked'
 ], function(
     pastry,
     domQuery,
+    drawFlowcharts,
     marked
 ) {
     'use strict';
@@ -20,5 +22,6 @@ define([
 
     previewerDomNode.innerHTML = marked(content);
     mermaid.init(); // render graphs
+    drawFlowcharts(previewerDomNode);
 });
 
