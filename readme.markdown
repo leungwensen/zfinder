@@ -26,6 +26,7 @@ zfinder -r $path/to/root
 #### file previewer
 
 - [x] markdown previewer
+- [ ] universal code previewer
 - [ ] image previewer
 - [ ] xmind previewer
 - [ ] media player
@@ -39,7 +40,9 @@ zfinder -r $path/to/root
 
 #### others
 
-- [ ] i18n
+- [ ] i18n support
+- [ ] windows support
+- [ ] themes
 - [ ] proxy server
 
 ## Thanks to
