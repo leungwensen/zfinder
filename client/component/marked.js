@@ -101,10 +101,12 @@ define([
                 lineNumber: lineNumber,
                 valid: valid,
             }, true);
-        } else if (firstLine === 'flowchart') {
+        } else if (firstLine === 'flowchart') { // flowchart
             code = map(code
+                // remove firstLine
                 .replace(new RegExp('^' + firstLine + '\n', 'ig'), '')
                 .replace(/^\n/, '').split(/\n/), function(line) {
+                    // have to trim
                     return trim(line);
                 }).join('\n');
             return tmplFlowchart({

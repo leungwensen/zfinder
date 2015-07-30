@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true, newcap: false */
-/* global define, CodeMirror, window, location, mermaid */
+/* global define, CodeMirror, window, location, mermaid, clearTimeout, setTimeout */
 
 define([
     'pastry/pastry',
@@ -39,131 +39,132 @@ define([
      */
     function noop(){}
 
-    var indexOf = pastry.indexOf,
-        domNodes = {
-            editor: domQuery.one('#editor'),
-            previewer: domQuery.one('#previewer'),
-            btnNew: domQuery.one('#btn-new'),
-            btnOpen: domQuery.one('#btn-open'),
-            btnSave: domQuery.one('#btn-save'),
-            btnUndo: domQuery.one('#btn-undo'),
-            btnRedo: domQuery.one('#btn-redo'),
-            selectKeymap: domQuery.one('#switch-keymap'),
+    var indexOf = pastry.indexOf;
+    var domNodes = {
+        editor: domQuery.one('#editor'),
+        previewer: domQuery.one('#previewer'),
+        btnNew: domQuery.one('#btn-new'),
+        btnOpen: domQuery.one('#btn-open'),
+        btnSave: domQuery.one('#btn-save'),
+        btnUndo: domQuery.one('#btn-undo'),
+        btnRedo: domQuery.one('#btn-redo'),
+        selectKeymap: domQuery.one('#switch-keymap'),
+    };
+    var codeEditor = CodeMirror(domNodes.editor, {
+        autofocus: true,
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: 'text/markdown',
+        showCursorWhenSelecting: true,
+    });
+    var markdownEditor = {
+        init: function() {
+            markdownEditor.editor = codeEditor;
+            domNodes.codeMirror = domQuery.one('.CodeMirror', domNodes.editor);
+            codeEditor.setOption('extraKeys', {
+                // shortcuts {
+                    'Ctrl-S': function() {
+                        markdownEditor.save();
+                    },
+                    'Cmd-S': function() {
+                        markdownEditor.save();
+                    },
+                // }
+            });
+            return markdownEditor
+                .refresh()
+                .resumeSetting()
+                .resumeContent();
         },
-        codeEditor = CodeMirror(domNodes.editor, {
-            autofocus: true,
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: 'text/markdown',
-            showCursorWhenSelecting: true,
-        }),
-        markdownEditor = {
-            init: function() {
-                markdownEditor.editor = codeEditor;
-                domNodes.codeMirror = domQuery.one('.CodeMirror', domNodes.editor);
-                codeEditor.setOption('extraKeys', {
-                    // shortcuts {
-                        'Ctrl-S': function() {
-                            markdownEditor.save();
-                        },
-                        'Cmd-S': function() {
-                            markdownEditor.save();
-                        },
-                    // }
-                });
-                return markdownEditor
-                    .refresh()
-                    .resumeSetting()
-                    .resumeContent();
-            },
-            refresh: function() {
-                domStyle.set(
-                    domNodes.codeMirror,
-                    'height',
-                    (domStyle.get(domNodes.editor, 'height') - 32) + 'px'
-                );
-                codeEditor.refresh();// hack gutter height
-                return markdownEditor;
-            },
-            resumeSetting: function() {
-                // keymap {
-                    var keymap = store.get('key-map', 'default');
-                    markdownEditor.setKeymap(keymap);
-                // }
-                return markdownEditor;
-            },
-            resumeContent: function() {
-                var qs = querystring.parse(location.search.replace(/^\?/, ''));
-                if (qs.file) {
-                    markdownEditor.openFile(qs.file);
-                } else {
-                    markdownEditor.setFilename('');
-                    markdownEditor.setValue('');
-                    markdownEditor.update();
-                }
-                return markdownEditor;
-            },
-            setKeymap: function(type) {
-                if (indexOf([
-                    'default',
-                    'emacs',
-                    'sublime',
-                    'vim',
-                ], type) > -1) {
-                    codeEditor.setOption('keyMap', type);
-                }
-                utils.setSelectValue(domNodes.selectKeymap, type);
-                store.set('key-map', type);
-            },
-            setFilename: function(filename) {
-                store.set('current-filename', filename);
-            },
-            setValue: function(value) {
-                store.set('old-value', value);
-                codeEditor.setValue(value);
-            },
-            update: function() {
-                var currentValue = codeEditor.getValue() || '',
-                    oldValue = store.get('old-value', '');
-                store.set('current-value', currentValue);
-                store.set('is-saved', currentValue === oldValue);
-                // TODO 解释diagram、math typesetting等 {
-                    domNodes.previewer.innerHTML = marked(currentValue);
-                    mermaid.init(); // render graphs
-                    drawFlowcharts(domNodes.previewer);
-                // }
-            },
-            new: function() {
-                markdownEditor.save(function() {
-                    store.set('old-value', '');
-                    codeEditor.setValue('');
-                    markdownEditor.setFilename('');
-                    markdownEditor.update();
-                    codeEditor.focus();
-                    utils.pushState(location.origin + location.pathname);
-                }, true);
-            },
-            open: function() {
-                markdownEditor.save(function() {
-                    openDialog(markdownEditor.openFile);
-                }, true);
-            },
-            openFile: function(filename) {
-                api.getFile(filename).then(function(data) {
-                    markdownEditor.setFilename(filename);
-                    markdownEditor.setValue(data.content);
-                    markdownEditor.update();
-                    utils.pushState(sprintf('?file=%s', filename));
-                });
-            },
-            save: function(callback, confirm) {
-                callback = callback || noop;
-                if (store.get('is-saved')) { // already saved
-                    return callback();
-                }
-                saveDialog(callback, confirm);
-            },
-        };
+        refresh: function() {
+            domStyle.set(
+                domNodes.codeMirror,
+                'height',
+                (domStyle.get(domNodes.editor, 'height') - 32) + 'px'
+            );
+            codeEditor.refresh();// hack gutter height
+            return markdownEditor;
+        },
+        resumeSetting: function() {
+            // keymap {
+                var keymap = store.get('key-map', 'default');
+                markdownEditor.setKeymap(keymap);
+            // }
+            return markdownEditor;
+        },
+        resumeContent: function() {
+            var qs = querystring.parse(location.search.replace(/^\?/, ''));
+            if (qs.file) {
+                markdownEditor.openFile(qs.file);
+            } else {
+                markdownEditor.setFilename('');
+                markdownEditor.setValue('');
+                markdownEditor.update();
+            }
+            return markdownEditor;
+        },
+        setKeymap: function(type) {
+            if (indexOf([
+                'default',
+                'emacs',
+                'sublime',
+                'vim',
+            ], type) > -1) {
+                codeEditor.setOption('keyMap', type);
+            }
+            utils.setSelectValue(domNodes.selectKeymap, type);
+            store.set('key-map', type);
+        },
+        setFilename: function(filename) {
+            store.set('current-filename', filename);
+        },
+        setValue: function(value) {
+            store.set('old-value', value);
+            codeEditor.setValue(value);
+        },
+        update: function() {
+            var currentValue = codeEditor.getValue() || '',
+                oldValue = store.get('old-value', '');
+            store.set('current-value', currentValue);
+            store.set('is-saved', currentValue === oldValue);
+            // TODO 解释diagram、math typesetting等 {
+                domNodes.previewer.innerHTML = marked(currentValue);
+                mermaid.init(); // render graphs
+                drawFlowcharts(domNodes.previewer);
+            // }
+        },
+        new: function() {
+            markdownEditor.save(function() {
+                store.set('old-value', '');
+                codeEditor.setValue('');
+                markdownEditor.setFilename('');
+                markdownEditor.update();
+                codeEditor.focus();
+                utils.pushState(location.origin + location.pathname);
+            }, true);
+        },
+        open: function() {
+            markdownEditor.save(function() {
+                openDialog(markdownEditor.openFile);
+            }, true);
+        },
+        openFile: function(filename) {
+            api.getFile(filename).then(function(data) {
+                markdownEditor.setFilename(filename);
+                markdownEditor.setValue(data.content);
+                markdownEditor.update();
+                utils.pushState(sprintf('?file=%s', filename));
+            });
+        },
+        save: function(callback, confirm) {
+            callback = callback || noop;
+            if (store.get('is-saved')) { // already saved
+                return callback();
+            }
+            saveDialog(callback, confirm);
+        },
+    };
+
     // events {
         event.on('set-value', function(value) {
             markdownEditor.setValue(value);
@@ -186,9 +187,16 @@ define([
         event.on('refresh', function() {
             markdownEditor.refresh();
         });
+
+        var updateTimeout,
+            UPDATE_INTERVAL = 600;
         event.on('update', function() {
-            markdownEditor.update();
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(function() {
+                markdownEditor.update();
+            }, UPDATE_INTERVAL);
         });
+
         event.on('set-keymap', function(keymap) {
             markdownEditor.setKeymap(keymap);
         });

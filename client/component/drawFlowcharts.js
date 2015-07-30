@@ -13,7 +13,9 @@ define([
      * @author: 绝云（wensen.lws）
      * @description: description
      */
-    var each = pastry.each;
+    var each = pastry.each,
+        destroy = pastry.destroy;
+
     var drawOptions = {
         'x': 0,
         'y': 0,
@@ -30,13 +32,20 @@ define([
         'arrow-end': 'block',
         'scale': 1,
     };
+
+    var instanceCache = [];
+
     return function(scope) {
+        each(instanceCache, function(instance) {
+            destroy(instance);
+        });
         each(domQuery.all('.flowchart', scope), function(container) {
             try {
                 var codeElement = domQuery.one('.flowchart-code', container),
                     graphElement = domQuery.one('.flowchart-graph', container);
                 var diagram = flowchart.parse(codeElement.innerHTML);
                 diagram.drawSVG(graphElement, drawOptions);
+                instanceCache.push(diagram);
             } catch(e) {
                 console.log(e);
             }
