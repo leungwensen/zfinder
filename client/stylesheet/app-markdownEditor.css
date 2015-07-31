@@ -67,6 +67,14 @@ body,
   /*padding: 16px;*/
   /*overflow: auto;*/
 }
+.app .previewer .flowchart-graph,
+.app .previewer .mermaid,
+.app .previewer .katex-display {
+  max-width: 104.5%;
+}
+.app .previewer .flowchart-graph svg {
+  width: 100%;
+}
 .editor .toolbar .form {
   margin-left: 5px;
 }

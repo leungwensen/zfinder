@@ -18,6 +18,17 @@
 .form input[type=text].error:focus {
   border-color: #a94442;
 }
+.non-select {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
+}
 /*! Hint.css - v1.3.5 - 2015-06-16
 * http://kushagragour.in/lab/hint/
 * Copyright (c) 2015 Kushagra Gour; Licensed MIT */
@@ -517,4 +528,63 @@
 .btn-group .btn:last-child:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+.resizer-d {
+  position: absolute;
+  z-index: 999;
+  width: 10px;
+  height: 10px;
+}
+.resizer-d-n {
+  left: 0;
+  width: 100%;
+}
+.resizer-d-n .resizer-handler {
+  cursor: ns-resize;
+}
+.resizer-d-s {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.resizer-d-s .resizer-handler {
+  cursor: ns-resize;
+}
+.resizer-d-e {
+  right: 0;
+  height: 100%;
+}
+.resizer-d-e .resizer-handler {
+  cursor: ew-resize;
+}
+.resizer-d-w {
+  left: 0;
+  height: 100%;
+}
+.resizer-d-w .resizer-handler {
+  cursor: ew-resize;
+}
+.resizer-d-ne {
+  right: 0;
+  top: 0;
+  cursor: nesw-resize;
+}
+.resizer-d-se {
+  right: 0;
+  bottom: 0;
+  cursor: nwse-resize;
+}
+.resizer-d-sw {
+  left: 0;
+  bottom: 0;
+  cursor: nesw-resize;
+}
+.resizer-d-nw {
+  left: 0;
+  top: 0;
+  cursor: nwse-resize;
+}
+.resizer-handler {
+  width: 100%;
+  height: 100%;
 }

@@ -5,18 +5,30 @@
     vertical-align: bottom;
     white-space: nowrap;
 }
+
 .float-right {
     float: right;
 }
+
 .align-center {
     text-align: center;
 }
 .align-right {
     text-align: right;
 }
+
 .form input[type=text].error,
 .form input[type=text].error:focus {
     border-color: #a94442;
+}
+
+.non-select {
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
 }
 
 @import './hint.less';
@@ -24,4 +36,5 @@
 @import './loadingSpinner.less';
 @import './modal.less';
 @import './button.less';
+@import './resizer.less';
 

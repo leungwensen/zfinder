@@ -1,7 +1,19 @@
+body {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  margin: 0;
+  /*overflow-x: hidden;*/
+}
+body.non-select {
+  cursor: ew-resize;
+}
 .markdown-container {
-  min-width: 200px;
-  max-width: 900px;
-  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  width: 900px;
+  text-align: left;
+  overflow: hidden;
   border: 1px solid #eee;
   border-radius: 3px;
 }
@@ -18,4 +30,12 @@
 }
 .markdown-container .markdown-body {
   padding: 16px;
+}
+.flowchart-graph,
+.mermaid,
+.katex-display {
+  max-width: 104.5%;
+}
+.flowchart-graph svg {
+  width: 100%;
 }

@@ -17,9 +17,11 @@
             <span class="title text-limit-len" title="{%= filename %}">
                 {%= filename %}
             </span>
-            <a class="float-right" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}">
-                <span class="fa fa-pencil-square-o " title="edit"></span>
-            </a>
+            <span class="hint--left float-right" data-hint="Edit">
+                <a class="float-right" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}">
+                    <span class="fa fa-pencil-square-o " title="edit"></span>
+                </a>
+            </span>
         </header>
         <section class="markdown-body" id="markdown-previewer">
         </section>
