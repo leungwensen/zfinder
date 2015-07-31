@@ -1,11 +1,23 @@
 {
     "name": "zfinder",
     "productName": "zfinder",
-    "version": "0.0.20150730",
+    "version": "0.0.20150731",
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
-    "repository": "leungwensen/zfinder",
+    "author": "leungwensen <leungwensen@gmail.com>",
+    "homepage": "https://github.com/leungwensen/zfinder",
+    "keywords": [
+        "zfinder",
+        "finder",
+        "markdown",
+        "static",
+        "static server"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/leungwensen/zfinder.git"
+    },
     "author": {
         "name": "绝云",
         "email": "wensen.lws@alibaba-inc.com",
