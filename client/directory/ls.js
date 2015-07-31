@@ -31,7 +31,7 @@ define([
                     hasHead: true,
                     hasIcon: true,
                     hasExpanderIcon: false,
-                    treeColumnName: 'name',
+                    treeColumnName: CONST.path,
                     onExpand: function(node) {
                         api.ls(node.id).then(function(data) {
                             var nodes = map(data, function(n) {

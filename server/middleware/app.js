@@ -16,8 +16,6 @@ var path = require('path'),
     };
 
 module.exports = function(options) {
-    'use strict';
-
     return function(req, res/*, next*/) {
         var urlInfo = url.parse(req.url, true),
             pathname = urlInfo.pathname,

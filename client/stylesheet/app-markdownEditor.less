@@ -26,10 +26,25 @@ html, body, .app {
         flex: 5;
     }
     .previewer {
-        border: 1px solid @color-3;
-        padding: 16px;
-        overflow: auto;
+        /*border: 1px solid @color-3;*/
+        /*padding: 16px;*/
+        /*overflow: auto;*/
     }
+}
+.editor {
+    .toolbar {
+        .form {
+            margin-left: 5px;
+            select {
+                height: auto;
+            }
+        }
+    }
+}
+.markdown-body {
+    /*height: 100%;*/
+    overflow: scroll;
+    padding: 10px;
 }
 .menu-horizontal {
     overflow-x: hidden;

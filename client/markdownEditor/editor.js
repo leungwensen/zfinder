@@ -42,8 +42,9 @@ define([
     var indexOf = pastry.indexOf;
     var domNodes = {
         editor: domQuery.one('#editor'),
-        previewer: domQuery.one('#previewer'),
+        previewer: domQuery.one('#previewer .markdown-body'),
         btnNew: domQuery.one('#btn-new'),
+        btnPreviewLink: domQuery.one('#btn-preview-link'),
         btnOpen: domQuery.one('#btn-open'),
         btnSave: domQuery.one('#btn-save'),
         btnUndo: domQuery.one('#btn-undo'),
@@ -77,12 +78,19 @@ define([
                 .resumeContent();
         },
         refresh: function() {
+            var containerHeight = (domStyle.get(domNodes.editor, 'height') - 32) + 'px';
             domStyle.set(
                 domNodes.codeMirror,
                 'height',
-                (domStyle.get(domNodes.editor, 'height') - 32) + 'px'
+                containerHeight
             );
             codeEditor.refresh();// hack gutter height
+
+            domStyle.set(
+                domNodes.previewer,
+                'height',
+                containerHeight
+            );
             return markdownEditor;
         },
         resumeSetting: function() {
@@ -117,6 +125,7 @@ define([
         },
         setFilename: function(filename) {
             store.set('current-filename', filename);
+            domNodes.btnPreviewLink.href = filename;
         },
         setValue: function(value) {
             store.set('old-value', value);

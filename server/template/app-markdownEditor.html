@@ -25,28 +25,62 @@
                 <div class="toolbar">
                     <div class="menu menu-horizontal">
                         <ul class="menu-list">
-                            <li class="menu-item"><span id="btn-new" class="menu-link fa fa-plus"></span></li>
-                            <li class="menu-item"><span id="btn-open" class="menu-link fa fa-file-text"></span></li>
-                            <li class="menu-item"><span id="btn-save" class="menu-link fa fa-save"></span></li>
-                            <li class="menu-item"><span id="btn-undo" class="menu-link fa fa-undo"></span></li>
-                            <li class="menu-item"><span id="btn-redo" class="menu-link fa fa-repeat"></span></li>
                             <li class="menu-item">
-                                <div class="key-map">
-                                    <span>Keymap: </span>
-                                    <select id="switch-keymap" name="keymap">
-                                        <option value="default">Default</option>
-                                        <option value="vim">Vim</option>
-                                        <option value="emacs">Emacs</option>
-                                        <option value="sublime">Sublime Text</option>
-                                    </select>
+                                <span class="hint--right" data-hint="New">
+                                    <span id="btn-new" class="menu-link fa fa-plus"></span>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--right" data-hint="Open">
+                                    <span id="btn-open" class="menu-link fa fa-file-text"></span>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--right" data-hint="Save">
+                                    <span id="btn-save" class="menu-link fa fa-save"></span>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--right" data-hint="Undo">
+                                    <span id="btn-undo" class="menu-link fa fa-undo"></span>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--right" data-hint="Redo">
+                                    <span id="btn-redo" class="menu-link fa fa-repeat"></span>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <div class="key-map form">
+                                    <span class="hint--right" data-hint="Keymap">
+                                        <!--<span>Keymap: </span>-->
+                                        <select id="switch-keymap" name="keymap" class="menu-link">
+                                            <option value="default">Default</option>
+                                            <option value="vim">Vim</option>
+                                            <option value="emacs">Emacs</option>
+                                            <option value="sublime">Sublime Text</option>
+                                        </select>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
-            <article class="previewer markdown-body" id="previewer">
-            </article>
+            <section class="previewer" id="previewer">
+                <div class="toolbar">
+                    <div class="menu menu-horizontal">
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <span class="hint--right" data-hint="Preview">
+                                    <a class="menu-link fa fa-television" id="btn-preview-link" href="/" target="_blank"></a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <article class="markdown-body"></article>
+            </section>
         </section>
     </div>
     <script>

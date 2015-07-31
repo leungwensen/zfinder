@@ -35,6 +35,11 @@ table.tree-wrapper .tree-node-expander {
   color: grey;
 }
 /* tree */
+.tree-wrapper.table thead {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  color: grey;
+}
 .tree-wrapper thead th:nth-last-child(1) {
   width: 60px;
   white-space: nowrap;
@@ -70,6 +75,7 @@ table.tree-wrapper .tree-node-expander {
 }
 .directory-header .title {
   max-width: 50%;
+  font-weight: bold;
 }
 .directory-header:hover {
   color: inherit;

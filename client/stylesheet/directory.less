@@ -10,6 +10,11 @@
     text-align: right;
 }
 .tree-wrapper {
+    &.table thead {
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+        color: grey;
+    }
     thead th {
         &:nth-last-child(1) {
             .right-limit-len(60px);
@@ -34,6 +39,7 @@
     padding: 5px;
     .title {
         max-width: 50%;
+        font-weight: bold;
     }
     &:hover {
         color: inherit;;
