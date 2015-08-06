@@ -39,6 +39,7 @@ define([
         each(instanceCache, function(instance) {
             destroy(instance);
         });
+        instanceCache = [];
         each(domQuery.all('.flowchart', scope), function(container) {
             try {
                 var codeElement = domQuery.one('.flowchart-code', container),

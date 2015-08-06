@@ -152,7 +152,7 @@ define([
     function validateFilename(filename) {
         var result = filename.length > 0 &&
             filename.length < 255 &&
-            /^[-\w^&'@{}[\],$=!#().%+~ ]+$/.test(filename);
+            !/[\\\/\:\*\?<>]{1,}/.test(filename);
         if (!result) {
             saveFilenameDomNode.focus();
             domClass.add(saveFilenameDomNode, 'error');
