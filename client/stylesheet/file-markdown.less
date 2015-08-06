@@ -1,3 +1,5 @@
+@import './markdown.less';
+
 body {
     width: 100%;
     padding: 10px 0;
@@ -24,6 +26,10 @@ body {
         &:hover {
             color: inherit;;
         }
+        .btn {
+            margin-right: 10px;
+            cursor: pointer;
+        }
     }
     .markdown-body {
         padding: 16px;
@@ -32,11 +38,3 @@ body {
     border-radius: 3px;
 }
 
-.flowchart-graph, .mermaid, .katex-display {
-    max-width: 104.5%;
-}
-.flowchart-graph {
-    svg {
-        width: 100%;
-    }
-}
