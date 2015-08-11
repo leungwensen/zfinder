@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true, newcap: false */
-/* global define, CodeMirror, window, location, mermaid, clearTimeout, setTimeout */
+/* global define, CodeMirror, window, location, clearTimeout, setTimeout */
 
 define([
     'pastry/pastry',
@@ -10,12 +10,12 @@ define([
     'pastry/url/querystring',
     '../cgi/api',
     '../global/utils',
-    '../component/drawFlowcharts',
-    '../component/marked',
+    '../component/markedRenderer',
     './event',
     './open',
     './save',
-    './store'
+    './store'//,
+    //'./tips'
 ], function(
     pastry,
     domEvent,
@@ -25,12 +25,12 @@ define([
     querystring,
     api,
     utils,
-    drawFlowcharts,
-    marked,
+    markdownRenderer,
     event,
     openDialog,
     saveDialog,
-    store
+    store//,
+    //tips
 ) {
     'use strict';
     /*
@@ -41,14 +41,15 @@ define([
 
     var indexOf = pastry.indexOf;
     var domNodes = {
+        btnNew: domQuery.one('#btn-new'),
+        btnOpen: domQuery.one('#btn-open'),
+        btnPreviewLink: domQuery.one('#btn-preview-link'),
+        btnRedo: domQuery.one('#btn-redo'),
+        btnSave: domQuery.one('#btn-save'),
+        btnTips: domQuery.one('#btn-tips'),
+        btnUndo: domQuery.one('#btn-undo'),
         editor: domQuery.one('#editor'),
         previewer: domQuery.one('#previewer .markdown-body'),
-        btnNew: domQuery.one('#btn-new'),
-        btnPreviewLink: domQuery.one('#btn-preview-link'),
-        btnOpen: domQuery.one('#btn-open'),
-        btnSave: domQuery.one('#btn-save'),
-        btnUndo: domQuery.one('#btn-undo'),
-        btnRedo: domQuery.one('#btn-redo'),
         selectKeymap: domQuery.one('#switch-keymap'),
     };
     var codeEditor = CodeMirror(domNodes.editor, {
@@ -136,11 +137,7 @@ define([
                 oldValue = store.get('old-value', '');
             store.set('current-value', currentValue);
             store.set('is-saved', currentValue === oldValue);
-            // TODO 解释diagram、math typesetting等 {
-                domNodes.previewer.innerHTML = marked(currentValue);
-                mermaid.init(); // render graphs
-                drawFlowcharts(domNodes.previewer);
-            // }
+            markdownRenderer(domNodes.previewer, currentValue);
         },
         new: function() {
             markdownEditor.save(function() {
@@ -206,6 +203,10 @@ define([
             }, UPDATE_INTERVAL);
         });
 
+        //event.on('show-tips', function() {
+            //tips.show();
+        //});
+
         event.on('set-keymap', function(keymap) {
             markdownEditor.setKeymap(keymap);
         });
@@ -234,6 +235,9 @@ define([
         domEvent.on(domNodes.btnRedo, 'click', function() {
             event.trigger('redo');
         });
+        //domEvent.on(domNodes.btnTips, 'click', function() {
+            //event.trigger('show-tips');
+        //});
         domEvent.on(domNodes.selectKeymap, 'change', function() {
             event.trigger('set-keymap', utils.getSelectValue(domNodes.selectKeymap));
         });

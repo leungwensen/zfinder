@@ -1,40 +1,77 @@
-@import './markdown.less';
+@import './variables.less';
+@import './mixin.less';
+
+@min-width: 400px;
 
 body {
     width: 100%;
-    padding: 10px 0;
+    min-width: @min-width;
     text-align: center;
     margin: 0;
     /*overflow-x: hidden;*/
     &.non-select {
         cursor: ew-resize;
     }
+    background-color: #666;
 }
 .markdown-container {
+    background-color: white;
+    margin: 35px 0;
     position: relative;
     display: inline-block;
-    width: 900px;
+    width: 800px;
     text-align: left;
     overflow: hidden;
-    .markdown-header {
-        background-color: #f5f5f5;
-        color: grey;
-        padding: 5px;
-        .title {
-            max-width: 50%;
-        }
-        &:hover {
-            color: inherit;;
-        }
-        .btn {
-            margin-right: 10px;
-            cursor: pointer;
-        }
-    }
+    border: 1px solid #eee;
+    /*.box-shadow(0 0 4px #aaa);*/
     .markdown-body {
         padding: 16px;
     }
-    border: 1px solid #eee;
-    border-radius: 3px;
 }
+.markdown-menu {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    min-width: @min-width;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    .menu {
+        text-align: left;
+        /* fixing floating problem */
+        /*border-bottom: 1px solid #eee;*/
+        /*background-color: #eee;*/
+    }
+    .menu-heading {
+        color: #ccc;
+        max-width: 50%;
+        text-shadow: rgba(0, 0, 0, 0.8) 0px 1px 0px;
+    }
+    .menu-heading:hover {
+        color: white;
+    }
+    .menu-list {
+        margin-top: .5px;
+    }
+    .menu-item {
+        cursor: pointer;
+    }
+    .menu-link {
+        color: #ccc;
+        transparent: 1;
+    }
+    .menu-link:hover {
+        color: black;
+    }
+}
+.tips-dialog {
+    .modal-body {
+        text-align: left;
+        h1, h2 {
+            text-align: center;
+        }
+        padding: 5px;
+    }
+}
+
+@import './markdown.less';
 

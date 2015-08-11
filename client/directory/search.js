@@ -10,11 +10,11 @@ define([
     'pastry/dom/query',
     '../cgi/api',
     '../component/LoadingSpinner',
-    '../component/Modal',
+    //'../component/Modal',
     '../global/CONST',
     '../global/utils',
     '../template/noSearchResult',
-    '../template/searchDialogBody',
+    //'../template/searchDialogBody',
     '../template/searchResult'
 ], function(
     pastry,
@@ -25,11 +25,11 @@ define([
     domQuery,
     api,
     LoadingSpinner,
-    Modal,
+    //Modal,
     CONST,
     utils,
     tmplNoSearchResult,
-    tmplSearchDialogBody,
+    //tmplSearchDialogBody,
     tmplSearchResult
 ) {
     'use strict';
@@ -37,73 +37,64 @@ define([
      * @author      : 绝云（wensen.lws）
      * @description : description
      */
-    var map = pastry.map,
-        dialog = new Modal({
-            classname: 'search-dialog',
-            title: 'Search',
-            width: '800px',
-            onShow: function() {
-                domNodeQuery.focus();
-            }
+    var map = pastry.map;
+        //dialog = new Modal({
+            //classname: 'search-dialog',
+            //title: 'Search',
+            //width: '800px',
+            //onShow: function() {
+                //domNodeQuery.focus();
+            //}
+        //});
+
+    //domConstruct.place(
+        //domConstruct.toDom(tmplSearchDialogBody()),
+        //dialog.domNodes.body
+    //);
+
+    var domNodeQuery = domQuery.one('#search-query');
+    var domNodeGlobResult = domQuery.one('#search-glob-result');
+    var domNodeContentResult = domQuery.one('#search-content-result');
+    var domNodeSubmit = domQuery.one('#submit-search');
+    var processFiles = function (files) {
+        return map(files, function(file) {
+            file.iconClass = utils.getIconClass(file);
+            return file;
         });
-
-    domConstruct.place(
-        domConstruct.toDom(tmplSearchDialogBody()),
-        dialog.domNodes.body
-    );
-
-    var domNodeBtn = domQuery.one('#file-search'),
-        domNodeQuery = domQuery.one('#search-query'),
-        domNodeGlobResult = domQuery.one('#search-glob-result'),
-        domNodeContentResult = domQuery.one('#search-content-result'),
-        domNodeSubmit = domQuery.one('#submit-search'),
-        processFiles = function (files) {
-            return map(files, function(file) {
-                file.iconClass = utils.getIconClass(file);
-                return file;
+    };
+    var noResultHtml = tmplNoSearchResult();
+    var search = {
+        focus: function() {
+            domNodeQuery.focus();
+        },
+        searchGlob: function(query) {
+            new LoadingSpinner().placeAt(domNodeGlobResult, 'only');
+            api.globSearch(query).then(function(files) {
+                domNodeGlobResult.innerHTML = noResultHtml;
+                var result = tmplSearchResult({
+                    files: processFiles(files),
+                    options: CONST
+                }, true);
+                if (result) {
+                    domConstruct.place(result, domNodeGlobResult, 'only');
+                }
             });
         },
-        noResultHtml = tmplNoSearchResult(),
-        search = {
-            toggle: function() {
-                dialog[dialog.isShown ? 'hide' : 'show']();
-            },
-            searchGlob: function(query) {
-                new LoadingSpinner().placeAt(domNodeGlobResult, 'only');
-                api.globSearch(query).then(function(files) {
-                    domNodeGlobResult.innerHTML = noResultHtml;
-                    var result = tmplSearchResult({
-                        files: processFiles(files),
-                        options: CONST
-                    }, true);
-                    if (result) {
-                        domConstruct.place(result, domNodeGlobResult, 'only');
-                    }
-                });
-            },
-            searchContent: function(query) {
-                new LoadingSpinner().placeAt(domNodeContentResult, 'only');
-                api.contentSearch(query).then(function(files) {
-                    domNodeContentResult.innerHTML = noResultHtml;
-                    var result = tmplSearchResult({
-                        files: processFiles(files),
-                        options: CONST
-                    }, true);
-                    if (result) {
-                        domConstruct.place(result, domNodeContentResult, 'only');
-                    }
-                });
-            }
-        };
+        searchContent: function(query) {
+            new LoadingSpinner().placeAt(domNodeContentResult, 'only');
+            api.contentSearch(query).then(function(files) {
+                domNodeContentResult.innerHTML = noResultHtml;
+                var result = tmplSearchResult({
+                    files: processFiles(files),
+                    options: CONST
+                }, true);
+                if (result) {
+                    domConstruct.place(result, domNodeContentResult, 'only');
+                }
+            });
+        }
+    };
 
-    // shortcuts {
-        domHotkey.on('esc', function() {
-            dialog.hide();
-        });
-        domHotkey.on('ctrl+f', function() {
-            search.toggle();
-        });
-    // }
     // dom events {
         function submitSearch() {
             var query = domNodeQuery.value;
@@ -112,9 +103,6 @@ define([
                 search.searchContent(domNodeQuery.value);
             }
         }
-        domEvent.on(domNodeBtn, 'click', function() {
-            dialog.show();
-        });
         domEvent.on(domNodeQuery, 'keyup', function(e) {
             if (e.keyCode === 13) {
                 submitSearch();

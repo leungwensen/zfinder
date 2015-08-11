@@ -1,7 +1,7 @@
 
-# Markdown Editor features
+# Markdown Cheatsheet
 
-## Headings
+## headings
 
 # Heading 1 #
 
@@ -40,7 +40,7 @@
 
     Markup :  ___Strong emphasized text___ or ***Strong emphasized text***
 
-## Links
+## links
 
 [Named Link](http://www.google.fr/) and http://www.google.fr/ or <http://example.com/>
 
@@ -84,7 +84,7 @@ Content Cell  | Content Cell
     Markup : ```javascript
              ```
 
-## Bullet list
+## bullet list
 
 * Bullet list
  * Nested bullet
@@ -98,7 +98,7 @@ Content Cell  | Content Cell
           * Bullet list item 2
 ~~~
 
-## Numbered list
+## numbered list
 
 1. A numbered list
  1. A nested numbered list
@@ -133,9 +133,9 @@ Content Cell  | Content Cell
     Markup : ![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
 
 
-## Drawing diagrams with [knsv/mermaid](https://github.com/knsv/mermaid)
+## drawing diagrams with [knsv/mermaid](https://github.com/knsv/mermaid)
 
-### Graphs
+### graphs
 
 ```
 graph TB
@@ -189,7 +189,7 @@ graph LR
     D --> F
 ```
 
-### Sequence diagram
+### sequence diagram
 
 ```
 sequenceDiagram
@@ -205,7 +205,7 @@ sequenceDiagram
     John-->>Alice: Great!
 ```
 
-### Gantt diagram
+### gantt diagram
 
 ```
 gantt
@@ -329,7 +329,7 @@ math
     \,d\xi
 ```
 
-## Github-like task list
+## github-like task list
 
 
 - [ ] unchecked list item
@@ -342,21 +342,14 @@ markup:
 - [x] checked list item
 ```
 
-## Emoji :+1:
+## emoji :+1:
 
 `I :laughing: when I am :)` --> I :laughing: when I am :)
 
-## Footnotes[^footnote-1]
+## table of content
 
-[^footnote-1]: this is the section to introduce the footnote-feature
+## theme switching support
 
-markup:
-
-```
-##Footnotes[^footnote-1]
-[^footnote-1]: this is the section to introduce the footnote-feature
-```
-
-## ~~Sync the scrolling of editor and previewer~~
+## sync the scrolling of editor and previewer
 
 

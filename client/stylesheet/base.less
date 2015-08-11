@@ -1,3 +1,6 @@
+@import './variables.less';
+@import './mixin.less';
+
 .text-limit-len {
     display: inline-block;
     overflow: hidden;
@@ -23,12 +26,11 @@
 }
 
 .non-select {
-    -webkit-user-select: none; /* Chrome all / Safari all */
-    -moz-user-select: none; /* Firefox all */
-    -ms-user-select: none; /* IE 10+ */
-    /* No support for these yet, use at own risk */
-    -o-user-select: none;
-    user-select: none;
+    .user-select(none);
+}
+
+.menu-link, .menu-disabled, .menu-heading {
+    text-transform: none;
 }
 
 @import './hint.less';
@@ -37,4 +39,5 @@
 @import './modal.less';
 @import './button.less';
 @import './resizer.less';
+@import './tree.less';
 

@@ -1,25 +1,25 @@
 /* jshint strict: false, undef: true, unused: true */
 /* global require, module, __dirname, Buffer */
 
-var fs = require('fs'),
-    path = require('path'),
-        normalize = path.normalize,
-        sep = path.sep,
-        join = path.join,
-        resolve = path.resolve,
-    url = require('url'),
-        parseUrl = url.parse,
-    pastry = require('pastry'),
-        some = pastry.some,
-        extend = pastry.extend,
-        json = pastry.json,
-    createError = require('http-errors'),
-    utils = require('../utils/middleware'),
-        genTemplateRender = utils.genTemplateRender,
+var fs = require('fs');
+var path = require('path'),
+    normalize = path.normalize,
+    sep = path.sep,
+    join = path.join,
+    resolve = path.resolve;
+var url = require('url'),
+    parseUrl = url.parse;
+var pastry = require('pastry'),
+    some = pastry.some,
+    extend = pastry.extend,
+    json = pastry.json;
+var createError = require('http-errors');
+var utils = require('../utils/middleware'),
+    genTemplateRender = utils.genTemplateRender;
 
-    pageRender = genTemplateRender(
-        join(__dirname, '../template/directory.html')
-    );
+var pageRender = genTemplateRender(
+    join(__dirname, '../template/directory.html')
+);
 
 module.exports = function(root, options) {
     options = options || {};
@@ -93,7 +93,7 @@ module.exports = function(root, options) {
                 }, options),
                 buf = new Buffer(pageRender({
                     options: variables,
-                    jsonStr: json.stringify(variables),
+                    CONST_JSON: json.stringify(variables),
                 }, pastry, true), 'utf8');
             res.setHeader('Content-Type', 'text/html; charset=utf-8');
             res.setHeader('Content-Length', buf.length);

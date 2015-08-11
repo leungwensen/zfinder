@@ -1,11 +1,12 @@
+@import './variables.less';
+@import './mixin.less';
+
 @keyframes kf-spin {
   0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    .transform(rotate(0deg));
   }
   100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
+    .transform(rotate(359deg));
   }
 }
 .loading-spinner {
@@ -17,6 +18,6 @@
     .fa-spinner {
         display: table-cell;
         vertical-align: middle;
-        animation: kf-spin 2s infinite linear;
+        .animation(kf-spin 2s infinite linear);
     }
 }

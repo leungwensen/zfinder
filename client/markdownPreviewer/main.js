@@ -1,38 +1,51 @@
 /* jshint strict: true, undef: true, unused: true */
-/* global define, mermaid */
+/* global define */
 
 define([
     'pastry/pastry',
+    'pastry/dom/class',
+    'pastry/dom/construct',
+    'pastry/dom/event',
+    'pastry/dom/hotkey',
     'pastry/dom/query',
-    '../component/drawFlowcharts',
-    '../component/marked',
-    '../component/Resizer'
+    'pastry/io/ajax',
+    '../global/CONST',
+    '../component/Modal',
+    '../component/Resizer',
+    '../component/markedRenderer'
+    //'../component/remarkableRenderer'
 ], function(
     pastry,
+    domClass,
+    domConstruct,
+    domEvent,
+    domHotkey,
     domQuery,
-    drawFlowcharts,
-    marked,
-    Resizer
+    ajax,
+    CONST,
+    Modal,
+    Resizer,
+    markdownRenderer
 ) {
     'use strict';
     /*
      * @author      : 绝云（wensen.lws）
      * @description : description
      */
-    var container = domQuery.one('article.markdown-container'),
-        previewerDomNode = domQuery.one('section#markdown-previewer'),
-        content = domQuery.one('script#markdown-content').innerHTML;
-
-    previewerDomNode.innerHTML = marked(content);
-    mermaid.init(); // render graphs
-    drawFlowcharts(previewerDomNode);
-
-    new Resizer(container, {
-        directions: ['e', 'w'],
-        minWidth: 400,
-        maxWidth: 1400,
-        onResize: function() {
-        }
-    });
+    // preview {
+        var previewerDomNode = domQuery.one('#markdown-previewer');
+        var content = domQuery.one('script#markdown-content').innerHTML;
+        markdownRenderer(previewerDomNode, content);
+    // }
+    // resizer {
+        var container = domQuery.one('.markdown-container');
+        new Resizer(container, {
+            directions: ['e', 'w'],
+            minWidth: 400,
+            maxWidth: 1400,
+            onResize: function() {
+            }
+        });
+    // }
 });
 

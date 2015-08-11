@@ -25,7 +25,7 @@ module.exports = function(options) {
                 genHTMLRes(
                     templateByName.markdownEditor({
                         options: options,
-                        jsonStr: json.stringify(options),
+                        CONST_JSON: json.stringify(options),
                     }, pastry, true),
                     res
                 );

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{%= filename %}</title>
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/pastry.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/ui.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/font/css/font-awesome.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/theme/default.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/sindresorhus/github-markdown-css/github-markdown.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/base.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.css">
@@ -12,25 +15,43 @@
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
 </head>
 <body>
-    <article class="markdown-container">
-        <header class="markdown-header">
-            <span class="title text-limit-len" title="{%= filename %}">
+    <nav class="markdown-menu">
+        <div class="menu menu-horizontal">
+            <span class="menu-heading title text-limit-len" title="{%= filename %}">
                 {%= filename %}
             </span>
-            <span class="hint--left float-right" data-hint="Edit">
-                <a class="float-right" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}">
-                    <span class="fa fa-pencil-square-o " title="edit"></span>
-                </a>
-            </span>
-        </header>
-        <section class="markdown-body" id="markdown-previewer">
-        </section>
-    </article>
+            <ul class="menu-list float-right">
+                <li class="menu-item">
+                    <a class="hint--left hint--reverse" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}" data-hint="Edit">
+                        <span class="menu-link fa fa-pencil-square-o " title="edit"></span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="hint--left hint--reverse" href="/" data-hint="Back to Home">
+                        <span class="menu-link fa fa-home " title="Back to Home"></span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <span class="hint--left hint--reverse" data-hint="Tips">
+                        <a id="btn-tips" class="menu-link fa fa-info-circle" title="Tips" href="{%= options.serverRoot + '/doc/markdown-previewer.markdown' %}" target="_blank"></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="markdown-container">
+        <article class="markdown-body" id="markdown-previewer">
+        </article>
+    </div>
+    <script>
+        var GLOBAL_CONST = JSON.parse('{%= CONST_JSON %}');
+    </script>
     <script id="markdown-content" type="text/template">
         {%= content %}
     </script>
     <!-- markdown { -->
-        <script src="{%= options.serverRoot %}/lib/chjj/marked/lib/marked.js"></script>
+        <!--<script src="{%= options.serverRoot %}/lib/chjj/marked/lib/marked.js"></script>-->
+        <script src="{%= options.serverRoot %}/lib/leungwensen/forked/marked.js"></script>
         <script src="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.js"></script>
         <script src="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.js"></script>
         <script src="{%= options.serverRoot %}/lib/DmitryBaranovskiy/raphael/raphael.js"></script>

@@ -11,24 +11,69 @@
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/directory.css">
 </head>
 <body>
-    <div class="directory-container">
-        <header class="directory-header">
-            <span class="title">Zfinder</span>
-            <!--<span class="title text-limit-len" title="{%= options.path %}">-->
-                <!--{%= options.path %}-->
-            <!--</span>-->
-            <span class="hint--left float-right" data-hint="Ctrl+F">
-                <span class="fa fa-search" id="file-search"></span>
-            </span>
-            <span class="hint--left float-right" data-hint="Application list">
-                <span class="fa fa-th" id="application-list"></span>
-            </span>
-        </header>
-        <section id="ls">
-        </section>
+    <div id="container">
+        <nav id="nav">
+            <div class="menu">
+                <a class="menu-heading" href="https://github.com/leungwensen/zfinder" target="_blank">Zfinder</a>
+                <ul class="menu-list">
+                    <li class="menu-item active" data-target="#ls">
+                        <span class="hint--right" data-hint="Files">
+                            <span class="fa fa-folder" id="nav-files"></span>
+                        </span>
+                    </li>
+                    <li class="menu-item" data-target="#file-search">
+                        <span class="hint--right" data-hint="File Search(Ctrl+F)">
+                            <span class="fa fa-search" id="nav-file-search"></span>
+                        </span>
+                    </li>
+                    <li class="menu-item" data-target="#applications">
+                        <span class="hint--right" data-hint="Applications">
+                            <span class="fa fa-th-large" id="nav-applications"></span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="main">
+            <section id="ls">
+            </section>
+            <section id="file-search">
+                <div class="search-form">
+                    <input id="search-query" type="text">
+                    <span class="fa fa-search" id="submit-search"></span>
+                </div>
+                <div class="flex-container" id="search-result">
+                    <div class="flex-col-left">
+                        <header class="align-center">
+                            In Path Names
+                        </header>
+                        <section class="body">
+                            <div class="result" id="search-glob-result"></div>
+                        </section>
+                    </div>
+                    <div class="flex-col-right">
+                        <header class="align-center">
+                            In File Contents
+                        </header>
+                        <section class="body">
+                            <div class="result" id="search-content-result"></div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <section id="applications">
+                <div class="menu">
+                    <ul class="menu-list">
+                        <li class="menu-item" data-target="#ls">
+                            <a target="_blank" class="menu-link" href="/__ZFINDER_APP_ROOT__/markdownEditor">markdown editor</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </div>
     <script>
-        var GLOBAL_CONST = JSON.parse('{%= jsonStr %}');
+        var GLOBAL_CONST = JSON.parse('{%= CONST_JSON %}');
     </script>
     <script src="{%= options.serverRoot %}/lib/moment/moment/min/moment.min.js"></script>
     <script src="{%= options.serverRoot %}/lib/avoidwork/filesize.js/lib/filesize.min.js"></script>

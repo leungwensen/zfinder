@@ -36,6 +36,10 @@ module.exports = {
     extname: extname,
     readFile: readFile,
     writeFile: writeFile,
+    decodeUriStr: function(str) {
+        str = str || '';
+        return decodeURIComponent(str).replace(/\+/g, ' ');
+    },
     removeHidden: function(files) {
         return filter(files, function(file){
             return '.' != file[0];

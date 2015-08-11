@@ -2,6 +2,7 @@
 /* global define */
 
 define([
+    './tab',
     './ls',
     './search'
 ], function(

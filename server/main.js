@@ -1,19 +1,23 @@
 /* jshint strict: false, undef: true, unused: true */
 /* global require, module, __dirname */
 
-var pkg = require('../package.json'),
-    connect = require('connect'),
-    bodyParser = require('body-parser'),
-    open = require('open'),
-    pastry = require('pastry'),
-    path = require('path'),
-    serveStatic = require('serve-static'),
-    dump = require('./utils/dump'),
-    help = require('./utils/help'),
-    serveApis = require('./middleware/api'),
-    serveApps = require('./middleware/app'),
-    serveDirectories = require('./middleware/directory'),
-    serveFiles = require('./middleware/file');
+var pkg = require('../package.json');
+var connect = require('connect');
+var bodyParser = require('body-parser');
+var open = require('open');
+var pastry = require('pastry'),
+    sprintf = pastry.sprintf;
+var path = require('path'),
+    resolve = path.resolve;
+var serveStatic = require('serve-static');
+
+var dump = require('./utils/dump');
+var help = require('./utils/help');
+
+var serveApis = require('./middleware/api');
+var serveApps = require('./middleware/app');
+var serveDirectories = require('./middleware/directory');
+var serveFiles = require('./middleware/file');
 
 module.exports = {
     serve: function(opts) {
@@ -23,8 +27,10 @@ module.exports = {
         if (opts.version) {
             return dump(pkg.version);
         }
-        var sprintf = pastry.sprintf,
-            server = connect();
+
+        var server = connect();
+        var root = opts.root;
+        var serverRoot = resolve(__dirname, '../');
 
         // middlewares {
             server.use(bodyParser.urlencoded({
@@ -32,8 +38,12 @@ module.exports = {
             }));
 
             server.use( // serve directories
-                serveDirectories(opts.root, opts)
+                serveDirectories(root, opts)
             );
+            //server.use( // serve server root directories
+                //opts.serverRoot,
+                //serveDirectories(serverRoot, opts)
+            //);
             server.use( // apis
                 opts.apiRoot,
                 serveApis(opts)
@@ -49,10 +59,10 @@ module.exports = {
             // serve only static files {
                 server.use( // serve server files
                     opts.serverRoot,
-                    serveStatic(path.resolve(__dirname, '../'))
+                    serveStatic(serverRoot)
                 );
                 server.use( // serve static files
-                    serveStatic(opts.root)
+                    serveStatic(root)
                 );
             // }
         // }

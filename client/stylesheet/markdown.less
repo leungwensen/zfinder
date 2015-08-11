@@ -1,9 +1,14 @@
+@import './variables.less';
+@import './mixin.less';
 
 .flowchart-graph, .mermaid, .katex-display {
     text-align: center;
     max-width: 104.5%;
     svg {
     }
+}
+.mermaid {
+    width: auto;
 }
 .flowchart-graph {
     svg {
@@ -14,5 +19,10 @@
 img {
     margin: 0 auto;
     display: block;
+}
+
+.markdown-body table {
+    display: table;
+    margin: 0 auto 16px;
 }
 

@@ -2,8 +2,8 @@ options:
     spawn: false
 templates:
     files:
-        - client/template/*.html
-        - client/template/*.ptmpl
+        - client/template/**/*.html
+        - client/template/**/*.ptmpl
     tasks:
         - compileTemplates
 

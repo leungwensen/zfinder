@@ -66,6 +66,11 @@ define([
                 me.onHide();
                 return me;
             },
+            toggle: function() {
+                var me = this;
+                me[me.isShown ? 'hide' : 'show']();
+                return me;
+            },
             isShown: false,
             _bindEvents: function() {
                 var me = this;

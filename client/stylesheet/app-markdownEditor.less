@@ -1,4 +1,6 @@
 @import './variables.less';
+@import './mixin.less';
+
 @import './tree.less';
 @import './markdown.less';
 
@@ -8,23 +10,18 @@ html, body, .app {
     margin: 0;
 }
 .app {
-    display: box;
-    box-orient: vertical;
-    display: flex;
-    flex-direction: column;
+    .display(flex);
+    .flex-direction(column);
+
     .main {
-        display: box;
-        box-orient: horizontal;
-        display: flex;
-        flex-direction: row;
-        box-flex: 1;
-        flex: 1;
+        .display(flex);
+        .flex-direction(row);
+        .flex(1);
     }
     .editor, .previewer {
         position: relative;
         overflow: hidden;
-        box-flex: 5;
-        flex: 5;
+        .flex(5);
     }
     .previewer {
         /*border: 1px solid @color-3;*/
@@ -46,6 +43,7 @@ html, body, .app {
     /*height: 100%;*/
     overflow: scroll;
     padding: 10px;
+    border-left: 1px solid #eee;
 }
 .menu-horizontal {
     overflow-x: hidden;
@@ -84,7 +82,6 @@ html, body, .app {
     margin: 5px 0 10px;
     background-color: white;
     max-height: 400px;
-    border-radius: 3px;
     border: 1px solid #ccc;
     overflow: auto;
     .table {
@@ -98,8 +95,20 @@ html, body, .app {
             overflow:hidden;
         }
     }
+    .border-radius(3px);
 }
 #save-location {
     width: 79.5%;
+}
+
+.markdown-editor-tips {
+    h1 {
+        text-align: center;
+    }
+    .markdown-body {
+        border: none;
+        max-height: 600px;
+        overflow: auto;
+    }
 }
 

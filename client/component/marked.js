@@ -5,14 +5,18 @@ define([
     'pastry/pastry',
     'pastry/fmt/sprintf',
     'pastry/html/escape',
-    '../template/markedFlowchart',
-    '../template/markedMath',
-    '../template/markedMermaidGraph',
-    '../template/markedTaskListItem'
+    './emojiMap',
+    '../template/emojiFix',
+    '../template/markdown/flowchart',
+    '../template/markdown/math',
+    '../template/markdown/mermaidGraph',
+    '../template/markdown/taskListItem'
 ], function(
     pastry,
     sprintf,
     htmlEscape,
+    emojiMap,
+    tmplEmojiFix,
     tmplFlowchart,
     tmplMath,
     tmplMermaidGraph,
@@ -23,15 +27,17 @@ define([
      * @author      : 绝云（wensen.lws）
      * @description : description
      */
-    var mermaidError,
-        each = pastry.each,
+    var mermaidError;
+
+    var each = pastry.each,
         lc = pastry.lc,
         map = pastry.map,
-        trim = pastry.trim,
-        Renderer = marked.Renderer,
-        RendererPrototype = Renderer.prototype,
-        renderer = new Renderer(),
-        unescape = htmlEscape.unescape;
+        trim = pastry.trim;
+
+    var Renderer = marked.Renderer;
+    var RendererPrototype = Renderer.prototype;
+    var renderer = new Renderer();
+    var unescape = htmlEscape.unescape;
 
     mermaid.parseError = function(err/*, hash*/){
         mermaidError = err;
@@ -41,12 +47,10 @@ define([
         if(!/^\[[ x]\]\s/.test(text)) { // normal list item
             return marked.Renderer.prototype.listitem(text);
         }
-        // task list item {
-            return tmplTaskListItem({
-                checked: /^\[x\]\s/.test(text),
-                text: text.substring(3)
-            }, true);
-        // }
+        return tmplTaskListItem({
+            checked: /^\[x\]\s/.test(text),
+            text: text.substring(3)
+        }, true);
     };
 
     renderer.codespan = function(code) { // inline code
@@ -67,6 +71,9 @@ define([
     renderer.code = function(code, lang, escaped, lineNumber) { // code block
         code = trim(code);
         var firstLine = lc(trim(code.split(/\n/)[0]));
+        if (lang === 'markdown' || lang === 'md') {
+            return RendererPrototype.code.apply(this, arguments);
+        }
         if (firstLine === 'math') { // math typesetting
             var tex = '';
             each(code.replace(/^math\s*/, '').split(/\n\n/), function(line){
@@ -96,6 +103,7 @@ define([
             }
             var valid = mermaid.parse(code);
             return tmplMermaidGraph({
+                type: firstLine,
                 code: code,
                 error: mermaidError,
                 lineNumber: lineNumber,
@@ -115,10 +123,21 @@ define([
         }
         return RendererPrototype.code.apply(this, arguments);
     };
+    renderer.text = function(text) { // text span
+        var words = text.split(' ');
+        return map(words, function(word) {
+            word = trim(word);
+            if (emojiMap[word]) {
+                return tmplEmojiFix({
+                    emoji: emojiMap[word]
+                });
+            }
+            return word;
+        }).join(' ');
+    };
 
     marked.setOptions({
         breaks: false,
-        gfm: true,
         pedantic: false,
         renderer: renderer,
         sanitize: false,

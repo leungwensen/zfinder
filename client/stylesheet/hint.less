@@ -235,7 +235,8 @@
  */
 .hint--success:after {
   background-color: #458746;
-  text-shadow: 0 -1px 0px #1a321a; }
+  text-shadow: 0 -1px 0px #1a321a;
+}
 .hint--success.hint--top:before {
   border-top-color: #458746; }
 .hint--success.hint--bottom:before {
@@ -244,6 +245,28 @@
   border-left-color: #458746; }
 .hint--success.hint--right:before {
   border-right-color: #458746; }
+
+/**
+ * reverse
+ */
+.hint--reverse:after {
+  background-color: #ff0;
+  text-shadow: none;
+  color: black;
+}
+.hint--reverse.hint--top:before {
+  border-top-color: #ff0;
+}
+.hint--reverse.hint--bottom:before {
+  border-bottom-color: #ff0;
+}
+.hint--reverse.hint--left:before {
+  border-left-color: #ff0;
+}
+.hint--reverse.hint--right:before {
+  border-right-color: #ff0;
+}
+
 
 /**
  * source: hint-always.scss

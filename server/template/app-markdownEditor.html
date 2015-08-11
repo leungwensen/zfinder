@@ -70,10 +70,20 @@
             <section class="previewer" id="previewer">
                 <div class="toolbar">
                     <div class="menu menu-horizontal">
-                        <ul class="menu-list">
+                        <ul class="float-right menu-list">
                             <li class="menu-item">
-                                <span class="hint--right" data-hint="Preview">
+                                <span class="hint--left" data-hint="Preview">
                                     <a class="menu-link fa fa-television" id="btn-preview-link" href="/" target="_blank"></a>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--left" data-hint="Back to Home">
+                                    <a class="menu-link fa fa-home " title="Back to Home" href="/"></a>
+                                </span>
+                            </li>
+                            <li class="menu-item">
+                                <span class="hint--left" data-hint="Tips(Ctrl+H)">
+                                    <a id="btn-tips" class="menu-link fa fa-info-circle" title="Tips" href="{%= options.serverRoot + '/doc/markdown-editor.markdown' %}" target="_blank"></a>
                                 </span>
                             </li>
                         </ul>
@@ -84,7 +94,7 @@
         </section>
     </div>
     <script>
-        var GLOBAL_CONST = JSON.parse('{%= jsonStr %}');
+        var GLOBAL_CONST = JSON.parse('{%= CONST_JSON %}');
     </script>
     <script src="{%= options.serverRoot %}/lib/moment/moment/min/moment.min.js"></script>
     <script src="{%= options.serverRoot %}/lib/avoidwork/filesize.js/lib/filesize.min.js"></script>

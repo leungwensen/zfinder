@@ -20,14 +20,14 @@
 }
 .non-select {
   -webkit-user-select: none;
-  /* Chrome all / Safari all */
   -moz-user-select: none;
-  /* Firefox all */
   -ms-user-select: none;
-  /* IE 10+ */
-  /* No support for these yet, use at own risk */
-  -o-user-select: none;
   user-select: none;
+}
+.menu-link,
+.menu-disabled,
+.menu-heading {
+  text-transform: none;
 }
 /*! Hint.css - v1.3.5 - 2015-06-16
 * http://kushagragour.in/lab/hint/
@@ -344,6 +344,26 @@
   border-right-color: #458746;
 }
 /**
+ * reverse
+ */
+.hint--reverse:after {
+  background-color: #ff0;
+  text-shadow: none;
+  color: black;
+}
+.hint--reverse.hint--top:before {
+  border-top-color: #ff0;
+}
+.hint--reverse.hint--bottom:before {
+  border-bottom-color: #ff0;
+}
+.hint--reverse.hint--left:before {
+  border-left-color: #ff0;
+}
+.hint--reverse.hint--right:before {
+  border-right-color: #ff0;
+}
+/**
  * source: hint-always.scss
  *
  * Defines a persisted tooltip which shows always.
@@ -416,14 +436,21 @@
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
 }
 .flex-container {
-  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
   display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .flex-col-left {
   width: 50%;
   border-right: grey 1px dashed;
 }
 .flex-col-right {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   width: 50%;
   overflow-y: auto;
@@ -431,10 +458,16 @@
 @keyframes kf-spin {
   0% {
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
@@ -448,27 +481,41 @@
 .loading-spinner .fa-spinner {
   display: table-cell;
   vertical-align: middle;
+  -webkit-animation: kf-spin 2s infinite linear;
+  -moz-animation: kf-spin 2s infinite linear;
+  -o-animation: kf-spin 2s infinite linear;
   animation: kf-spin 2s infinite linear;
 }
 .modal {
   background-color: white;
-  box-shadow: 0px 0px 10px 1px #ccc;
   border: 1px solid #aaa;
-  border-radius: 3px;
-  top: 36px;
-  min-width: 320px;
   left: 0;
-  right: 0;
-  position: fixed;
   margin-left: auto;
   margin-right: auto;
+  min-width: 320px;
   padding: 5px;
-  transform: translateY(-200%);
-  transition: all 0.3s;
+  position: fixed;
+  right: 0;
+  top: 36px;
   z-index: 99;
-}
-.modal.show {
-  transform: translateY(0);
+  -webkit-transform: translateY(-200%);
+  -moz-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transform: translateY(-200%);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-shadow: 0px 0px 10px 1px #cccccc;
+  -moz-box-shadow: 0px 0px 10px 1px #cccccc;
+  box-shadow: 0px 0px 10px 1px #cccccc;
+  -webkit-border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 3px;
+  -moz-background-clip: padding;
+  border-radius: 3px;
+  background-clip: padding-box;
 }
 .modal .modal-header {
   color: lightgrey;
@@ -485,11 +532,23 @@
 .modal .fa-close:hover {
   color: #e74c3c;
 }
+.modal.show {
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+  transform: translateY(0px);
+}
 .btn-success,
 .btn-error,
 .btn-warning,
 .btn-secondary {
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
   border-radius: 4px;
+  background-clip: padding-box;
 }
 .btn-success {
   color: darkgreen;
@@ -513,21 +572,45 @@
 }
 .btn-group {
   border: 1px solid #aaa;
+  -webkit-border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 3px;
+  -moz-background-clip: padding;
   border-radius: 3px;
+  background-clip: padding-box;
 }
 .btn-group .btn:not(:first-child):not(:last-child) {
+  -webkit-border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 0;
+  -moz-background-clip: padding;
   border-radius: 0;
+  background-clip: padding-box;
 }
 .btn-group .btn:not(:last-child) {
   border-right: 1px solid #aaa;
 }
 .btn-group .btn:first-child:not(:last-child) {
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
   border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomright: 0;
+  -moz-background-clip: padding;
   border-bottom-right-radius: 0;
+  background-clip: padding-box;
 }
 .btn-group .btn:last-child:not(:first-child) {
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
   border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomleft: 0;
+  -moz-background-clip: padding;
   border-bottom-left-radius: 0;
+  background-clip: padding-box;
 }
 .resizer-d {
   position: absolute;
@@ -587,4 +670,40 @@
 .resizer-handler {
   width: 100%;
   height: 100%;
+}
+table.tree-wrapper {
+  color: #333;
+  /*border: none;*/
+  width: 100%;
+}
+table.tree-wrapper thead th {
+  font-weight: normal;
+  /*padding: 4px;*/
+}
+table.tree-wrapper tbody {
+  cursor: pointer;
+}
+table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
+  background-color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-expander,
+table.tree-wrapper tbody tr.tree-node.selected .tree-node-icon {
+  color: #ecf0f1;
+}
+table.tree-wrapper tbody td {
+  border: none;
+}
+table.tree-wrapper .tree-node-icon {
+  color: grey;
+}
+table.tree-wrapper .tree-node-icon.fa-folder,
+table.tree-wrapper .tree-node-icon.fa-folder-open {
+  color: #3498db;
+}
+table.tree-wrapper .tree-node-expander {
+  color: grey;
 }
