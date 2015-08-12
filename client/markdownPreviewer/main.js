@@ -46,9 +46,7 @@ define([
         new Resizer(articleNode, {
             directions: ['e', 'w'],
             minWidth: 400,
-            maxWidth: 1400,
-            onResize: function() {
-            }
+            maxWidth: 1400
         });
     // }
     // toc {
@@ -80,6 +78,9 @@ define([
             domStyle.set(tocNode, 'width', '160px');
             isShown = true;
         }
+        new Resizer(treeHolderNode, {
+            directions: ['s'],
+        });
         domEvent.on(hideOrShowBtn, 'click', function() {
             if (isShown) {
                 hideToc();

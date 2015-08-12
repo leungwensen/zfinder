@@ -94,7 +94,7 @@ body.non-select {
   max-width: 100%;
 }
 #toc .tree-holder {
-  max-height: 600px;
+  height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
 }
