@@ -67,7 +67,7 @@ module.exports = function(req, res, next, options) {
             } else {
                 result = files;
             }
-            result.reverse();
+            //result.reverse();
             result = map(result, function(filename) {
                 return processFile(currentPath, root, filename);
             });

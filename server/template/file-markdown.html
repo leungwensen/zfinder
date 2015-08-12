@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.forest.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
+    <style media="print">
+        #toc, nav.markdown-menu {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <nav class="markdown-menu">
@@ -39,6 +44,14 @@
             </ul>
         </div>
     </nav>
+    <aside id="toc" class="toc">
+        <div id="hide-or-show-toc" title="Table Of Content">
+            <span class="fa fa-angle-right"></span>
+        </div>
+        <header>Table Of Content</header>
+        <div class="tree-holder">
+        </div>
+    </aside>
     <div class="markdown-container">
         <article class="markdown-body" id="markdown-previewer">
         </article>

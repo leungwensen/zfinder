@@ -10,11 +10,9 @@ define([
     'pastry/dom/query',
     '../cgi/api',
     '../component/LoadingSpinner',
-    //'../component/Modal',
     '../global/CONST',
     '../global/utils',
     '../template/noSearchResult',
-    //'../template/searchDialogBody',
     '../template/searchResult'
 ], function(
     pastry,
@@ -25,11 +23,9 @@ define([
     domQuery,
     api,
     LoadingSpinner,
-    //Modal,
     CONST,
     utils,
     tmplNoSearchResult,
-    //tmplSearchDialogBody,
     tmplSearchResult
 ) {
     'use strict';
@@ -38,19 +34,6 @@ define([
      * @description : description
      */
     var map = pastry.map;
-        //dialog = new Modal({
-            //classname: 'search-dialog',
-            //title: 'Search',
-            //width: '800px',
-            //onShow: function() {
-                //domNodeQuery.focus();
-            //}
-        //});
-
-    //domConstruct.place(
-        //domConstruct.toDom(tmplSearchDialogBody()),
-        //dialog.domNodes.body
-    //);
 
     var domNodeQuery = domQuery.one('#search-query');
     var domNodeGlobResult = domQuery.one('#search-glob-result');

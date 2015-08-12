@@ -8,11 +8,13 @@ define([
     'pastry/dom/event',
     'pastry/dom/hotkey',
     'pastry/dom/query',
+    'pastry/dom/style',
     'pastry/io/ajax',
     '../global/CONST',
     '../component/Modal',
     '../component/Resizer',
-    '../component/markedRenderer'
+    '../component/markedRenderer',
+    '../component/toc'
     //'../component/remarkableRenderer'
 ], function(
     pastry,
@@ -21,11 +23,13 @@ define([
     domEvent,
     domHotkey,
     domQuery,
+    domStyle,
     ajax,
     CONST,
     Modal,
     Resizer,
-    markdownRenderer
+    markdownRenderer,
+    toc
 ) {
     'use strict';
     /*
@@ -38,8 +42,8 @@ define([
         markdownRenderer(previewerDomNode, content);
     // }
     // resizer {
-        var container = domQuery.one('.markdown-container');
-        new Resizer(container, {
+        var articleNode = domQuery.one('.markdown-container');
+        new Resizer(articleNode, {
             directions: ['e', 'w'],
             minWidth: 400,
             maxWidth: 1400,
@@ -47,5 +51,43 @@ define([
             }
         });
     // }
+    // toc {
+        var tocNode = domQuery.one('#toc');
+        var hideOrShowBtn = domQuery.one('#hide-or-show-toc');
+        var hideOrShowIcon = domQuery.one('.fa', hideOrShowBtn);
+        var headerNode = domQuery.one('header', tocNode);
+        var treeHolderNode = domQuery.one('.tree-holder', tocNode);
+        var isShown = true;
+        toc(articleNode, treeHolderNode, 3);
+        new Resizer(tocNode, {
+            directions: ['w'],
+            minWidth: 140,
+            maxWidth: 1400,
+        });
+        function hideToc() {
+            domClass.remove(hideOrShowIcon, 'fa-angle-right');
+            domClass.add(hideOrShowIcon, 'fa-angle-left');
+            domStyle.hide(headerNode);
+            domStyle.hide(treeHolderNode);
+            domStyle.set(tocNode, 'width', '0');
+            isShown = false;
+        }
+        function showToc() {
+            domClass.remove(hideOrShowIcon, 'fa-angle-left');
+            domClass.add(hideOrShowIcon, 'fa-angle-right');
+            domStyle.show(headerNode);
+            domStyle.show(treeHolderNode);
+            domStyle.set(tocNode, 'width', '160px');
+            isShown = true;
+        }
+        domEvent.on(hideOrShowBtn, 'click', function() {
+            if (isShown) {
+                hideToc();
+            } else {
+                showToc();
+            }
+        });
+    // }
+    hideToc(); // hide by default
 });
 
