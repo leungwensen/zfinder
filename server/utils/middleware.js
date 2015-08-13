@@ -36,6 +36,9 @@ module.exports = {
     extname: extname,
     readFile: readFile,
     writeFile: writeFile,
+    fixWindowsPath: function(str) {
+        return str.replace(/\\\\/g, '/');
+    },
     decodeUriStr: function(str) {
         str = str || '';
         return decodeURIComponent(str).replace(/\+/g, ' ');

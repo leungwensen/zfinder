@@ -2,18 +2,19 @@
 /* global require, module, __dirname */
 
 var path = require('path'),
-        join = path.join,
-    pastry = require('pastry'),
-        json = pastry.json,
-    url = require('url'),
-    utils = require('../utils/middleware'),
-        genHTMLRes = utils.genHTMLRes,
-        genTemplateRender = utils.genTemplateRender,
-    templateByName = {
-        markdownEditor: genTemplateRender(
-            join(__dirname, '../template/app-markdownEditor.html')
-        )
-    };
+    join = path.join;
+var pastry = require('pastry'),
+    json = pastry.json;
+var url = require('url');
+var utils = require('../utils/middleware'),
+    genHTMLRes = utils.genHTMLRes,
+    fixWindowsPath = utils.fixWindowsPath,
+    genTemplateRender = utils.genTemplateRender;
+var templateByName = {
+    markdownEditor: genTemplateRender(
+        join(__dirname, '../template/app-markdownEditor.html')
+    )
+};
 
 module.exports = function(options) {
     return function(req, res/*, next*/) {
@@ -25,7 +26,7 @@ module.exports = function(options) {
                 genHTMLRes(
                     templateByName.markdownEditor({
                         options: options,
-                        CONST_JSON: json.stringify(options),
+                        CONST_JSON: fixWindowsPath(json.stringify(options)),
                     }, pastry, true),
                     res
                 );

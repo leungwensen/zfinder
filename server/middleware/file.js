@@ -13,6 +13,7 @@ var pastry = require('pastry'),
 
 var utils = require('../utils/middleware'),
     decodeUriStr = utils.decodeUriStr,
+    fixWindowsPath = utils.fixWindowsPath,
     extname = utils.extname,
     readFile = utils.readFile,
     genHTMLRes = utils.genHTMLRes,
@@ -41,7 +42,7 @@ module.exports = function(options) {
                                 content: readFile(fullFilename),
                                 //tips: tips,
                                 options: options,
-                                CONST_JSON: json.stringify(options),
+                                CONST_JSON: fixWindowsPath(json.stringify(options)),
                                 filename: filename,
                             }, pastry, true),
                             res

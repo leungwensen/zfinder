@@ -15,6 +15,7 @@ var pastry = require('pastry'),
     json = pastry.json;
 var createError = require('http-errors');
 var utils = require('../utils/middleware'),
+    fixWindowsPath = utils.fixWindowsPath,
     genTemplateRender = utils.genTemplateRender;
 
 var pageRender = genTemplateRender(
@@ -93,7 +94,7 @@ module.exports = function(root, options) {
                 }, options),
                 buf = new Buffer(pageRender({
                     options: variables,
-                    CONST_JSON: json.stringify(variables),
+                    CONST_JSON: fixWindowsPath(json.stringify(variables)),
                 }, pastry, true), 'utf8');
             res.setHeader('Content-Type', 'text/html; charset=utf-8');
             res.setHeader('Content-Length', buf.length);
