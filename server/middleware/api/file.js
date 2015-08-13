@@ -2,14 +2,15 @@
 /* global require, module */
 
 var path = require('path'),
-        resolve = path.resolve,
-    url = require('url'),
-        urlParse = url.parse,
-    utils = require('../../utils/middleware'),
-        readFile = utils.readFile,
-        writeFile = utils.writeFile,
-        processFile = utils.processFile,
-        genJSONRes = utils.genJSONRes;
+    join = path.join,
+    resolve = path.resolve;
+var url = require('url'),
+    urlParse = url.parse;
+var utils = require('../../utils/middleware'),
+    readFile = utils.readFile,
+    writeFile = utils.writeFile,
+    processFile = utils.processFile,
+    genJSONRes = utils.genJSONRes;
 
 module.exports = function(req, res, next, options) {
     'use strict';
@@ -22,18 +23,24 @@ module.exports = function(req, res, next, options) {
     if (method === 'GET') {
         var urlInfo = urlParse(req.url, true),
             query = urlInfo.query;
-        relativePath = query.path;
+        relativePath = query.filename;
         filepath = resolve(root, relativePath);
         result = processFile(root, root, relativePath);
         result.content = readFile(filepath);
         genJSONRes(result, res);
     } else if (method === 'POST') {
         var body = req.body;
-        relativePath = body.path;
+console.log(body);
+        if (body.saveLocation) {
+            relativePath = join(body.saveLocation, body.filename);
+        } else {
+            relativePath = body.filename;
+        }
         filepath = resolve(root, relativePath);
         writeFile(filepath, body.content);
         genJSONRes({
-            success: true
+            success: true,
+            filename: relativePath
         }, res);
     } else {
         next();

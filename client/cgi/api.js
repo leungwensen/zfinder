@@ -59,15 +59,16 @@ define([
                 filter: filter,
             });
         },
-        getFile: function(path) {
+        getFile: function(filename) {
             return buildApiFetch('GET', '/file', {
-                path: path
+                filename: filename
             });
         },
-        saveFile: function(path, content) {
+        saveFile: function(saveLocation, filename, content) {
             content = content || '';
             return buildApiFetch('POST', '/file', {
-                path: path,
+                saveLocation: saveLocation,
+                filename: filename,
                 content: content
             });
         },

@@ -123,15 +123,15 @@ define([
             confirmDialog.hide();
         });
         domEvent.on(saveDialogDomNode, 'click', '.confirm-save', function() {
-            var filename = saveFilenameDomNode.value,
-                regexps = [
-                    /\.markdown$/,
-                    /\.md$/,
-                ];
+            var filename = saveFilenameDomNode.value;
+            var regexps = [
+                /\.markdown$/,
+                /\.md$/,
+            ];
             if (!validateFilename(filename)) {
                 return;
             }
-            filename = saveLocation.replace(CONST.root, '') + '/' + filename;
+            //filename = saveLocation.replace(CONST.root, '') + '/' + filename;
             filename = filename.replace(/^\//, '');
             // fix filename {
                 if (!some(regexps, function(re) {
@@ -140,7 +140,11 @@ define([
                     filename += '.markdown';
                 }
             // }
-            save(filename, store.get('current-value', ''));
+            save(
+                saveLocation.replace(CONST.root, ''),
+                filename,
+                store.get('current-value', '')
+            );
         });
         domEvent.on(saveDialogDomNode, 'click', '.cancel-save', function() {
             saveDialog.hide();
@@ -161,13 +165,13 @@ define([
         }
         return result;
     }
-    function save(filename, content) {
-        api.saveFile(filename, content).then(function() {
+    function save(lct, filename, content) {
+        api.saveFile(lct, filename, content).then(function(fn) {
             store.set('old-value', content);
-            store.set('current-filename', filename);
+            store.set('current-filename', fn.filename);
             store.set('is-saved', true);
             saveDialog.hide();
-            utils.pushState(sprintf('?file=%s', filename));
+            utils.pushState(sprintf('?file=%s', fn.filename));
             afterSaved();
         });
     }
@@ -175,7 +179,7 @@ define([
         var currentFilename = store.get('current-filename'),
             currentValue = store.get('current-value', '');
         if (currentFilename) {
-            save(currentFilename, currentValue);
+            save('', currentFilename, currentValue);
         } else {
             saveDialog.show();
         }
