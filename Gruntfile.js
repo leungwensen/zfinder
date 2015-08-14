@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     grunt.registerTask('compileTemplates', function () {
         var done = this.async();
         spawn('node', [
-            './bin/js/compileTemplate.js',
+            './bin/compileTemplate.js',
         ], {
             stdio: 'inherit'
         }).on('close', function(code) {

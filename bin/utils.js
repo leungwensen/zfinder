@@ -8,7 +8,7 @@
  */
 
 var fs = require('fs'),
-    pastry = require('../../lib/leungwensen/pastry/build/nodejs.js');
+    pastry = require('../lib/leungwensen/pastry/build/nodejs.js');
 
 function walkFiles (path, processFile) {
     var dirList = fs.readdirSync(path),

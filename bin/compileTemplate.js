@@ -4,7 +4,7 @@
 
 var fs = require('fs'),
     //path = require('path'),
-    pastry = require('../../lib/leungwensen/pastry/build/nodejs.js'),
+    pastry = require('../lib/leungwensen/pastry/build/nodejs.js'),
     utils = require('./utils.js'),
     prefix = 'client/template/',
     RE_acceptSuffix = /\.(html|htm|ptmpl)$/;
