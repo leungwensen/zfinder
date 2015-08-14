@@ -114,6 +114,7 @@ body,
 }
 .editor .toolbar .form select {
   height: auto;
+  font-size: small;
 }
 .markdown-body {
   /*height: 100%;*/
