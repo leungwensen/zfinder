@@ -30,7 +30,6 @@ module.exports = function(req, res, next, options) {
         genJSONRes(result, res);
     } else if (method === 'POST') {
         var body = req.body;
-console.log(body);
         if (body.saveLocation) {
             relativePath = join(body.saveLocation, body.filename);
         } else {
