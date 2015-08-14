@@ -1,0 +1,11 @@
+Host gitlab.com
+  IdentityFile ~/.ssh/id_rsa
+  IdentitiesOnly yes
+
+Host github.com
+  IdentityFile ~/.ssh/id_rsa
+  IdentitiesOnly yes
+
+Host bitbucket.org
+  IdentityFile ~/.ssh/id_rsa
+  IdentitiesOnly yes
