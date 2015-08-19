@@ -8,8 +8,8 @@ define([
 ) {
     'use strict';
     /*
-     * @author      : 绝云（wensen.lws）
-     * @description : description
+     * @author: 绝云（wensen.lws）
+     * @description: description
      */
     return event({});
 });
