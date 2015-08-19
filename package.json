@@ -50,7 +50,8 @@
         "open": "*",
         "pastry": "*",
         "serve-static": "*",
-        "touch": "*"
+        "touch": "*",
+        "xmind": "*"
     },
     "devDependencies": {
         "grunt": "*",
