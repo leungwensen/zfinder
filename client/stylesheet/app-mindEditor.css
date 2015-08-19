@@ -44,6 +44,10 @@ text {
   fill: #fff;
   stroke-width: 1.5px;
 }
+.node.primary rect {
+  stroke: #3498db;
+  stroke-width: 6px;
+}
 .node.normal rect {
   stroke: #ddd;
   stroke-width: 1px;
