@@ -9,6 +9,7 @@ var path = require('path'),
 var url = require('url'),
     parseUrl = url.parse;
 var pastry = require('pastry'),
+    sprintf = pastry.sprintf,
     json = pastry.json;
 
 var utils = require('../utils/middleware'),
@@ -16,12 +17,14 @@ var utils = require('../utils/middleware'),
     fixWindowsPath = utils.fixWindowsPath,
     extname = utils.extname,
     readFile = utils.readFile,
+    redirectTo = utils.redirectTo,
     genHTMLRes = utils.genHTMLRes,
     genTemplateRender = utils.genTemplateRender;
 
 var nameByExt = {
     markdown: 'markdown',
-    md: 'markdown'
+    md: 'markdown',
+    xmind: 'xmind'
 };
 var templateByName = {
     markdown: genTemplateRender(
@@ -47,6 +50,12 @@ module.exports = function(options) {
                             }, pastry, true),
                             res
                         );
+                        break;
+                    case 'xmind':
+                        redirectTo(sprintf('%s/mindEditor?type=xmind&file=%s',
+                            options.appRoot,
+                            filename
+                        ), res);
                         break;
                     default:
                         next();

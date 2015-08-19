@@ -64,6 +64,12 @@ module.exports = {
         res.setHeader('Content-Length', buf.length);
         res.end(buf);
     },
+    redirectTo: function(url, res) {
+        res.writeHead(302, {
+            Location: url
+        });
+        res.end();
+    },
     genTemplateRender: function(filename) {
         return template.compile(readFile(filename));
     },

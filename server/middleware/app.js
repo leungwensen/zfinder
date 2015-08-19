@@ -13,6 +13,9 @@ var utils = require('../utils/middleware'),
 var templateByName = {
     markdownEditor: genTemplateRender(
         join(__dirname, '../template/app-markdownEditor.html')
+    ),
+    mindEditor: genTemplateRender(
+        join(__dirname, '../template/app-mindEditor.html')
     )
 };
 
@@ -25,6 +28,15 @@ module.exports = function(options) {
             case '/markdownEditor':
                 genHTMLRes(
                     templateByName.markdownEditor({
+                        options: options,
+                        CONST_JSON: fixWindowsPath(json.stringify(options)),
+                    }, pastry, true),
+                    res
+                );
+                break;
+            case '/mindEditor':
+                genHTMLRes(
+                    templateByName.mindEditor({
                         options: options,
                         CONST_JSON: fixWindowsPath(json.stringify(options)),
                     }, pastry, true),
