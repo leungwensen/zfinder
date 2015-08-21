@@ -4,6 +4,7 @@
 define([
     'pastry/pastry',
     'pastry/dom/query',
+    'pastry/fmt/sprintf',
     'pastry/ui/Tree',
     '../global/CONST',
     '../global/utils',
@@ -11,6 +12,7 @@ define([
 ], function(
     pastry,
     domQuery,
+    sprintf,
     Tree,
     CONST,
     utils,
@@ -48,7 +50,14 @@ define([
                         if (node.isBranch || node.name === '..') {
                             window.location.href = '/' + node.relativePathname;
                         } else {
-                            window.open('/' + node.relativePathname, '_blank');
+                            if (node.extname === 'xmind') {
+                                window.open(sprintf('%s/mindEditor?type=xmind&file=%s',
+                                    CONST.appRoot,
+                                    node.relativePathname
+                                ));
+                            } else {
+                                window.open('/' + node.relativePathname, '_blank');
+                            }
                         }
                     },
                     getIconClass: utils.getIconClass,

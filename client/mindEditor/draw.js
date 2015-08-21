@@ -24,8 +24,8 @@ define([
      * @description: description
      */
     var g = new dagreD3.graphlib.Graph().setGraph({
-        nodesep: 70,
-        ranksep: 50,
+        nodesep: 10,
+        ranksep: 30,
         rankdir: 'LR',
         marginx: 20,
         marginy: 20

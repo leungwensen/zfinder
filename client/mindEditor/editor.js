@@ -35,7 +35,7 @@ define([
             var qs = querystring.parse(location.search.replace(/^\?/, ''));
             switch (qs.type) {
                 case 'xmind':
-                    ajax(sprintf('/%s?raw=true', qs.file), {
+                    ajax(sprintf('%s?raw=true', qs.file), {
                         // to get arrayBuffer {
                             type: 'text',
                             responseType: 'arraybuffer',

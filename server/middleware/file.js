@@ -51,12 +51,12 @@ module.exports = function(options) {
                             res
                         );
                         break;
-                    case 'xmind':
-                        redirectTo(sprintf('%s/mindEditor?type=xmind&file=%s',
-                            options.appRoot,
-                            filename
-                        ), res);
-                        break;
+                    //case 'xmind':
+                        //redirectTo(sprintf('%s/mindEditor?type=xmind&file=%s',
+                            //options.appRoot,
+                            //filename
+                        //), res);
+                        //break;
                     default:
                         next();
                         break;
@@ -77,12 +77,12 @@ module.exports = function(options) {
                 pathname = pathname.replace(options.serverRoot, '');
                 var serveRoot = resolve(__dirname, '../../');
                 var fullServerRootPathname = join(serveRoot, pathname);
-                serveFile(fullServerRootPathname, relative(serveRoot, fullServerRootPathname));
+                serveFile(fullServerRootPathname, pathname);
             } else {
                 // serve server root files, too
                 var root = options.root;
                 var fullRootPathname = join(root, pathname);
-                serveFile(fullRootPathname, relative(root, fullRootPathname));
+                serveFile(fullRootPathname, pathname);
             }
         }
     };
