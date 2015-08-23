@@ -34,25 +34,33 @@ table.tree-wrapper .tree-node-icon.fa-folder-open {
 table.tree-wrapper .tree-node-expander {
   color: grey;
 }
-.flowchart-graph,
-.mermaid,
-.katex-display {
+.markdown-body figure {
+  margin: 0;
+  color: grey;
+}
+.markdown-body figcaption,
+.markdown-body img {
   text-align: center;
-  max-width: 104.5%;
 }
-.mermaid {
-  width: auto;
-}
-.flowchart-graph svg {
-  width: 100%;
-}
-img {
+.markdown-body img {
   margin: 0 auto;
   display: block;
 }
 .markdown-body table {
   display: table;
   margin: 0 auto 16px;
+}
+.markdown-body .flowchart-graph,
+.markdown-body .mermaid,
+.markdown-body .katex-display {
+  text-align: center;
+  max-width: 104.5%;
+}
+.markdown-body .mermaid {
+  width: auto;
+}
+.markdown-body .flowchart-graph svg {
+  width: 100%;
 }
 html,
 body,

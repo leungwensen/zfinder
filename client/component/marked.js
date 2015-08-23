@@ -6,7 +6,8 @@ define([
     'pastry/fmt/sprintf',
     'pastry/html/escape',
     './emojiMap',
-    '../template/emojiFix',
+    '../template/markdown/emojiFix',
+    '../template/markdown/figure',
     '../template/markdown/flowchart',
     '../template/markdown/math',
     '../template/markdown/mermaidGraph',
@@ -17,6 +18,7 @@ define([
     htmlEscape,
     emojiMap,
     tmplEmojiFix,
+    tmplFigure,
     tmplFlowchart,
     tmplMath,
     tmplMermaidGraph,
@@ -24,8 +26,8 @@ define([
 ) {
     'use strict';
     /*
-     * @author      : 绝云（wensen.lws）
-     * @description : description
+     * @author: 绝云（wensen.lws）
+     * @description: description
      */
     var mermaidError;
 
@@ -123,6 +125,14 @@ define([
         }
         return RendererPrototype.code.apply(this, arguments);
     };
+    renderer.image = function(href, title, text) {
+        return tmplFigure({
+            href: href,
+            text: text,
+            title: title || ''
+        });
+    };
+
     renderer.text = function(text) { // text span
         var words = text.split(' ');
         return map(words, function(word) {
