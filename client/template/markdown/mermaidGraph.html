@@ -1,7 +1,3 @@
-{% if (valid) { %}
-    <div class="mermaid" data-line="{%= lineNumber %}" data-type="{%= type %}">
-        {%= code %}
-    </div>
-{% } else { %}
-    <pre data-line="{%= lineNumber %}">{%= error %}</pre>
-{% } %}
+<div class="mermaid">
+    {%= code %}
+</div>

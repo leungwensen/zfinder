@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true */
-/* global define */
+/* global define, setTimeout */
 
 define([
     'pastry/pastry',
@@ -50,45 +50,50 @@ define([
         });
     // }
     // toc {
-        var tocNode = domQuery.one('#toc');
-        var hideOrShowBtn = domQuery.one('#hide-or-show-toc');
-        var hideOrShowIcon = domQuery.one('.fa', hideOrShowBtn);
-        var headerNode = domQuery.one('header', tocNode);
-        var treeHolderNode = domQuery.one('.tree-holder', tocNode);
-        var isShown = true;
-        toc(articleNode, treeHolderNode, 3);
-        new Resizer(tocNode, {
-            directions: ['w'],
-            minWidth: 140,
-            maxWidth: 1400,
-        });
-        function hideToc() {
-            domClass.remove(hideOrShowIcon, 'fa-angle-right');
-            domClass.add(hideOrShowIcon, 'fa-angle-left');
-            domStyle.hide(headerNode);
-            domStyle.hide(treeHolderNode);
-            domStyle.set(tocNode, 'width', '0');
-            isShown = false;
-        }
-        function showToc() {
-            domClass.remove(hideOrShowIcon, 'fa-angle-left');
-            domClass.add(hideOrShowIcon, 'fa-angle-right');
-            domStyle.show(headerNode);
-            domStyle.show(treeHolderNode);
-            domStyle.set(tocNode, 'width', '160px');
-            isShown = true;
-        }
-        new Resizer(treeHolderNode, {
-            directions: ['s'],
-        });
-        domEvent.on(hideOrShowBtn, 'click', function() {
-            if (isShown) {
-                hideToc();
-            } else {
-                showToc();
+        setTimeout(function() { // optimize markdown rendering
+            var tocNode = domQuery.one('#toc');
+            var hideOrShowBtn = domQuery.one('#hide-or-show-toc');
+            var hideOrShowIcon = domQuery.one('.fa', hideOrShowBtn);
+            var headerNode = domQuery.one('header', tocNode);
+            var treeHolderNode = domQuery.one('.tree-holder', tocNode);
+            var isShown = true;
+            function hideToc() {
+                domClass.remove(hideOrShowIcon, 'fa-angle-right');
+                domClass.add(hideOrShowIcon, 'fa-angle-left');
+                domStyle.hide(headerNode);
+                domStyle.hide(treeHolderNode);
+                domStyle.set(tocNode, 'width', '0');
+                isShown = false;
             }
-        });
+            function showToc() {
+                domClass.remove(hideOrShowIcon, 'fa-angle-left');
+                domClass.add(hideOrShowIcon, 'fa-angle-right');
+                domStyle.show(headerNode);
+                domStyle.show(treeHolderNode);
+                domStyle.set(tocNode, 'width', '160px');
+                isShown = true;
+            }
+
+            toc(articleNode, treeHolderNode, 3);
+
+            new Resizer(tocNode, {
+                directions: ['w'],
+                minWidth: 140,
+                maxWidth: 1400,
+            });
+            new Resizer(treeHolderNode, {
+                directions: ['s'],
+            });
+
+            domEvent.on(hideOrShowBtn, 'click', function() {
+                if (isShown) {
+                    hideToc();
+                } else {
+                    showToc();
+                }
+            });
+            hideToc(); // hide by default
+        }, 300);
     // }
-    hideToc(); // hide by default
 });
 

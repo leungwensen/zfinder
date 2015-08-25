@@ -103,13 +103,8 @@ define([
             if(firstLine === 'sequencediagram') {
                 code += '\n'; // empty line in the end or error
             }
-            var valid = mermaid.parse(code);
             return tmplMermaidGraph({
-                type: firstLine,
                 code: code,
-                error: mermaidError,
-                lineNumber: lineNumber,
-                valid: valid,
             }, true);
         } else if (firstLine === 'flowchart') { // flowchart
             code = map(code

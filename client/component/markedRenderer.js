@@ -69,7 +69,11 @@ define([
          * scope is the node to render in
          */
         scope = scope || document.body;
-        mermaid.init(null, domQuery.all('.mermaid', scope));
+        try {
+            mermaid.init(null, domQuery.all('.mermaid', scope));
+        } catch(e) {
+            console.log(e);
+        }
 
         // fix GANTT diagrams (width of lanes is not set correctly) {
             var ganttGraphs = domQuery.all('.mermaid[data-type=gantt] svg', scope);
