@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{%= filename %}</title>
-    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/font/css/font-awesome.css"> <!-- with fonts -->
-    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.css"> <!-- with fonts -->
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/pastry.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/ui.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/font/css/font-awesome.css">
+    <link rel="stylesheet" href="{%= options.serverRoot %}/lib/leungwensen/pastry/build/theme/default.css">
+    <!-- markdown { -->
+        <link rel="stylesheet" href="{%= options.serverRoot %}/lib/sindresorhus/github-markdown-css/github-markdown.css">
+        <link rel="stylesheet" href="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.css">
+        <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.css">
+        <link rel="stylesheet" href="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.forest.css">
+    <!-- } -->
+    <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/base.css">
     <link rel="stylesheet" href="{%= options.serverRoot %}/client/stylesheet/file-markdown.css">
 </head>
 <body>
@@ -14,11 +23,13 @@
                 {%= filename %}
             </span>
             <ul class="menu-list float-right">
-                <li class="menu-item">
-                    <a class="hint--left hint--reverse" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}" data-hint="Edit">
-                        <span class="menu-link fa fa-pencil-square-o " title="edit"></span>
-                    </a>
-                </li>
+                {% if (!isServerFile) { %}
+                    <li class="menu-item">
+                        <a class="hint--left hint--reverse" href="{%= options.appRoot %}/markdownEditor?file={%= filename %}" data-hint="Edit">
+                            <span class="menu-link fa fa-pencil-square-o " title="edit"></span>
+                        </a>
+                    </li>
+                {% } %}
                 <li class="menu-item">
                     <a class="hint--left hint--reverse" href="/" data-hint="Back to Home">
                         <span class="menu-link fa fa-home " title="Back to Home"></span>
@@ -50,8 +61,14 @@
     <script id="markdown-content" type="text/template">
         {%= content %}
     </script>
-    <script src="{%= options.serverRoot %}/client/markdownPreviewer/libs.min.js"></script>
-    <script src="{%= options.serverRoot %}/lib/leungwensen/pastry/dist/0.3.20150825/pastry.ui.min.js"></script>
-    <script src="{%= options.serverRoot %}/client/markdownPreviewer/main.min.js"></script>
+    <!-- markdown { -->
+        <script src="{%= options.serverRoot %}/lib/leungwensen/forked/marked.js"></script>
+        <script src="{%= options.serverRoot %}/lib/Khan/KaTeX/katex.min.js"></script>
+        <script src="{%= options.serverRoot %}/lib/knsv/mermaid/dist/mermaid.js"></script>
+        <script src="{%= options.serverRoot %}/lib/DmitryBaranovskiy/raphael/raphael.js"></script>
+        <script src="{%= options.serverRoot %}/lib/adrai/flowchart.js/release/flowchart-1.4.0.js"></script>
+    <!-- } -->
+    <script src="{%= options.serverRoot %}/lib/leungwensen/pastry/src/amd-loader.js"></script>
+    <script src="{%= options.serverRoot %}/client/markdownPreviewer/main.js"></script>
 </body>
 </html>

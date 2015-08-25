@@ -1,5 +1,6 @@
 options:
     spawn: false
+
 templates:
     files:
         - bin/compileTemplate.js
@@ -16,9 +17,10 @@ stylesheet:
         - client/directory.less
     tasks:
         - less
-javascript:
-    files:
-        - client/**/*.js
-    tasks:
-        - requirejs
-        - uglify
+
+#javascript:
+    #files:
+        #- client/**/*.js
+    #tasks:
+        #- requirejs
+        #- uglify

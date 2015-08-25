@@ -4,12 +4,13 @@
 var fs = require('fs');
 var path = require('path'),
     join = path.join,
-    relative = path.relative,
-    resolve = path.resolve;
+    //relative = path.relative,
+    resolve = path.resolve,
+    sep = path.sep;
 var url = require('url'),
     parseUrl = url.parse;
 var pastry = require('pastry'),
-    sprintf = pastry.sprintf,
+    //sprintf = pastry.sprintf,
     json = pastry.json;
 
 var utils = require('../utils/middleware'),
@@ -17,7 +18,7 @@ var utils = require('../utils/middleware'),
     fixWindowsPath = utils.fixWindowsPath,
     extname = utils.extname,
     readFile = utils.readFile,
-    redirectTo = utils.redirectTo,
+    //redirectTo = utils.redirectTo,
     genHTMLRes = utils.genHTMLRes,
     genTemplateRender = utils.genTemplateRender;
 
@@ -35,7 +36,7 @@ var templateByName = {
 
 module.exports = function(options) {
     return function(req, res, next) {
-        function serveFile(fullFilename, filename) {
+        function serveFile(fullFilename, filename, isServerFile) {
             var ext = extname(filename);
             if (fs.existsSync(fullFilename)) {
                 switch (nameByExt[ext]) {
@@ -45,6 +46,7 @@ module.exports = function(options) {
                                 content: readFile(fullFilename),
                                 //tips: tips,
                                 options: options,
+                                isServerFile: isServerFile,
                                 CONST_JSON: fixWindowsPath(json.stringify(options)),
                                 filename: filename,
                             }, pastry, true),
@@ -74,14 +76,15 @@ module.exports = function(options) {
             next();
         } else {
             if (pathname.indexOf(options.serverRoot) > -1) {
-                pathname = pathname.replace(options.serverRoot, '');
+                pathname = pathname.replace(options.serverRoot + sep, '');
                 var serveRoot = resolve(__dirname, '../../');
                 var fullServerRootPathname = join(serveRoot, pathname);
-                serveFile(fullServerRootPathname, pathname);
+                serveFile(fullServerRootPathname, pathname, true);
             } else {
                 // serve server root files, too
                 var root = options.root;
                 var fullRootPathname = join(root, pathname);
+                pathname = pathname.replace(new RegExp('^' + sep), '');
                 serveFile(fullRootPathname, pathname);
             }
         }

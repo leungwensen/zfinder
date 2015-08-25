@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true */
-/* global define, flowchart, console, document, mermaid */
+/* global define, flowchart, console, document, mermaid, setTimeout */
 
 define([
     'pastry/pastry',
@@ -52,16 +52,18 @@ define([
             destroy(instance);
         });
         flowchartInstanceCache = [];
-        each(domQuery.all('.flowchart', scope), function(container) {
-            try {
-                var codeElement = domQuery.one('.flowchart-code', container);
-                var graphElement = domQuery.one('.flowchart-graph', container);
-                var diagram = flowchart.parse(codeElement.innerHTML);
-                diagram.drawSVG(graphElement, flowchartOptions);
-                flowchartInstanceCache.push(diagram);
-            } catch(e) {
-                console.log(e);
-            }
+        each(domQuery.all('.flowchart', scope), function(container, index) {
+            setTimeout(function() { // for optimizing markdown rendering
+                try {
+                    var codeElement = domQuery.one('.flowchart-code', container);
+                    var graphElement = domQuery.one('.flowchart-graph', container);
+                    var diagram = flowchart.parse(codeElement.innerHTML);
+                    diagram.drawSVG(graphElement, flowchartOptions);
+                    flowchartInstanceCache.push(diagram);
+                } catch(e) {
+                    console.log(e);
+                }
+            }, 50 * (index + 1));
         });
     }
     function renderMermaidGraphs(scope) {
@@ -69,11 +71,15 @@ define([
          * scope is the node to render in
          */
         scope = scope || document.body;
-        try {
-            mermaid.init(null, domQuery.all('.mermaid', scope));
-        } catch(e) {
-            console.log(e);
-        }
+        each(domQuery.all('.mermaid', scope), function(graph, index) {
+            setTimeout(function() { // for optimizing markdown rendering
+                try {
+                    mermaid.init(null, graph);
+                } catch(e) {
+                    console.log(e);
+                }
+            }, 50 * (index + 1));
+        });
 
         // fix GANTT diagrams (width of lanes is not set correctly) {
             var ganttGraphs = domQuery.all('.mermaid[data-type=gantt] svg', scope);
@@ -89,7 +95,7 @@ define([
     return function(container, markdownString) {
         container.innerHTML = marked(markdownString);
         renderMermaidGraphs(container); // render mermaid graphs
-        drawFlowcharts(container);
+        drawFlowcharts(container); // render flowcharts
     };
 });
 
