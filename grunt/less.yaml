@@ -1,2 +1,4 @@
+options:
+    compress: true
 build:
     files: '<%= build.css %>'

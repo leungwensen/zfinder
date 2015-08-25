@@ -55,10 +55,13 @@
     },
     "devDependencies": {
         "grunt": "*",
-        "grunt-contrib-less": "*",
+        "grunt-contrib-concat": "*",
         "grunt-concurrent": "*",
-        "grunt-nodemon": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-requirejs": "*",
+        "grunt-contrib-uglify": "*",
         "grunt-contrib-watch": "*",
+        "grunt-nodemon": "*",
         "load-grunt-config": "*"
     },
     "files": [

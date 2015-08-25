@@ -2,6 +2,7 @@ options:
     spawn: false
 templates:
     files:
+        - bin/compileTemplate.js
         - client/template/**/*.html
         - client/template/**/*.ptmpl
     tasks:
@@ -9,8 +10,15 @@ templates:
 
 stylesheet:
     files:
+        - grunt/less.yaml
         - client/**/*.less
         - client/main.less
         - client/directory.less
     tasks:
         - less
+javascript:
+    files:
+        - client/**/*.js
+    tasks:
+        - requirejs
+        - uglify
