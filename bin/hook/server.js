@@ -13,11 +13,18 @@ var PORT = 9191;
 
 function handleRequest(req, res){
     function updateRepo(pathname) {
-        var gitPull = execFileSync('bash', ['./update-repo.sh', pathname]);
+        var gitPull = execFileSync('bash', [
+            path.join(__dirname, 'update-repo.sh'),
+            pathname
+        ]);
         res.end(gitPull);
     }
     function cloneRepo(url, pathname) {
-        var gitClone = execFileSync('bash', ['./clone-repo.sh', url, pathname]);
+        var gitClone = execFileSync('bash', [
+            path.join(__dirname, 'clone-repo.sh'),
+            url,
+            pathname
+        ]);
         res.end(gitClone);
     }
 
