@@ -71,3 +71,5 @@ Zfinder is built on top of all these fantastic projects:
 
 ## [License (MIT License)](doc/license.markdown)
 
+## [contact](contact)
+

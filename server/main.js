@@ -6,16 +6,16 @@ var connect = require('connect');
 var bodyParser = require('body-parser');
 var open = require('open');
 var pastry = require('pastry'),
-    json = pastry.json,
+    //json = pastry.json,
     sprintf = pastry.sprintf;
 var path = require('path'),
-    resolve = path.resolve,
-    join = path.join;
+    resolve = path.resolve;
+    //join = path.join;
 var serveStatic = require('serve-static');
 
 var dump = require('./utils/dump');
 var help = require('./utils/help');
-var utils = require('./utils/middleware');
+//var utils = require('./utils/middleware');
 
 var serveBasicAuth = require('./middleware/basicAuth');
 var serveApis = require('./middleware/api');
