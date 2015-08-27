@@ -10,6 +10,6 @@ there is an arrow icon in the right-top of the page, click on it to see table of
 
 and, you can drag to resize the TOC, too
 
-## [contact](contact)
+## [contact](contact.markdown)
 
 

@@ -360,5 +360,5 @@ markup:
 ## ~~Sync the scrolling of editor and previewer~~
 
 
-## [contact](contact)
+## [contact](contact.markdown)
 
