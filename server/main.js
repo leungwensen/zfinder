@@ -1,4 +1,4 @@
-/* jshint strict: false, undef: true, unused: true */
+/* jshint strict: false, undef: true, unused: true, node: true */
 /* global require, module, __dirname */
 
 var pkg = require('../package.json');
@@ -6,14 +6,18 @@ var connect = require('connect');
 var bodyParser = require('body-parser');
 var open = require('open');
 var pastry = require('pastry'),
+    json = pastry.json,
     sprintf = pastry.sprintf;
 var path = require('path'),
-    resolve = path.resolve;
+    resolve = path.resolve,
+    join = path.join;
 var serveStatic = require('serve-static');
 
 var dump = require('./utils/dump');
 var help = require('./utils/help');
+var utils = require('./utils/middleware');
 
+var serveBasicAuth = require('./middleware/basicAuth');
 var serveApis = require('./middleware/api');
 var serveApps = require('./middleware/app');
 var serveDirectories = require('./middleware/directory');
@@ -27,12 +31,24 @@ module.exports = {
         if (opts.version) {
             return dump(pkg.version);
         }
+        if (opts.auth) {
+            try {
+                opts.authInfo = require(resolve(process.cwd(), opts.auth));
+            } catch(e) {
+                console.log(e);
+                console.error(sprintf('fetch auth information failed: %s', opts.auth));
+            }
+        }
 
         var server = connect();
         var root = opts.root;
         var serverRoot = resolve(__dirname, '../');
 
         // middlewares {
+            if (opts.authInfo && opts.authInfo.users) {
+                server.use(serveBasicAuth(opts.authInfo));
+            }
+
             server.use(bodyParser.urlencoded({
                 extended: true
             }));

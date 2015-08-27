@@ -41,6 +41,7 @@ zfinder -r $path/to/root
 #### others
 
 - [x] windows support
+- [x] basic auth support
 - [ ] project dependency tree viewer (local ones and remote ones)
 - [ ] i18n support
 - [ ] themes

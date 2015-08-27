@@ -5,6 +5,7 @@
 var server = require('./server/main'),
     argv = require('minimist')(process.argv.slice(2), {
         default: {
+            auth: null,
             help: false,
             port: 9090,
             root: process.cwd(),
