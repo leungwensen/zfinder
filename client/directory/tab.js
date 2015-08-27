@@ -3,11 +3,11 @@
 
 define([
     'pastry/dom/hotkey',
-    './search',
+    //'./search',
     '../component/Tab'
 ], function(
     domHotkey,
-    search,
+    //search,
     Tab
 ) {
     'use strict';
@@ -15,17 +15,17 @@ define([
      * @author: 绝云（wensen.lws）
      * @description: description
      */
-    var searchIndex = 1;
+    //var searchIndex = 1;
     var tab = new Tab('#nav .menu .menu-item', {
-        onShow: function(index) {
-            if (index === searchIndex) { // search
-                search.focus();
-            }
+        onShow: function(/*index*/) {
+            //if (index === searchIndex) { // search
+                //search.focus();
+            //}
         }
     });
-    domHotkey.on('ctrl+f', function() {
-        tab.show(searchIndex);
-    });
+    //domHotkey.on('ctrl+f', function() {
+        //tab.show(searchIndex);
+    //});
     return tab;
 });
 

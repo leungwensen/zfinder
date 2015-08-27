@@ -8,6 +8,7 @@ define([
     'pastry/dom/event',
     'pastry/dom/hotkey',
     'pastry/dom/query',
+    './tab',
     '../cgi/api',
     '../component/LoadingSpinner',
     '../global/CONST',
@@ -21,6 +22,7 @@ define([
     domEvent,
     domHotkey,
     domQuery,
+    tab,
     api,
     LoadingSpinner,
     CONST,
@@ -51,6 +53,7 @@ define([
             domNodeQuery.focus();
         },
         searchGlob: function(query) {
+            tab.show(1);
             new LoadingSpinner().placeAt(domNodeGlobResult, 'only');
             api.globSearch(query).then(function(files) {
                 domNodeGlobResult.innerHTML = noResultHtml;
@@ -64,6 +67,7 @@ define([
             });
         },
         searchContent: function(query) {
+            tab.show(1);
             new LoadingSpinner().placeAt(domNodeContentResult, 'only');
             api.contentSearch(query).then(function(files) {
                 domNodeContentResult.innerHTML = noResultHtml;
@@ -94,6 +98,10 @@ define([
         domEvent.on(domNodeSubmit, 'click', function() {
             submitSearch();
         });
+        domHotkey.on('ctrl+f', function() {
+            domNodeQuery.focus();
+        });
+
     // }
     return search;
 });
