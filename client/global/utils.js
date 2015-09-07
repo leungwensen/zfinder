@@ -1,5 +1,5 @@
 /* jshint strict: true, undef: true, unused: true */
-/* global define, moment, filesize, history, console */
+/* global define, moment, filesize, history, console, window, document */
 
 define([
     'pastry/pastry',
@@ -56,6 +56,16 @@ define([
         getSelectValue: function(selectDomNode) {
             return selectDomNode.options[selectDomNode.selectedIndex].value;
         },
+        getWindowSize: function() {
+            var body = document.body;
+            var element = body.documentElement;
+            var x = window.innerWidth || element.clientWidth || body.clientWidth;
+            var y = window.innerHeight|| element.clientHeight|| body.clientHeight;
+            return {
+                width: x,
+                height: y
+            };
+        }
     };
 });
 

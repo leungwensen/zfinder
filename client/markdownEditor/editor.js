@@ -87,11 +87,11 @@ define([
             );
             codeEditor.refresh();// hack gutter height
 
-            domStyle.set(
-                domNodes.previewer,
-                'height',
-                containerHeight
-            );
+            //domStyle.set(
+                //domNodes.previewer,
+                //'height',
+                //containerHeight
+            //);
             return markdownEditor;
         },
         resumeSetting: function() {

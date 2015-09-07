@@ -11,6 +11,7 @@ define([
     'pastry/dom/style',
     'pastry/io/ajax',
     '../global/CONST',
+    '../global/utils',
     '../component/Modal',
     '../component/Resizer',
     '../component/markedRenderer',
@@ -26,6 +27,7 @@ define([
     domStyle,
     ajax,
     CONST,
+    utils,
     Modal,
     Resizer,
     markdownRenderer,
@@ -60,6 +62,7 @@ define([
             function hideToc() {
                 domClass.remove(hideOrShowIcon, 'fa-angle-right');
                 domClass.add(hideOrShowIcon, 'fa-angle-left');
+                domStyle.set(hideOrShowBtn, 'left', '-20px');
                 domStyle.hide(headerNode);
                 domStyle.hide(treeHolderNode);
                 domStyle.set(tocNode, 'width', '0');
@@ -68,21 +71,25 @@ define([
             function showToc() {
                 domClass.remove(hideOrShowIcon, 'fa-angle-left');
                 domClass.add(hideOrShowIcon, 'fa-angle-right');
+                domStyle.set(hideOrShowBtn, 'left', '-1px');
                 domStyle.show(headerNode);
+                domStyle.set(tocNode, 'width', '200px');
                 domStyle.show(treeHolderNode);
-                domStyle.set(tocNode, 'width', '160px');
+                domStyle.set(treeHolderNode, 'max-height', (utils.getWindowSize().height - 75) + 'px');
                 isShown = true;
             }
 
-            toc(articleNode, treeHolderNode, 3);
+            var titles = toc(articleNode, treeHolderNode, 6);
+            if (titles) {
+                showToc();
+            } else {
+                hideToc(); // hide if no headers
+            }
 
             new Resizer(tocNode, {
                 directions: ['w'],
-                minWidth: 140,
+                minWidth: 170,
                 maxWidth: 1400,
-            });
-            new Resizer(treeHolderNode, {
-                directions: ['s'],
             });
 
             domEvent.on(hideOrShowBtn, 'click', function() {
@@ -92,7 +99,6 @@ define([
                     showToc();
                 }
             });
-            hideToc(); // hide by default
         }, 300);
     // }
 });

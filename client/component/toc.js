@@ -3,18 +3,20 @@
 
 define([
     'pastry/pastry',
-    'pastry/dom/construct',
+    //'pastry/dom/attr',
+    'pastry/dom/data',
     'pastry/dom/query',
     'pastry/fmt/sprintf',
-    'pastry/ui/Tree',
-    '../template/tocAnchor'
+    'pastry/ui/Tree'//,
+    //'../template/tocAnchor'
 ], function(
     pastry,
-    domConstruct,
+    //domAttr,
+    domData,
     domQuery,
     sprintf,
-    Tree,
-    tmplTocAnchor
+    Tree//,
+    //tmplTocAnchor
 ) {
     'use strict';
     /*
@@ -22,8 +24,6 @@ define([
      * @description: description
      */
     var each = pastry.each;
-    //var lc = pastry.lc;
-    //var map = pastry.map;
     var toInt = pastry.toInt;
     var uuid = pastry.uuid;
 
@@ -31,9 +31,6 @@ define([
         onClick: function(node) {
             scrollToNode(node);
         },
-        //onDblclick: function(node) {
-            //scrollToNode(node);
-        //}
     });
 
     function scrollToNode(node) {
@@ -43,16 +40,7 @@ define([
             anchorNode.scrollIntoView(true);
         }
     }
-    function getHeaderId(/*header*/) {
-        //var idSeperater = '-';
-        //var text = getHeaderText(header);
-        //text = lc(text).replace(/\s/g, idSeperater)
-            //.replace(/--/g, idSeperater)
-            //.replace(/:-/g, idSeperater);
-        //if (tocTree.nodeById[text]) {
-            //text = uuid(text + idSeperater);
-        //}
-        //return text;
+    function getHeaderId() {
         return uuid();
     }
     function getHeaderLevel(header) {
@@ -80,18 +68,14 @@ define([
         var nodeMetaById = {};
 
         each(headers, function(header) {
-            var id = getHeaderId(/*header*/);
+            var id = getHeaderId();
 
-            var anchorNode = domConstruct.toDom(tmplTocAnchor({
-                hash: id
-            }));
-            domConstruct.place(anchorNode, header, 'before');
+            domData.set(header, 'hash', id);
 
             var level = getHeaderLevel(header);
             var meta = {
                 id: id,
                 isBranch: true,
-                //isExpanded: false,
                 name: getHeaderText(header),
                 level: level,
                 childIds: [],
@@ -127,6 +111,8 @@ define([
         });
 
         tocTree.placeAt(container);
+
+        return headers.length;
     };
 });
 
