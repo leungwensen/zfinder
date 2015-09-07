@@ -569,9 +569,9 @@ a.btn-selected {
 Resets the font family back to the OS/browser's default sans-serif font,
 this the same font stack that Normalize.css sets for the `body`.
 */
-.g [class*="u"] {
-  font-family: sans-serif;
-}
+/*.g [class *= "u"] {*/
+/*font-family: sans-serif;*/
+/*}*/
 .u-1,
 .u-1-1,
 .u-1-2,
