@@ -81,7 +81,7 @@ body {
     width: 0px;
     z-index: 1000;
     /*overflow: hidden;*/
-    background-color: lightgoldenrodyellow;
+    background-color: #eee;
     border-left: 1px solid #cbcbcb;
     border-bottom: 1px solid #cbcbcb;
     header {
@@ -101,10 +101,14 @@ body {
         max-width: 100%;
     }
     .tree-holder {
-        height: 600px;
+        /*height: 600px;*/
+        /*max-height: 600px;*/
         overflow-y: auto;
         overflow-x: hidden;
     }
+}
+.markdown-body .toc-anchor {
+    display: none;
 }
 table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
     background-color: transparent;

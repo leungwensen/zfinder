@@ -10,40 +10,38 @@ html, body, .app {
     margin: 0;
 }
 .app {
-    .display(flex);
-    .flex-direction(column);
-
     .main {
-        .display(flex);
-        .flex-direction(row);
-        .flex(1);
+        height: 100%;
+        overflow: hidden;
     }
     .editor, .previewer {
         position: relative;
-        overflow: hidden;
-        .flex(5);
+        height: 100%;
     }
     .previewer {
-        /*border: 1px solid @color-3;*/
-        /*padding: 16px;*/
-        /*overflow: auto;*/
+        overflow: scroll;
     }
 }
 .editor {
-    .toolbar {
-        .form {
-            margin-left: 5px;
-            select {
-                height: auto;
-                font-size: small;
-            }
+    .CodeMirror {
+        margin-top: 32px;
+    }
+}
+.toolbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    background-color: white;
+    .form {
+        select {
+            height: auto;
+            font-size: small;
         }
     }
 }
+
 .markdown-body {
-    /*height: 100%;*/
-    overflow: scroll;
-    padding: 10px;
+    padding: 42px 10px 10px 10px;
     border-left: 1px solid #eee;
 }
 .menu-horizontal {
@@ -65,7 +63,6 @@ html, body, .app {
     right: 0;
     top: 0;
 }
-/* codemirror hack */
 .CodeMirror-gutters {
     height: 100%;
 }
