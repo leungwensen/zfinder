@@ -359,6 +359,75 @@ markup:
 
 ## ~~Sync the scrolling of editor and previewer~~
 
+## html/js/css injection
+
+### html
+
+```html+
+    <div id="test1" style="width: 100%;height: 50px;background-color: lightblue;"></div>
+```
+
+```html-
+    <div id="test2" style="width: 100%;height: 50px;background-color: pink;"></div>
+```
+
+markup:
+
+    ```html+
+        <div id="test1" style="width: 100%;height: 50px;background-color: lightblue;"></div>
+    ```
+
+    ```html-
+        <div id="test2" style="width: 100%;height: 50px;background-color: pink;"></div>
+    ```
+
+### javascript
+
+```js+
+    console.log("I'm alive and visible");
+```
+
+```js-
+    console.log("I'm alive but invisible");
+```
+
+markup:
+
+    ```js+
+        console.log("I'm alive and visible");
+    ```
+
+    ```js-
+        console.log("I'm alive but invisible");
+    ```
+
+### javascript
+
+```css+
+body {
+    background-color: pink;
+}
+```
+
+```css-
+body {
+    background-color: lightblue;
+}
+```
+
+markup:
+
+    ```css+
+    body {
+        background-color: pink;
+    }
+    ```
+    
+    ```css-
+    body {
+        background-color: lightblue;
+    }
+    ```
 
 ## [contact](contact.markdown)
 

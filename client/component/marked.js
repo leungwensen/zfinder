@@ -1,4 +1,4 @@
-/* jshint strict: true, undef: true, unused: false */
+/* jshint strict: true, undef: true, unused: false, evil: true */
 /* global define, marked, katex, mermaid */
 
 define([
@@ -6,9 +6,11 @@ define([
     'pastry/fmt/sprintf',
     'pastry/html/escape',
     './emojiMap',
+    '../template/markdown/css',
     '../template/markdown/emojiFix',
     '../template/markdown/figure',
     '../template/markdown/flowchart',
+    '../template/markdown/javascript',
     '../template/markdown/math',
     '../template/markdown/mermaidGraph',
     '../template/markdown/taskListItem'
@@ -17,9 +19,11 @@ define([
     sprintf,
     htmlEscape,
     emojiMap,
+    tmplCss,
     tmplEmojiFix,
     tmplFigure,
     tmplFlowchart,
+    tmplJavascript,
     tmplMath,
     tmplMermaidGraph,
     tmplTaskListItem
@@ -76,6 +80,33 @@ define([
         if (lang === 'markdown' || lang === 'md') {
             return RendererPrototype.code.apply(this, arguments);
         }
+        if (lang === 'html+') {
+            lang = 'html';
+            return RendererPrototype.code.apply(this, arguments) + code;
+        }
+        if (lang === 'html-') {
+            return code;
+        }
+        if (lang === 'js+' || lang === 'javascript+') {
+            new Function(code)();
+            lang = 'js';
+            return RendererPrototype.code.apply(this, arguments);
+        }
+        if (lang === 'js-' || lang === 'javascript-') {
+            return '';
+        }
+        if (lang === 'css+') {
+            lang = 'js';
+            return RendererPrototype.code.apply(this, arguments) + tmplCss({
+                code: code
+            }, true);
+        }
+        if (lang === 'css-') {
+            return tmplCss({
+                code: code
+            }, true);
+        }
+
         if (firstLine === 'math') { // math typesetting
             var tex = '';
             each(code.replace(/^math\s*/, '').split(/\n\n/), function(line){
