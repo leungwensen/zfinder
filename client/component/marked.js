@@ -1,8 +1,10 @@
 /* jshint strict: true, undef: true, unused: false, evil: true */
-/* global define, marked, katex, mermaid */
+/* global define, marked, katex, mermaid, document */
 
 define([
     'pastry/pastry',
+    'pastry/dom/attr',
+    'pastry/dom/query',
     'pastry/fmt/sprintf',
     'pastry/html/escape',
     './emojiMap',
@@ -16,6 +18,8 @@ define([
     '../template/markdown/taskListItem'
 ], function(
     pastry,
+    domAttr,
+    domQuery,
     sprintf,
     htmlEscape,
     emojiMap,
@@ -44,6 +48,31 @@ define([
     var RendererPrototype = Renderer.prototype;
     var renderer = new Renderer();
     var unescape = htmlEscape.unescape;
+
+    var doc = document;
+    var body = document.body;
+
+    function noop() {}
+    function loadJsCode(code) {
+        var element = doc.createElement('script');
+        domAttr.set(element, 'type', 'text/javascript');
+        domAttr.set(element, 'async', 'true');
+        element.innerHTML = code;
+        body.appendChild(element);
+    }
+    function loadJsFiles(files, index) {
+        index = index || 0;
+        var element = doc.createElement('script');
+        domAttr.set(element, 'type', 'text/javascript');
+        domAttr.set(element, 'async', 'true');
+        domAttr.set(element, 'src', files[index]);
+        element.onload = element.onreadystatechange = function() {
+            if (this.readyState == 'complete' && index < (files.length - 1)) {
+                loadJsFiles(files, index ++);
+            }
+        };
+        body.appendChild(element);
+    }
 
     mermaid.parseError = function(err/*, hash*/){
         mermaidError = err;
@@ -88,11 +117,19 @@ define([
             return code;
         }
         if (lang === 'js+' || lang === 'javascript+') {
-            new Function(code)();
-            lang = 'js';
+            loadJsCode(code);
             return RendererPrototype.code.apply(this, arguments);
         }
         if (lang === 'js-' || lang === 'javascript-') {
+            loadJsCode(code);
+            return '';
+        }
+        if (lang === 'script+') {
+            loadJsFiles(code.split(/\n/));
+            return RendererPrototype.code.apply(this, arguments);
+        }
+        if (lang === 'script-') {
+            loadJsFiles(code.split(/\n/));
             return '';
         }
         if (lang === 'css+') {

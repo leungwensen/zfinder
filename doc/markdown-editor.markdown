@@ -391,6 +391,13 @@ markup:
     console.log("I'm alive but invisible");
 ```
 
+```script+
+    ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+```
+
+```script-
+    ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+```
 markup:
 
     ```js+
@@ -399,6 +406,14 @@ markup:
 
     ```js-
         console.log("I'm alive but invisible");
+    ```
+
+    ```script+
+        ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+    ```
+
+    ```script-
+        ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
     ```
 
 ### javascript
@@ -422,7 +437,7 @@ markup:
         background-color: pink;
     }
     ```
-    
+
     ```css-
     body {
         background-color: lightblue;
