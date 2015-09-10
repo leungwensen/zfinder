@@ -49,29 +49,21 @@ define([
     var renderer = new Renderer();
     var unescape = htmlEscape.unescape;
 
-    var doc = document;
-    var body = document.body;
+    marked.__scriptsToLoad = [];
+    marked.__linksToLoad = [];
+    marked.__jsCodeToLoad = '';
+    marked.__cssCodeToLoad = '';
 
-    function noop() {}
-    function loadJsCode(code) {
-        var element = doc.createElement('script');
-        domAttr.set(element, 'type', 'text/javascript');
-        domAttr.set(element, 'async', 'true');
-        element.innerHTML = code;
-        body.appendChild(element);
-    }
-    function loadJsFiles(files, index) {
-        index = index || 0;
-        var element = doc.createElement('script');
-        domAttr.set(element, 'type', 'text/javascript');
-        domAttr.set(element, 'async', 'true');
-        domAttr.set(element, 'src', files[index]);
-        element.onload = element.onreadystatechange = function() {
-            if (this.readyState == 'complete' && index < (files.length - 1)) {
-                loadJsFiles(files, index ++);
+    var doc = document;
+    var body = doc.body;
+    var head = doc.getElementsByTagName('head')[0];
+    function addToArr(arr, items) {
+        each(items, function(item) {
+            item = trim(item);
+            if (item && arr.indexOf(item) === -1) {
+                arr.push(item);
             }
-        };
-        body.appendChild(element);
+        });
     }
 
     mermaid.parseError = function(err/*, hash*/){
@@ -106,43 +98,57 @@ define([
     renderer.code = function(code, lang, escaped, lineNumber) { // code block
         code = trim(code);
         var firstLine = lc(trim(code.split(/\n/)[0]));
+
         if (lang === 'markdown' || lang === 'md') {
             return RendererPrototype.code.apply(this, arguments);
         }
-        if (lang === 'html+') {
-            lang = 'html';
-            return RendererPrototype.code.apply(this, arguments) + code;
-        }
-        if (lang === 'html-') {
-            return code;
-        }
-        if (lang === 'js+' || lang === 'javascript+') {
-            loadJsCode(code);
-            return RendererPrototype.code.apply(this, arguments);
-        }
-        if (lang === 'js-' || lang === 'javascript-') {
-            loadJsCode(code);
-            return '';
-        }
-        if (lang === 'script+') {
-            loadJsFiles(code.split(/\n/));
-            return RendererPrototype.code.apply(this, arguments);
-        }
-        if (lang === 'script-') {
-            loadJsFiles(code.split(/\n/));
-            return '';
-        }
-        if (lang === 'css+') {
-            lang = 'js';
-            return RendererPrototype.code.apply(this, arguments) + tmplCss({
-                code: code
-            }, true);
-        }
-        if (lang === 'css-') {
-            return tmplCss({
-                code: code
-            }, true);
-        }
+        // html injection {
+            if (lang === 'html+') {
+                lang = 'html';
+                return RendererPrototype.code.apply(this, arguments) + code;
+            }
+            if (lang === 'html-') {
+                return code;
+            }
+            if (lang === 'js+' || lang === 'javascript+') {
+                lang = 'javascript';
+                marked.__jsCodeToLoad += ('\n' + code);
+                return RendererPrototype.code.apply(this, arguments);
+            }
+            if (lang === 'js-' || lang === 'javascript-') {
+                marked.__jsCodeToLoad += ('\n' + code);
+                return '';
+            }
+            if (lang === 'css+' || lang === 'style+') {
+                lang = 'css';
+                marked.__cssCodeToLoad += ('\n' + code);
+                return RendererPrototype.code.apply(this, arguments);
+            }
+            if (lang === 'css-' || lang === 'style-') {
+                marked.__cssCodeToLoad += ('\n' + code);
+                return '';
+            }
+            // load resources with link/source {
+                if (lang === 'script+') {
+                    lang = 'html';
+                    addToArr(marked.__scriptsToLoad, code.split(/\n/));
+                    return RendererPrototype.code.apply(this, arguments);
+                }
+                if (lang === 'script-') {
+                    addToArr(marked.__scriptsToLoad, code.split(/\n/));
+                    return '';
+                }
+                if (lang === 'link+') {
+                    lang = 'html';
+                    addToArr(marked.__linksToLoad, code.split(/\n/));
+                    return RendererPrototype.code.apply(this, arguments);
+                }
+                if (lang === 'link-') {
+                    addToArr(marked.__linksToLoad, code.split(/\n/));
+                    return '';
+                }
+            // }
+        // }
 
         if (firstLine === 'math') { // math typesetting
             var tex = '';
@@ -160,6 +166,7 @@ define([
                 }
             });
             return tmplMath({
+                type: firstLine,
                 lineNumber: lineNumber,
                 tex: tex,
             }, true);
@@ -172,6 +179,7 @@ define([
                 code += '\n'; // empty line in the end or error
             }
             return tmplMermaidGraph({
+                type: firstLine,
                 code: code,
             }, true);
         } else if (firstLine === 'flowchart') { // flowchart
@@ -183,6 +191,7 @@ define([
                     return trim(line);
                 }).join('\n');
             return tmplFlowchart({
+                type: firstLine,
                 code: code
             }, true);
         }

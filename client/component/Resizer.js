@@ -75,16 +75,28 @@ define([
                 function resize (e) {
                     e.stopPropagation();
                     if (direction.indexOf('n') !== -1) {
-                        domStyle.set(domNode, 'height', limitRange(resizer._startH + (resizer._startY - e.pageY)) + 'px');
+                        domStyle.set(domNode,
+                            'height',
+                            limitRange(resizer._startH + (resizer._startY - e.pageY)) + 'px'
+                        );
                     }
                     if (direction.indexOf('s') !== -1) {
-                        domStyle.set(domNode, 'height', limitRange(resizer._startH + (e.pageY - resizer._startY)) + 'px');
+                        domStyle.set(domNode,
+                            'height',
+                            limitRange(resizer._startH + (e.pageY - resizer._startY)) + 'px'
+                        );
                     }
                     if (direction.indexOf('e') !== -1) {
-                        domStyle.set(domNode, 'width', limitRange(resizer._startW + (e.pageX - resizer._startX)) + 'px');
+                        domStyle.set(domNode,
+                            'width',
+                            limitRange(resizer._startW + (e.pageX - resizer._startX)) + 'px'
+                        );
                     }
                     if (direction.indexOf('w') !== -1) {
-                        domStyle.set(domNode, 'width', limitRange(resizer._startW + (resizer._startX - e.pageX)) + 'px');
+                        domStyle.set(domNode,
+                            'width',
+                            limitRange(resizer._startW + (resizer._startX - e.pageX)) + 'px'
+                        );
                     }
                     // prevent selecting
                     domClass.add(body, cssNoSelect);
@@ -149,9 +161,15 @@ define([
                 );
             },
             _limitRange: function(direction, value) {
-                var resizer = this,
-                    max = direction === 'w' || direction === 'e' ? resizer.options.maxWidth : resizer.options.maxHeight,
-                    min = direction === 'w' || direction === 'e' ? resizer.options.minWidth : resizer.options.minHeight;
+                var resizer = this;
+                var max = direction === 'w' ||
+                    direction === 'e' ?
+                        resizer.options.maxWidth :
+                        resizer.options.maxHeight;
+                var min = direction === 'w' ||
+                    direction === 'e' ?
+                        resizer.options.minWidth :
+                        resizer.options.minHeight;
                 return Math.min(max, Math.max(min, value));
             }
         });

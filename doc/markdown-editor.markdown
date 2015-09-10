@@ -392,11 +392,11 @@ markup:
 ```
 
 ```script+
-    ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+    ../test/markdown/script1.js
 ```
 
 ```script-
-    ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+    ../test/markdown/script2.js
 ```
 markup:
 
@@ -409,14 +409,14 @@ markup:
     ```
 
     ```script+
-        ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+        ../test/markdown/script1.js
     ```
 
     ```script-
-        ../lib/leungwensen/xmind-sdk-javascript/dist/xmind-browser.js
+        ../test/markdown/script2.js
     ```
 
-### javascript
+### css
 
 ```css+
 body {
@@ -430,6 +430,15 @@ body {
 }
 ```
 
+```link+
+    ../test/markdown/link1.css
+```
+
+```link-
+    ../test/markdown/link2.css
+```
+
+
 markup:
 
     ```css+
@@ -442,6 +451,14 @@ markup:
     body {
         background-color: lightblue;
     }
+    ```
+
+    ```link+
+        ../test/markdown/link1.css
+    ```
+
+    ```link-
+        ../test/markdown/link2.css
     ```
 
 ## [contact](contact.markdown)
