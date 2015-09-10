@@ -5,7 +5,6 @@
     "description": "finder in the browser, with front-end magics.",
     "license": "MIT",
     "main": "./app.js",
-    "author": "leungwensen <leungwensen@gmail.com>",
     "homepage": "https://github.com/leungwensen/zfinder",
     "keywords": [
         "zfinder",
@@ -32,13 +31,6 @@
     "scripts": {
         "start": "node app.js"
     },
-    "files": [
-        "app.js",
-        "index.html"
-    ],
-    "keywords": [
-        "electron-app"
-    ],
     "dependencies": {
         "body-parser": "*",
         "connect": "*",
