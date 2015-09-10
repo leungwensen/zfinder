@@ -122,11 +122,17 @@ body {
 .markdown-body .toc-anchor {
     display: none;
 }
-table.tree-wrapper tbody tr.tree-node:nth-of-type(even) {
+table.tree-wrapper tbody tr.tree-node {
     background-color: transparent;
+    &:hover {
+        background-color: white;
+    }
     &.selected {
         background-color: #2980b9;
         color: #ecf0f1;
+        &:hover {
+            background-color: #2980b9;
+        }
     }
 }
 @media print {
