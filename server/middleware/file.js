@@ -84,7 +84,7 @@ module.exports = function(options) {
                 // serve server root files, too
                 var root = options.root;
                 var fullRootPathname = join(root, pathname);
-                pathname = pathname.replace(new RegExp('^' + sep), '');
+                pathname = pathname.replace(new RegExp('^\\' + sep), '');
                 serveFile(fullRootPathname, pathname);
             }
         }
