@@ -1,0 +1,75 @@
+{
+    "name": "zfinder-cli",
+    "title": "zfinder-cli",
+    "description": "client of zfinder",
+    "homepage": "https://github.com/zfinder/zfinder-cli",
+    "version": "0.0.20151013",
+    "main": "lib/index.js",
+    "author": {
+        "description": "team of zfinder",
+        "url": "https://github.com/orgs/zfinder/teams"
+    },
+    "bugs": {
+        "url": "https://github.com/zfinder/zfinder-cli/issues"
+    },
+    "dependencies": {
+        "commander": "*",
+        "connect": "*",
+        "get-installed-path": "*",
+        "get-port": "*",
+        "inquirer": "*",
+        "shelljs": "*",
+        "sudo": "*",
+        "fs-extra-promise": "*",
+        "zero-fmt-camelcase": "*",
+        "zero-fmt-date": "*",
+        "zero-fmt-sprintf": "*",
+        "zero-lang-array": "*",
+        "zero-lang-object": "*",
+        "zero-text-template": "*",
+        "zfinder-mw-basic-auth": "*",
+        "zfinder-mw-directory": "*",
+        "zfinder-mw-fs": "*",
+        "zfinder-mw-search": "*",
+        "zfinder-mw-html": "*",
+        "zfinder-mw-audio": "*",
+        "zfinder-mw-image": "*",
+        "zfinder-mw-json": "*",
+        "zfinder-mw-markdown": "*",
+        "zfinder-mw-video": "*",
+        "zfinder-mw-xmind": "*",
+        "zfinder-mw-xml": "*",
+        "zfinder-mw-yaml": "*",
+        "zfinder-mw-text": "*"
+    },
+    "devDependencies": {
+        "jasmine": "*"
+    },
+    "engines": {
+        "node": ">=0.8.0"
+    },
+    "keywords": [
+        "bin"
+    ],
+    "bin": {
+        "zfinder-cli": "./bin/cli.js"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/zfinder/zfinder-cli/blob/master/LICENSE"
+        }
+    ],
+    "repository": {
+        "type": "https",
+        "url": "https://github.com/zfinder/zfinder-cli.git"
+    },
+    "scripts": {
+        "test": "jasmine init && jasmine"
+    },
+    "files": [
+        "index.js",
+        "scripts",
+        "templates"
+    ]
+}

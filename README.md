@@ -1,2 +1,10 @@
-# client
-client for zfinder
+# zfinder client
+
+client of zfinder
+
+## install
+
+```
+$ npm install zfinder-cli
+```
+

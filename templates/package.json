@@ -1,0 +1,45 @@
+{
+    "name": "{%= name %}",
+    "title": "{%= name %}",
+    "description": "",
+    "homepage": "https://github.com/zfinder/{%= name %}",
+    "version": "0.0.{%= date %}",
+    "main": "dist/index.js",
+    "author": {
+        "description": "team of zfinder",
+        "url": "https://github.com/orgs/zfinder/teams"
+    },
+    "bugs": {
+        "url": "https://github.com/zfinder/{%= name %}/issues"
+    },
+    "dependencies": {
+        "zfinder-middleware": "*",
+        "zfinder-route": "*"
+    },
+    "devDependencies": { {% if (type === 'browser') { %}
+        "browserify": "*",
+        "chai": "*",
+        "mocha": "*" {% } else { %}
+        "jasmine": "*" {% } %}
+    },
+    "engines": {
+        "node": ">=0.8.0"
+    },
+    "keywords": [
+        "zfinder",
+        "{%= name %}"
+    ],
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/zfinder/{%= name %}/blob/master/LICENSE"
+    }],
+    "repository": {
+        "type": "https",
+        "url": "https://github.com/zfinder/{%= name %}.git"
+    },
+    "scripts": {
+        "init": "cnpm install",
+        "test": "{% if (type === 'browser') { %}browserify spec/index.spec.js > spec/index.js {% } else { %}jasmine init && jasmine{% } %}",
+        "publish": "npm publish && cnpm sync {%= name %}"
+    }
+}

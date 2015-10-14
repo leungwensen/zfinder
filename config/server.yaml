@@ -1,0 +1,27 @@
+
+port: 9090
+debug: true
+openOnStart: true
+path:
+    middlewareRoot: __ZFINDER_MW__
+    zfinderRoot: __ZFINDER__
+middleware:
+    # auth
+    zfinder-mw-basic-auth:
+    # directories
+    zfinder-mw-directory:
+    # apis
+    zfinder-mw-fs:
+    zfinder-mw-search:
+    # files
+    zfinder-mw-html:
+    zfinder-mw-audio:
+    zfinder-mw-image:
+    zfinder-mw-json:
+    zfinder-mw-markdown:
+    zfinder-mw-video:
+    zfinder-mw-xmind:
+    zfinder-mw-xml:
+    zfinder-mw-yaml:
+    zfinder-mw-text: # the most common one should be the last one
+
