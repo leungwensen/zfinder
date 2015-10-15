@@ -44,14 +44,15 @@ commander
 commander
     .command('serve [root]')
     .description('start a zfinder server')
+    .option('-o, --open', 'open on start')
     .option('-p, --port <port>', 'specify the port which server will run on')
     .option('-c, --config <config>', 'specify the configuration file')
+    .option('-l, --localmiddleware [middleware...]', 'specify paths to local middlewares')
     .action(function(root, options) {
         require('../lib/serve')(
             require('../lib/config-server')(root, options)
         );
     });
-
 
 // build a path
 commander

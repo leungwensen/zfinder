@@ -1,0 +1,3 @@
+name: {%= name %}
+priority: 1
+createdDate: {%= date %}

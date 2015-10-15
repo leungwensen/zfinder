@@ -16,11 +16,8 @@
         "zfinder-middleware": "*",
         "zfinder-route": "*"
     },
-    "devDependencies": { {% if (type === 'browser') { %}
-        "browserify": "*",
-        "chai": "*",
-        "mocha": "*" {% } else { %}
-        "jasmine": "*" {% } %}
+    "devDependencies": {
+        "jasmine": "*"
     },
     "engines": {
         "node": ">=0.8.0"
@@ -39,7 +36,7 @@
     },
     "scripts": {
         "init": "cnpm install",
-        "test": "{% if (type === 'browser') { %}browserify spec/index.spec.js > spec/index.js {% } else { %}jasmine init && jasmine{% } %}",
+        "test": "jasmine init && jasmine",
         "publish": "npm publish && cnpm sync {%= name %}"
     }
 }
