@@ -50,7 +50,6 @@
         "url": "https://github.com/zfinder/zfinder.git"
     },
     "scripts": {
-        "test": "jasmine init && jasmine"
     },
     "files": [
         "bin",
@@ -58,6 +57,7 @@
         "doc",
         "lib",
         "package.json",
+        "spec",
         "templates"
     ]
 }

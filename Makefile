@@ -3,15 +3,16 @@ make:
 	#make compile
 	make test
 install:
+	cnpm install
 	npm install
 #compile:
 	#npm run-script compile
-#test:
+test:
 	#make server
-	npm test
+	jasmine init && jasmine
 publish:
 	npm publish
-	cnpm sync zfinder-cli
+	cnpm sync zfinder
 server:
 	sh bin/server.sh
 all:
