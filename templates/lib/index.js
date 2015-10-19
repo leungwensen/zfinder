@@ -13,7 +13,7 @@ var mw = new Middleware()
     .addRoute(new Route({
         // properties
         name: '',
-        method: 'get',
+        method: 'get', // all|get|post|put|delete|options
         url: '*',
         priority: 1,
 

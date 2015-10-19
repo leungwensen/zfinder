@@ -4,7 +4,7 @@
     "description": "",
     "homepage": "https://github.com/zfinder/{%= name %}",
     "version": "0.0.{%= date %}",
-    "main": "dist/index.js",
+    "main": "lib/index.js",
     "author": {
         "description": "team of zfinder",
         "url": "https://github.com/orgs/zfinder/teams"
@@ -14,7 +14,8 @@
     },
     "dependencies": {
         "zfinder-middleware": "*",
-        "zfinder-route": "*"
+        "zfinder-route": "*",
+        "zfinder-utils": "*"
     },
     "devDependencies": {
         "jasmine": "*"
@@ -35,8 +36,5 @@
         "url": "https://github.com/zfinder/{%= name %}.git"
     },
     "scripts": {
-        "init": "cnpm install",
-        "test": "jasmine init && jasmine",
-        "publish": "npm publish && cnpm sync {%= name %}"
     }
 }
