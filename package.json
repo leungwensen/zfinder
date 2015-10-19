@@ -42,7 +42,8 @@
         "bin"
     ],
     "bin": {
-        "zfinder": "./bin/cli.js"
+        "zfinder": "./bin/cli.js",
+        "zfinder-cli": "./bin/cli.js"
     },
     "license": "MIT",
     "repository": {
