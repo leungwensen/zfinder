@@ -13,15 +13,18 @@
         "url": "https://github.com/zfinder/zfinder/issues"
     },
     "dependencies": {
+        "body-parser": "*",
         "colors": "*",
         "commander": "*",
         "connect": "*",
+        "connect-redirection": "*",
         "get-port": "*",
         "inquirer": "*",
         "module-path": "*",
         "shelljs": "*",
         "sudo": "*",
         "fs-extra-promise": "*",
+        "zero-encoding-json": "*",
         "zero-fmt-camelcase": "*",
         "zero-fmt-date": "*",
         "zero-fmt-sprintf": "*",

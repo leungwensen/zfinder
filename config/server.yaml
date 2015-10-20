@@ -6,14 +6,10 @@ path:
     middlewareRoot: /__ZFINDER_MW__
     zfinderRoot: /__ZFINDER__
 middleware:
-    # auth
     zfinder-mw-basic-auth:
-    # directories
     zfinder-mw-directory:
-    # apis
     zfinder-mw-fs:
     zfinder-mw-search:
-    # files
     #zfinder-mw-audio:
     #zfinder-mw-image:
     #zfinder-mw-json:
