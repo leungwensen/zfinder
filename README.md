@@ -5,6 +5,6 @@ client of zfinder
 ## install
 
 ```
-$ npm install zfinder-cli
+$ npm install zfinder
 ```
 
