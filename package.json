@@ -36,6 +36,7 @@
         "zero-text-template": "*",
         "zfinder-mw-basic-auth": "*",
         "zfinder-mw-fs": "*",
+        "zfinder-mw-index": "*",
         "zfinder-mw-search": "*",
         "zfinder-route": "*",
         "zfinder-utils": "*"
