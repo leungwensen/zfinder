@@ -4,7 +4,9 @@
 var commander = require('commander');
 var inquirer = require('inquirer');
 var sprintf = require('zero-fmt-sprintf');
-var pkg = require('../package.json');
+var path = require('path');
+
+var pkg = require(path.resolve(__dirname, '../package.json'));
 
 function list(val) {
     return val.split(',');
