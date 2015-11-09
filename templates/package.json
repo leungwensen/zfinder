@@ -13,8 +13,8 @@
         "url": "https://github.com/zfinder/{%= name %}/issues"
     },
     "dependencies": {
-        "zero-fmt-sprintf": "*",
-        "zero-lang-object": "*",
+        "zero-fmt": "*",
+        "zero-lang": "*",
         "zfinder-middleware": "*",
         "zfinder-route": "*",
         "zfinder-utils": "*"

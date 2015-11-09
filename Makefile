@@ -1,20 +1,23 @@
+
+# grouped tasks
 make:
 	make install
-	#make compile
 	make test
+all:
+	make preinstall
+	make
+	make publish
+
+# tasks
+preinstall:
+	npm  install -g cnpm --registry=http://registry.npm.taobao.org
 install:
 	cnpm install
 	npm install
-#compile:
-	#npm run-script compile
 test:
-	#make server
-	jasmine init && jasmine
+	jasmine init
+	jasmine
 publish:
 	npm publish
 	cnpm sync zfinder
-server:
-	sh bin/server.sh
-all:
-	make
-	make publish
+

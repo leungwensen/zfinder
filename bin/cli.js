@@ -3,7 +3,7 @@
 
 var commander = require('commander');
 var inquirer = require('inquirer');
-var sprintf = require('zero-fmt-sprintf');
+var sprintf = require('zero-fmt/sprintf');
 var path = require('path');
 
 var pkg = require(path.resolve(__dirname, '../package.json'));

@@ -3,9 +3,9 @@
 
 var Middleware = require('zfinder-middleware');
 var Route = require('zfinder-route');
-var objectUtils = require('zero-lang-object');
+var lang = require('zero-lang');
 var path = require('path');
-var sprintf = require('zero-fmt-sprintf');
+var sprintf = require('zero-fmt/sprintf');
 var zfinderUtils = require('zfinder-utils');
 
 var defaultConfig = zfinderUtils.loadYamlConfig(path.resolve(__dirname, '../config.yaml'));
@@ -20,7 +20,7 @@ var mw = new Middleware()
 
         // methods
         serve: function(options) {
-            options = objectUtils.extend({}, defaultConfig, options);
+            options = lang.extend({}, defaultConfig, options);
 
             // fill properties {
                 var me = this;
