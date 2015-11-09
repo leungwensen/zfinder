@@ -23,6 +23,7 @@
         "inquirer": "*",
         "module-path": "*",
         "open": "*",
+        "serve-favicon": "*",
         "serve-static": "*",
         "shelljs": "*",
         "sudo": "*",
