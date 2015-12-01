@@ -1,71 +1,70 @@
 {
-    "name": "zfinder",
-    "title": "zfinder",
-    "description": "zfinder",
-    "homepage": "https://github.com/zfinder/zfinder",
-    "version": "0.0.20151013",
-    "main": "lib/index.js",
-    "author": {
-        "description": "team of zfinder",
-        "url": "https://github.com/orgs/zfinder/teams"
-    },
-    "bugs": {
-        "url": "https://github.com/zfinder/zfinder/issues"
-    },
-    "dependencies": {
-        "body-parser": "*",
-        "colors": "*",
-        "commander": "*",
-        "connect": "*",
-        "connect-redirection": "*",
-        "fs-extra-promise": "*",
-        "get-port": "*",
-        "inquirer": "*",
-        "module-path": "*",
-        "open": "*",
-        "serve-favicon": "*",
-        "serve-static": "*",
-        "shelljs": "*",
-        "sudo": "*",
-        "urlrouter": "*",
-        "zero-encoding": "*",
-        "zero-fmt": "*",
-        "zero-lang": "*",
-        "zero-text": "*",
-        "zfinder-mw-basic-auth": "*",
-        "zfinder-mw-fs": "*",
-        "zfinder-mw-index": "*",
-        "zfinder-mw-search": "*",
-        "zfinder-route": "*",
-        "zfinder-utils": "*"
-    },
-    "devDependencies": {
-        "jasmine": "*"
-    },
-    "engines": {
-        "node": ">=0.8.0"
-    },
-    "keywords": [
-        "bin"
-    ],
-    "bin": {
-        "zfinder": "./bin/cli.js",
-        "zfinder-cli": "./bin/cli.js"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "https",
-        "url": "https://github.com/zfinder/zfinder.git"
-    },
-    "scripts": {
-    },
-    "files": [
-        "bin",
-        "config",
-        "doc",
-        "lib",
-        "package.json",
-        "spec",
-        "templates"
-    ]
+  "name": "zfinder",
+  "title": "zfinder",
+  "description": "zfinder",
+  "homepage": "https://github.com/zfinder/zfinder",
+  "version": "0.0.20151013",
+  "main": "lib/index.js",
+  "author": {
+    "description": "team of zfinder",
+    "url": "https://github.com/orgs/zfinder/teams"
+  },
+  "bugs": {
+    "url": "https://github.com/zfinder/zfinder/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "connect": "^3.4.0",
+    "connect-redirection": "^0.0.1",
+    "fs-extra-promise": "^0.3.1",
+    "get-port": "^2.1.0",
+    "inquirer": "^0.11.0",
+    "module-path": "^0.0.20151019",
+    "open": "^0.0.5",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.10.0",
+    "shelljs": "^0.5.3",
+    "sudo": "^1.0.3",
+    "urlrouter": "^0.5.4",
+    "zero-encoding": "^0.0.20151030",
+    "zero-fmt": "^0.0.20151030",
+    "zero-lang": "^0.0.20151030",
+    "zero-text": "^0.0.20151030",
+    "zfinder-mw-basic-auth": "^0.0.20151030",
+    "zfinder-mw-fs": "^0.0.20151030",
+    "zfinder-mw-index": "^0.0.20151030",
+    "zfinder-mw-search": "^0.0.20151030",
+    "zfinder-route": "^0.0.20151030",
+    "zfinder-utils": "^0.0.20151030"
+  },
+  "devDependencies": {
+    "jasmine": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "keywords": [
+    "bin"
+  ],
+  "bin": {
+    "zfinder": "./bin/cli.js",
+    "zfinder-cli": "./bin/cli.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/zfinder/zfinder.git"
+  },
+  "scripts": {},
+  "files": [
+    "bin",
+    "config",
+    "doc",
+    "lib",
+    "package.json",
+    "spec",
+    "templates"
+  ]
 }
