@@ -37,7 +37,7 @@
 		"zfinder-mw-index": "^0.0.20151030",
 		"zfinder-mw-search": "^0.0.20151030",
 		"zfinder-route": "^0.0.20151030",
-		"zfinder-utils": "^0.0.20151030"
+		"zfinder-utils": "^0.0.20160121"
 	},
 	"devDependencies": {
 		"jasmine": "^2.3.2"
