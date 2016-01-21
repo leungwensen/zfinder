@@ -1,6 +1,6 @@
-{% var varName = helper.camelise(name); %}
+{% var varName = helper.camelise(data.name); %}
 var {%= varName %} = require('../lib/index.js');
-describe('{%= name %}', function () {
+describe('{%= data.name %}', function () {
     it('exists', function () {
         expect(typeof {%= varName %}).toEqual('object');
     });

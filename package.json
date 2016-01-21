@@ -3,7 +3,7 @@
 	"title": "zfinder",
 	"description": "zfinder",
 	"homepage": "https://github.com/zfinder/zfinder",
-	"version": "0.0.20151013",
+	"version": "0.0.20160121",
 	"main": "lib/index.js",
 	"author": {
 		"description": "team of zfinder",
@@ -31,7 +31,7 @@
 		"zero-encoding": "^0.0.20151202",
 		"zero-fmt": "^0.0.20151202",
 		"zero-lang": "^0.0.20151202",
-		"zero-text": "^0.0.20151202",
+		"zero-text": "^0.0.20160121",
 		"zfinder-mw-basic-auth": "^0.0.20151030",
 		"zfinder-mw-fs": "^0.0.20151210",
 		"zfinder-mw-index": "^0.0.20151030",

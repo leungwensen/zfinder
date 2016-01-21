@@ -1,9 +1,9 @@
 {
-    "name": "{%= name %}",
-    "title": "{%= name %}",
+    "name": "{%= data.name %}",
+    "title": "{%= data.name %}",
     "description": "",
-    "homepage": "https://github.com/zfinder/{%= name %}",
-    "version": "0.0.{%= date %}",
+    "homepage": "https://github.com/zfinder/{%= data.name %}",
+    "version": "0.0.{%= data.date %}",
     "main": "lib/index.js",
     "license": "MIT",
     "author": {
@@ -11,7 +11,7 @@
         "url": "https://github.com/orgs/zfinder/teams"
     },
     "bugs": {
-        "url": "https://github.com/zfinder/{%= name %}/issues"
+        "url": "https://github.com/zfinder/{%= data.name %}/issues"
     },
     "dependencies": {
         "zero-fmt": "*",
@@ -28,11 +28,11 @@
     },
     "keywords": [
         "zfinder",
-        "{%= name %}"
+        "{%= data.name %}"
     ],
     "repository": {
         "type": "https",
-        "url": "https://github.com/zfinder/{%= name %}.git"
+        "url": "https://github.com/zfinder/{%= data.name %}.git"
     },
     "scripts": {
     }

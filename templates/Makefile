@@ -12,7 +12,7 @@ test:
 	jasmine init && jasmine
 publish:
 	npm publish
-	cnpm sync {%= name %}
+	cnpm sync {%= data.name %}
 server:
 	sh bin/server.sh
 all:
