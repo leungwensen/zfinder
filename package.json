@@ -3,7 +3,7 @@
 	"title": "zfinder",
 	"description": "zfinder",
 	"homepage": "https://github.com/zfinder/zfinder",
-	"version": "0.0.20160214",
+	"version": "0.0.20160215",
 	"main": "lib/index.js",
 	"author": {
 		"description": "team of zfinder",
@@ -59,11 +59,14 @@
 		"url": "https://github.com/zfinder/zfinder.git"
 	},
 	"files": [
+		"LICENSE",
+		"README.md",
+		"favicon.ico",
+		"package.json",
 		"bin",
 		"config",
 		"doc",
 		"lib",
-		"package.json",
 		"spec",
 		"templates"
 	]
