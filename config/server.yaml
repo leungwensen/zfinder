@@ -12,8 +12,8 @@ middleware:
     zfinder-mw-fs:
     zfinder-mw-index:
     zfinder-mw-search:
+    zfinder-mw-directory:
     #zfinder-mw-audio:
-    #zfinder-mw-directory:
     #zfinder-mw-image:
     #zfinder-mw-json:
     #zfinder-mw-markdown:
