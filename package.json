@@ -3,7 +3,7 @@
 	"title": "zfinder",
 	"description": "zfinder",
 	"homepage": "https://github.com/zfinder/zfinder",
-	"version": "0.0.20160216",
+	"version": "0.0.20160223",
 	"main": "lib/index.js",
 	"author": {
 		"description": "team of zfinder",
@@ -36,6 +36,7 @@
 		"zfinder-mw-directory": "^0.0.20160216",
 		"zfinder-mw-fs": "^0.0.20160214",
 		"zfinder-mw-index": "^0.0.20160214",
+		"zfinder-mw-markdown": "^0.0.20160223",
 		"zfinder-mw-search": "^0.0.20160214",
 		"zfinder-route": "^0.0.20151203",
 		"zfinder-utils": "^0.0.20160121"

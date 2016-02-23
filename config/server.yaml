@@ -10,13 +10,13 @@ path:
 middleware:
     zfinder-mw-basic-auth:
     zfinder-mw-fs:
-    zfinder-mw-index:
     zfinder-mw-search:
     zfinder-mw-directory:
+    zfinder-mw-index:
+    zfinder-mw-markdown:
     #zfinder-mw-audio:
     #zfinder-mw-image:
     #zfinder-mw-json:
-    #zfinder-mw-markdown:
     #zfinder-mw-video:
     #zfinder-mw-xmind:
     #zfinder-mw-xml:
