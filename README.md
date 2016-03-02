@@ -138,3 +138,7 @@ it is built on top of [marked-plus-renderer](https://github.com/leungwensen/mark
 
 more info about the markdown syntax features: [features](http://leungwensen.github.io/marked-plus-renderer/demo/features.html)
 
+## [License (MIT License)](./LICENSE)
+
+## [contact](doc/contact.markdown)
+ 
