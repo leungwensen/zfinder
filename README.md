@@ -140,5 +140,5 @@ more info about the markdown syntax features: [features](http://leungwensen.gith
 
 ## [License (MIT License)](./LICENSE)
 
-## [contact](doc/contact.markdown)
+## [contact](https://github.com/leungwensen)
  
