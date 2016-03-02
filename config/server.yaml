@@ -13,6 +13,18 @@ middleware:
     zfinder-mw-search:
     zfinder-mw-directory:
     zfinder-mw-index:
+        #priority: 100
+        suffixes:
+            - .markdown
+            - .md
+            - /index.html
+            - /index.htm
+            - /README.markdown
+            - /README.md
+            - /readme.markdown
+            - /readme.md
+            - .html
+            - .htm
     zfinder-mw-markdown:
     #zfinder-mw-audio:
     #zfinder-mw-image:
