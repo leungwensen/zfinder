@@ -21,7 +21,9 @@
         "zfinder-utils": "*"
     },
     "devDependencies": {
-        "jasmine": "*"
+        "jasmine": "*",
+        "gulp": "*",
+        "gulp-ztpl-compiler": "*"
     },
     "engines": {
         "node": ">=0.8.0"

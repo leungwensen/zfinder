@@ -1,6 +1,3 @@
-/* jshint node: true, loopfunc: true, undef: true, unused: true */
-///* global */
-
 var Middleware = require('zfinder-middleware');
 var Route = require('zfinder-route');
 var lang = require('zero-lang');
