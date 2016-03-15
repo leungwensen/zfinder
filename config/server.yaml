@@ -41,11 +41,11 @@ middleware:
             - .html
             - .htm
     zfinder-mw-markdown:
+    zfinder-mw-xmind:
     #zfinder-mw-audio:
     #zfinder-mw-image:
     #zfinder-mw-json:
     #zfinder-mw-video:
-    #zfinder-mw-xmind:
     #zfinder-mw-xml:
     #zfinder-mw-yaml:
 

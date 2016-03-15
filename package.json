@@ -3,7 +3,7 @@
 	"title": "zfinder",
 	"description": "zfinder",
 	"homepage": "https://github.com/zfinder/zfinder",
-	"version": "0.0.2016022417",
+	"version": "0.0.20160316",
 	"main": "lib/index.js",
 	"author": {
 		"description": "team of zfinder",
@@ -34,11 +34,12 @@
 		"zero-lang": "^0.0.20151202",
 		"zero-text": "^0.0.20160121",
 		"zfinder-mw-basic-auth": "^0.0.20160222",
-		"zfinder-mw-directory": "^0.0.20160216",
+		"zfinder-mw-directory": "^0.0.20160316",
 		"zfinder-mw-fs": "^0.0.20160214",
 		"zfinder-mw-index": "^0.0.20160214",
-		"zfinder-mw-markdown": "^0.0.2016022417",
+		"zfinder-mw-markdown": "^0.0.20160316",
 		"zfinder-mw-search": "^0.0.20160214",
+		"zfinder-mw-xmind": "^0.0.20160316",
 		"zfinder-route": "^0.0.20151203",
 		"zfinder-utils": "^0.0.20160121"
 	},
