@@ -1,12 +1,12 @@
 #!/usr/bin/env node
+'use strict';
 /**
  * zfinder module
  * @module bin/zfinder
- * @see module:lib/index
+ * @see module:index
  */
 
 const commander = require('commander');
-const inquirer = require('inquirer');
 const path = require('path');
 const zfinder = require('../lib/index');
 const pkg = require(path.resolve(__dirname, '../package.json'));
@@ -57,3 +57,5 @@ commander.on('--help', dumpUsageExamples);
 
 // execute client
 commander.parse(process.argv);
+
+if (process.argv.length === 2) commander.outputHelp();
