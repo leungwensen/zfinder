@@ -1,4 +1,0 @@
-# {%= data.name %}
-
-{%= data.name %}
-

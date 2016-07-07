@@ -1,3 +1,0 @@
-name: {%= data.name %}
-priority: 1
-createdDate: {%= data.date %}

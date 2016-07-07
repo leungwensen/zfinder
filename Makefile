@@ -15,8 +15,6 @@ install:
 	cnpm install
 	npm install
 test:
-	jasmine init
-	jasmine
 publish:
 	npm publish
 	cnpm sync zfinder
