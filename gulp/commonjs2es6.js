@@ -44,11 +44,11 @@ function toES6() {
 // 这个脚本不能多次执行，因此在临时文件夹内进行
 gulp.task(
   'commonjs2es6',
-  () => gulp.src(path.resolve(__dirname, '../spec/**/*.js')) // FIXME modify this to specify target
+  () => gulp.src(path.resolve(__dirname, '../lib/**/*.js')) // FIXME modify this to specify target
     .pipe(plumber())
     .pipe(toES6())
     .on('error', (err) => {
       gutil.log(gutil.colors.red(err.message));
     })
-    .pipe(gulp.dest(path.resolve(__dirname, '../spec/'))) // FIXME modify this to specify target
+    .pipe(gulp.dest(path.resolve(__dirname, '../_temp/'))) // FIXME modify this to specify target
 );

@@ -4,6 +4,7 @@ openOnStart: false
 locale: zh_CN
 path:
   zfinder: /__ZFINDER__
+  handler: /__ZFINDER_HANDLER__
 handler:
   basic-auth:
     ignores:

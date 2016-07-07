@@ -35,7 +35,7 @@ commander
   .option('-o, --open', 'open on start')
   .option('-p, --port <port>', 'specify the port which server will run on')
   .action((root, options) => {
-    zfinder.serve(root, zfinder.loadRC(root, options));
+    zfinder.serve(zfinder.loadRC(root, options));
   });
 
 // kill all zfinder processes

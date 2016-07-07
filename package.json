@@ -15,11 +15,21 @@
     "url": "https://github.com/leungwensen/zfinder/issues"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
+    "connect": "^3.4.1",
+    "connect-redirection": "^0.0.1",
+    "get-port": "^2.1.0",
+    "http-errors": "^1.5.0",
     "js-yaml": "^3.6.1",
+    "module-path": "^0.1.0",
+    "open": "^0.0.5",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.11.1",
     "shelljs": "^0.7.0",
     "sudo": "^1.0.3",
+    "urlrouter": "^0.5.4",
     "zero-colors": "^0.1.2",
     "zero-lang": "^0.1.2",
     "zero-locale": "^0.1.2"
