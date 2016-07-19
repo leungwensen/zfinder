@@ -7,6 +7,7 @@ path:
   zfinder: /__ZFINDER__
   handler: /__ZFINDER_HANDLER__
 handler:
+  # basic authorization
   basic-auth:
     ignores:
       # audios
@@ -23,6 +24,9 @@ handler:
       - \.(3g2|3gp|aaf|asf|avchd|avi|drc|flv|m2v|m4p|m4v|mkv|mng|mov|mp2|mp4|mpe|mpeg|mpg|mpv|mxf|nsv|ogg|ogv|qt|rm|rmvb|roq|svi|vob|webm|wmv|yuv)$
     users:
       zfinder: awesome
+  # creating a directory
+  mkdir:
+  # automatically add a suffix to current url
   serve-index:
     # priority: 100
     priority: -1
