@@ -1,7 +1,8 @@
 port: 9090
 debug: true
-openOnStart: false
+openOnStart: true
 locale: zh_CN
+dotfiles: ignore # dotfiles: [allow|deny|ignore]
 path:
   zfinder: /__ZFINDER__
   handler: /__ZFINDER_HANDLER__
@@ -24,4 +25,3 @@ handler:
       zfinder: awesome
   serve-index:
     # priority: 100
-

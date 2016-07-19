@@ -29,6 +29,7 @@
     "serve-static": "^1.11.1",
     "shelljs": "^0.7.0",
     "sudo": "^1.0.3",
+    "try2get": "^0.0.1",
     "urlrouter": "^0.5.4",
     "zero-colors": "^0.1.2",
     "zero-lang": "^0.1.2",
