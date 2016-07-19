@@ -25,3 +25,13 @@ handler:
       zfinder: awesome
   serve-index:
     # priority: 100
+    priority: -1
+    suffixes:
+      - .markdown
+      - .md
+      - /index.html
+      - /index.htm
+      - /readme.markdown
+      - /readme.md
+      - .html
+      - .htm
