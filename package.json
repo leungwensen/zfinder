@@ -1,67 +1,104 @@
 {
-    "name": "zfinder",
-    "productName": "zfinder",
-    "version": "0.0.20150911",
-    "description": "finder in the browser, with front-end magics.",
-    "license": "MIT",
-    "main": "./app.js",
-    "homepage": "https://github.com/leungwensen/zfinder",
-    "keywords": [
-        "zfinder",
-        "finder",
-        "markdown",
-        "static",
-        "static server"
+  "author": "leungwensen@gmail.com",
+  "description": "zfinder",
+  "homepage": "https://github.com/leungwensen/zfinder",
+  "main": "lib/index.js",
+  "name": "zfinder",
+  "readme": "./README.md",
+  "title": "zfinder",
+  "version": "0.1.0",
+  "bin": {
+    "zfinder": "./bin/zfinder.js",
+    "zfinder-cli": "./bin/zfinder.js"
+  },
+  "bugs": {
+    "url": "https://github.com/leungwensen/zfinder/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "connect": "^3.4.1",
+    "connect-redirection": "^0.0.1",
+    "get-port": "^2.1.0",
+    "http-errors": "^1.5.0",
+    "js-yaml": "^3.6.1",
+    "module-path": "^0.1.0",
+    "open": "^0.0.5",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.11.1",
+    "shelljs": "^0.7.0",
+    "sudo": "^1.0.3",
+    "try2get": "^0.0.1",
+    "urlrouter": "^0.5.4",
+    "zero-colors": "^0.1.2",
+    "zero-lang": "^0.1.2",
+    "zero-locale": "^0.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.0",
+    "eslint-plugin-jsx-a11y": "^1.0.3",
+    "eslint-plugin-markdown": "^1.0.0-beta.2",
+    "eslint-plugin-react": "^5.0.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^2.0.0",
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-if": "^2.0.0",
+    "gulp-jsdoc3": "^0.2.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.0.0",
+    "json-loader": "^0.5.4",
+    "lebab": "^1.3.2",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "mocha": "^2.5.3",
+    "open": "0.0.5",
+    "postcss": "^5.0.19",
+    "postcss-loader": "^0.8.2",
+    "pre-commit": "^1.1.3",
+    "prismjs": "^1.5.1",
+    "qrcode-generator": "^1.0.0",
+    "querystring": "^0.2.0",
+    "ranma": "^0.5.0",
+    "require-dir": "^0.3.0",
+    "semver": "^5.1.0",
+    "style-loader": "^0.13.1",
+    "through2": "^2.0.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "bin"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/leungwensen/zfinder.git"
+  },
+  "scripts": {
+    "eslint": "gulp eslint"
+  },
+  "precommit": {
+    "run": [
+      "eslint"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/leungwensen/zfinder.git"
-    },
-    "author": {
-        "name": "绝云",
-        "email": "wensen.lws@alibaba-inc.com",
-        "url": "leungwensen.com"
-    },
-    "bin": {
-        "zfinder": "./app.js"
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    },
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "body-parser": "*",
-        "connect": "*",
-        "glob": "*",
-        "http-errors": "*",
-        "marked": "*",
-        "mime-types": "*",
-        "minimist": "*",
-        "open": "*",
-        "pastry": "*",
-        "serve-static": "*",
-        "touch": "*",
-        "xmind": "*"
-    },
-    "devDependencies": {
-        "grunt": "*",
-        "grunt-contrib-concat": "*",
-        "grunt-concurrent": "*",
-        "grunt-contrib-less": "*",
-        "grunt-contrib-requirejs": "*",
-        "grunt-contrib-uglify": "*",
-        "grunt-contrib-watch": "*",
-        "grunt-nodemon": "*",
-        "load-grunt-config": "*"
-    },
-    "files": [
-        "app.js",
-        "client",
-        "lib",
-        "doc",
-        "assets",
-        "server"
-    ]
+    "silent": false
+  }
 }
