@@ -1,6 +1,0 @@
-options:
-    report: min
-    sourceMap: true
-
-markdown-previewer: <%= build.uglify.markdownPreviewer %>
-

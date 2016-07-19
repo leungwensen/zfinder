@@ -1,9 +1,0 @@
-markdown-previewer:
-    options:
-        name: main
-        baseUrl: <%= build.js.markdownPreviewer.baseUrl %>
-        out: <%= build.js.markdownPreviewer.out %>
-        optimize: none
-        useStrict: true
-        paths: <%= build.requirejs.paths %>
-

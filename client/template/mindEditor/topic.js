@@ -1,5 +1,0 @@
-/* jshint ignore:start */
-define(["pastry/pastry","pastry/html/escape"], function (helper) {return function(obj, ne){
-var _e=ne?function(s){return s;}:helper.escape,print=function(s,e){_s+=e?(s==null?'':s):_e(s);};obj=obj||{};with(obj){_s='<div data-id="'+_e(id)+'" class="topic '+_e(styleId)+' '+_e(classname)+'"><div class="body">';helper.each(markers, function(marker) { _s+='<span class="marker '+_e(marker)+'"></span>';}); _s+='<span class="topic-label">'+_e(title)+'</span>';if (hyperlink) { _s+='<span class="hyperlink fa fa-link '+_e(hyperlinkType)+'" data-link="'+_e(hyperlink)+'" title="'+_e(hyperlink)+'"></span>';} _s+='';if (notes) { _s+='<span class="notes fa fa-sticky-note" title="'+_e(notes)+'"></span>';} _s+='</div>';if (labels.length) { _s+='<div class="labels"><span class="label">'+_e(labels.join(', '))+'</span></div>';} _s+='</div>';}return _s;
-}});
-/* jshint ignore:end */

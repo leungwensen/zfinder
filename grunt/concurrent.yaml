@@ -1,6 +1,0 @@
-target:
-    tasks:
-        - watch
-        - nodemon
-    options:
-        logConcurrentOutput: true

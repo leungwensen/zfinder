@@ -1,4 +1,0 @@
-dev:
-    - concurrent
-default:
-    - dev
