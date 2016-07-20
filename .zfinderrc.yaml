@@ -27,9 +27,10 @@ handler:
   # file system
   make-dir:
   read-dir:
-  # read-file:
+  read-file:
   remove-path:
   rename-path:
+  write-file:
   # automatically add a suffix to current url
   serve-index:
     # priority: 100
