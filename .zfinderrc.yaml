@@ -25,10 +25,11 @@ handler:
     users:
       zfinder: awesome
   # file system
-  mkdir:
-  readdir:
-  rename:
-  rmdir:
+  make-dir:
+  read-dir:
+  # read-file:
+  remove-path:
+  rename-path:
   # automatically add a suffix to current url
   serve-index:
     # priority: 100
