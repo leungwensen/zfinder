@@ -16,14 +16,14 @@ curl -u zfinder:awesome -X PUT -d "newPath=_temp/temp" -L "http://localhost:9090
 printf "\nremove-path################################################################################################\n"
 curl -u zfinder:awesome -X DELETE -L "http://localhost:9090/_temp/temp?_handler=remove-path"
 
-printf "\write-file##################################################################################################\n"
+printf "\nwrite-file#################################################################################################\n"
 curl -u zfinder:awesome -X PUT -d "content=test" -L "http://localhost:9090/_temp/temp.txt?_handler=write-file"
 curl -u zfinder:awesome -X PUT -d "content=test" -L "http://localhost:9090/_temp/.temp.log?_handler=write-file"
 
-printf "\content-search##############################################################################################\n"
+printf "\ncontent-search#############################################################################################\n"
 curl -u zfinder:awesome -X GET -d "q=test" -L "http://localhost:9090/lib?_handler=content-search"
 
-printf "\glob-search#################################################################################################\n"
+printf "\nglob-search################################################################################################\n"
 curl -u zfinder:awesome -X GET -d "q=**.json" -L "http://localhost:9090?_handler=glob-search"
 
 printf "\n"
