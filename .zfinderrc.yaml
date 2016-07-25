@@ -1,4 +1,5 @@
 port: 9090
+assetsServer: ''
 debug: true
 openOnStart: false
 locale: zh_CN
