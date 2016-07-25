@@ -20,4 +20,10 @@ printf "\write-file#############################################################
 curl -u zfinder:awesome -X PUT -d "content=test" -L "http://localhost:9090/_temp/temp.txt?_handler=write-file"
 curl -u zfinder:awesome -X PUT -d "content=test" -L "http://localhost:9090/_temp/.temp.log?_handler=write-file"
 
+printf "\content-search##############################################################################################\n"
+curl -u zfinder:awesome -X GET -d "q=test" -L "http://localhost:9090/lib?_handler=content-search"
+
+printf "\glob-search#################################################################################################\n"
+curl -u zfinder:awesome -X GET -d "q=**.json" -L "http://localhost:9090?_handler=glob-search"
+
 printf "\n"
