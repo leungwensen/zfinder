@@ -25,6 +25,12 @@ module.exports.htmlhintDirs = [
   'spec',
 ];
 
+// for template2module
+module.exports.templateDirs = [
+  'lib',
+  'src',
+];
+
 // for jsdoc
 module.exports.jsdocConfig = {
   tags: {
