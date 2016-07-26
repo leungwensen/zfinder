@@ -1,6 +1,6 @@
-const path = require('path');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
+const path = require('path');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const through = require('through2');
@@ -42,8 +42,8 @@ lang.each(config.templateDirs, (dir) => {
       .on('error', (err) => {
         gutil.log(gutil.colors.red(err.message));
       })
-      .pipe(rename((path) => {
-        path.extname = '.js';
+      .pipe(rename((pathname) => {
+        pathname.extname = '.js';
       }))
       .pipe(gulp.dest(path.resolve(__dirname, `../${dir}/`))));
 });
