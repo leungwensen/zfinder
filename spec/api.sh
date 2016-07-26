@@ -26,4 +26,12 @@ curl -u zfinder:awesome -X GET -d "q=test" -L "http://localhost:9090/lib?_handle
 printf "\nglob-search################################################################################################\n"
 curl -u zfinder:awesome -X GET -d "q=**.json" -L "http://localhost:9090?_handler=glob-search"
 
+printf "\ndot-previewer##############################################################################################\n"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/git.dot?_raw"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/git.dot"
+
+printf "\ndot-renderer###############################################################################################\n"
+curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090/__HANDLER__/dot-renderer"
+curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090?_handler=dot-renderer"
+
 printf "\n"

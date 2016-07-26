@@ -5,8 +5,8 @@ openOnStart: false
 locale: zh_CN
 dotfiles: ignore # dotfiles: [allow|deny|ignore]
 path:
-  zfinder: /__ZFINDER__
-  handler: /__ZFINDER_HANDLER__
+  zfinder: __ZFINDER__
+  handler: __HANDLER__
 handler:
   # basic authorization
   basic-auth:
@@ -35,6 +35,17 @@ handler:
   # search
   content-search:
   glob-search:
+  # dot (graphviz)
+  dot-previewer:
+  dot-renderer:
+  # markdown (preview and edit)
+  # markdown-previewer:
+  # markdown-editor:
+  # xmind (preview and edit)
+  # xmind-previewer:
+  # xmind-editor:
+  # directory
+  # directory:
   # automatically add a suffix to current url
   serve-index:
     # priority: 100
@@ -48,3 +59,4 @@ handler:
       - /readme.md
       - .html
       - .htm
+
