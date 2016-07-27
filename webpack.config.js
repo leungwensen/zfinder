@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
+    'dist/zfinder/markdown-previewer': path.resolve(__dirname, './src/markdown-previewer/index.js')
   },
   output: {
     path: path.resolve(__dirname),
@@ -48,7 +49,6 @@ module.exports = {
   },
   externals: {
     'jquery': 'jQuery',
-    'prism': 'Prism',
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
