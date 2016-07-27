@@ -17,7 +17,7 @@ function getHeaderText(header) {
 }
 
 function getHeaderSelector(level) {
-  let headers = [];
+  const headers = [];
   for (let i = 1; i <= level; i++) {
     headers.push(`h${i}`);
   }

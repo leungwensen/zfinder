@@ -10,18 +10,24 @@ import lang from 'zero-lang';
 import routie from '../common/routie';
 import tg from '../toc-generator/index';
 
-const $toc = $('#toc');
+const $tocBody = $('#toc-body');
 const $markdownBody = $('#markdown-body');
+const $loading = $('#loading');
 
 const toc = tg.generate($markdownBody[0], {
   maxDepth: 6,
 });
-$toc.append(toc.$outerDomNode);
+$tocBody.append(toc.$outerDomNode);
 
-routie('*', function (uniqueId) {
-  toc.scrollTo(uniqueId);
+$(window).on('load', () => {
+  routie('*', (uniqueId) => {
+    toc.scrollTo(uniqueId);
+  });
+
+  toc.on('clicked', (headerMeta) => {
+    lang.global.location = `#${headerMeta.uniqueId}`;
+  });
+
+  $loading.hide();
 });
 
-toc.on('clicked', (headerMeta) => {
-  lang.global.location = '#' + headerMeta.uniqueId;
-});

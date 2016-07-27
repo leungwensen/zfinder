@@ -24,7 +24,7 @@ function renderTemplates() {
       gutil.log(file.path);
       // @TODO add svg sprite file as needed, instead of putting the whole evil-icons svg file
       const content = underscoreEngine.render(file.contents.toString('utf8'), file.path, 'commonjs');
-      file.contents = new Buffer(content);
+      file.contents = new Buffer(`/* eslint-disable */ ${content}`);
     } catch (err) {
       this.emit('error', new gutil.PluginError('template2module', err.toString()));
     }

@@ -1,0 +1,40 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+body {
+  .display(flex);
+  .flex-direction(row);
+}
+
+nav#toc {
+  height: 100%;
+  overflow: scroll;
+  width: 300px;
+  color: #666;
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+article#markdown {
+  height: 100%;
+  overflow: scroll;
+  .flex(1);
+  .order(1);
+  .markdown-body {
+    padding: 2em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    .flex-direction(column);
+    height: auto;
+  }
+  nav#toc, article#markdown {
+    width: 100%;
+    height: auto;
+  }
+}

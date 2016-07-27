@@ -1,13 +1,27 @@
-#toc ul {
+.toc-link-list {
   list-style: none;
+  padding-left: 1.5em;
+
   .link-expander {
-    margin-left: -1em;
-    margin-right: .5em;
     cursor: pointer;
+    margin-left: -1em;
   }
   .link-text {
     cursor: pointer;
+    display: inline-block;
+    padding: .3em;
+    width: 100%;
+    &:hover {
+      background-color: #666;
+      color: #fafafa;
+    }
   }
+}
+
+.toc-link {
+  .limit-length();
+  width: 100%;
+  overflow: inherit;
 }
 
 .toc-anchor {

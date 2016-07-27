@@ -21,7 +21,7 @@ const body = document.body;
 function locationCallback() {
   const $target = $(this);
   const uniqueId = $target.data('unique');
-  lang.global.location = '#' + uniqueId;
+  lang.global.location = `#${uniqueId}`;
   $target[0].scrollIntoView(true);
 }
 
@@ -44,7 +44,7 @@ function generate(element = body, options = {}) {
     return getHeaderUniqueId(id + options.uniqueIdSuffix);
   }
 
-  lang.each($headers, function (header) {
+  lang.each($headers, (header) => {
     const level = getHeaderLevel(header);
     const text = getHeaderText(header);
     const uniqueId = getHeaderUniqueId(text);
@@ -53,7 +53,8 @@ function generate(element = body, options = {}) {
       uniqueId,
       level,
     };
-    const $anchorElement = $(`<span class="toc-anchor" data-unique="${meta.uniqueId}" style="font-weight: normal !important;">&#9875;</span>`);
+    const $anchorElement = $(`<span class="toc-anchor" data-unique="${meta.uniqueId}"
+style="font-weight: normal !important;">&#9875;</span>`);
     meta.$anchorElement = $anchorElement;
     $(header).prepend($anchorElement);
     headerMetaById[uniqueId] = meta;

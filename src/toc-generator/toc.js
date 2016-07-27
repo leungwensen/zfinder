@@ -18,9 +18,8 @@ const linkListMarkup = '<ul class="toc-link-list"></ul>';
 
 function addHeaderExpander(header, options) {
   if (!header.$expanderElement) {
-    header.$element.prepend(`<span class="${options.expanderClassName}" data-unique="${header.uniqueId}">
-    &blacktriangledown;
-</span>`);
+    header.$element.prepend(`<span class="${options.expanderClassName}"
+data-unique="${header.uniqueId}">&blacktriangledown;</span>`);
     header.$expanderElement = header.$element.find(`.${options.expanderClassName}`);
   }
 }
@@ -61,15 +60,15 @@ class Toc extends EventEmitter {
       addHeaderExpander(parentHeaderMeta, options);
     }
 
-    lang.each(links, function (meta) {
+    lang.each(links, (meta) => {
       lang.extend(meta, {
         isExpanded: true,
         expanderClassName: options.expanderClassName,
         textClassName: options.textClassName,
         children: [],
       });
-      let level = meta.level;
-      let $linkElement = $(`<li class="toc-link level${level}">
+      const level = meta.level;
+      const $linkElement = $(`<li class="toc-link level${level}">
     <a class="${meta.textClassName}" data-unique="${meta.uniqueId}">${meta.text}</a>
 </li>`);
       meta.$element = $linkElement;
@@ -100,7 +99,7 @@ class Toc extends EventEmitter {
       headerMetaById[meta.uniqueId] = meta;
     });
 
-    lang.forIn(headerMetaById, function (meta) {
+    lang.forIn(headerMetaById, (meta) => {
       if (meta.children.length) {
         meta.$element.addClass(options.hasChildClassName);
       }
@@ -159,8 +158,8 @@ class Toc extends EventEmitter {
   }
 
   expandOrCollapse(id) {
-    let me = this;
-    let header = me.headerMetaById[id];
+    const me = this;
+    const header = me.headerMetaById[id];
     if (header) me[header.isExpanded ? 'collapse' : 'expand'](id);
     return me;
   }
@@ -172,6 +171,7 @@ class Toc extends EventEmitter {
       const $anchorNode = me.$srcElement.find(anchorSelector);
       if ($anchorNode[0]) $anchorNode[0].scrollIntoView(true);
     } catch (e) {
+      console.log(e);
     }
     return me;
   }
