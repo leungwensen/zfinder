@@ -1,5 +1,5 @@
 port: 9090
-assetsServer: ''
+assetsServer: '/__ZFINDER__'
 debug: true
 openOnStart: false
 locale: zh_CN
