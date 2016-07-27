@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/lib/github-markdown.css">
+  <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/zfinder/markdown-previewer.css">
+</head>
+<body>
+<nav id="toc"></nav>
+<article id="markdown-body" class="markdown-body"><%= body %></article>
+<script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
+<script src="<%= rc.assetsServer %>/dist/zfinder/markdown-previewer.js"></script>
+</body>
+</html>

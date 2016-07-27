@@ -1,0 +1,32 @@
+#toc ul {
+  list-style: none;
+  .link-expander {
+    margin-left: -1em;
+    margin-right: .5em;
+    cursor: pointer;
+  }
+  .link-text {
+    cursor: pointer;
+  }
+}
+
+.toc-anchor {
+  font-size: 18px;
+  margin-left: -1em;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover {
+  .toc-anchor {
+    opacity: 1;
+  }
+}
