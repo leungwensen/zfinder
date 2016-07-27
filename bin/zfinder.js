@@ -5,7 +5,6 @@
  * @module bin/zfinder
  * @see module:index
  */
-
 const commander = require('commander');
 const path = require('path');
 const zfinder = require('../lib/index');
