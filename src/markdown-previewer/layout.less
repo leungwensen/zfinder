@@ -28,6 +28,7 @@ article#markdown {
   }
 }
 
+// responsive
 @media only screen and (max-width: 768px) {
   body {
     .flex-direction(column);
@@ -36,5 +37,19 @@ article#markdown {
   nav#toc, article#markdown {
     width: 100%;
     height: auto;
+  }
+}
+
+// for printing
+@media print {
+  #toc {
+    display: none;
+  }
+  html, body, article {
+    height: auto;
+  }
+  @page {
+    size: auto;
+    margin: 0;
   }
 }
