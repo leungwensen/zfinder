@@ -83,3 +83,9 @@ name | description | supported
 -----|-------------|----------
 text-editor | editing text file | no
 
+### fallback
+
+name | description | supported
+-----|-------------|----------
+serve-index | automatically add a suffix to current url | yes
+

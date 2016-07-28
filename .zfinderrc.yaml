@@ -32,6 +32,7 @@ handler:
   remove-path:
   rename-path:
   write-file:
+  # explorer:
   # search
   content-search:
   glob-search:
@@ -45,8 +46,8 @@ handler:
   # xmind (preview and edit)
   # xmind-previewer:
   # xmind-editor:
-  # directory
-  # directory:
+  # text editor
+  text-editor:
   # automatically add a suffix to current url
   serve-index:
     # priority: 100

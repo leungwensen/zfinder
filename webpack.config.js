@@ -4,7 +4,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'dist/zfinder/markdown-previewer': path.resolve(__dirname, './src/markdown-previewer/index.js')
+    'dist/zfinder/markdown-previewer': path.resolve(__dirname, './src/markdown-previewer/index.js'),
+    'dist/zfinder/text-editor': path.resolve(__dirname, './src/text-editor/index.js'),
   },
   output: {
     path: path.resolve(__dirname),
@@ -49,6 +50,7 @@ module.exports = {
   },
   externals: {
     'jquery': 'jQuery',
+    'codemirror': 'CodeMirror',
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
