@@ -10,5 +10,8 @@ gulp.task('sync-libs', () => {
     path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.map'),
   ])
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
+
+  gulp.src(path.resolve(__dirname, '../node_modules/codemirror/**/*.*'))
+    .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/codemirror/')));
 });
 

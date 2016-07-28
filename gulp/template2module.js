@@ -9,6 +9,8 @@ const underscoreEngine = tpl2mod.engines.underscore;
 const lang = require('zero-lang');
 const config = require('./config');
 
+underscoreEngine.outerScopeVars.JSON = true;
+
 function renderTemplates() {
   return through.obj(function render(file, enc, cb) {
     if (file.isNull()) {
