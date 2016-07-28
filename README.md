@@ -58,8 +58,9 @@ glob-search    | searching with glob expression for path names | yes
 
 name | description | supported
 -----|-------------|----------
-dot-previewer | previewing file with DOT code | yes
-dot-renderer  | rendering DOT code            | yes
+dot-editor    | editing DOT file    | no
+dot-previewer | previewing DOT file | yes
+dot-renderer  | rendering DOT code  | yes
 
 ### markdown
 
@@ -67,6 +68,7 @@ name | description | supported
 -----|-------------|----------
 markdown-editor    | editing markdown file    | no
 markdown-previewer | previewing markdown file | yes
+markdown-renderer  | rendering markdown file  | yes
 
 ### xmind
 

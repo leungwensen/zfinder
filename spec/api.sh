@@ -34,4 +34,12 @@ printf "\ndot-renderer##########################################################
 curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090/__HANDLER__/dot-renderer"
 curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090?_handler=dot-renderer"
 
+printf "\nmarkdown-previewer#########################################################################################\n"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/markdown-it-features.md?_raw"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/markdown-it-features.md"
+
+printf "\nmarkdown-renderer##########################################################################################\n"
+curl -u zfinder:awesome -X GET -d "content=# h1 Heading 8-)%0A## h2 Heading%0A### h3 Heading%0A#### h4 Heading" -L "http://localhost:9090/__HANDLER__/markdown-renderer"
+curl -u zfinder:awesome -X GET -d "content=# h1 Heading 8-)%0A## h2 Heading%0A### h3 Heading%0A#### h4 Heading" -L "http://localhost:9090?_handler=markdown-renderer"
+
 printf "\n"

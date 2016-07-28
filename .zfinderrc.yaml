@@ -39,8 +39,9 @@ handler:
   dot-previewer:
   dot-renderer:
   # markdown (preview and edit)
-  markdown-previewer:
   # markdown-editor:
+  markdown-previewer:
+  markdown-renderer:
   # xmind (preview and edit)
   # xmind-previewer:
   # xmind-editor:
