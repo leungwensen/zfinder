@@ -11,16 +11,18 @@ body {
 
 nav#toc {
   height: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 300px;
   color: #666;
   background-color: #fafafa;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  outline: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 article#markdown {
   height: 100%;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   .flex(1);
   .order(1);
   .markdown-body {
