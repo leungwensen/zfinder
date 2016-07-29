@@ -23,7 +23,7 @@ const editor = CodeMirror.fromTextArea($code[0], {
 
 const info = CodeMirror.findModeByExtension(fileInfo.extname);
 if (info && info.mode) {
-  editor.setOption('mode', info.spec);
+  editor.setOption('mode', info.mime);
   CodeMirror.autoLoadMode(editor, info.mode);
 }
 

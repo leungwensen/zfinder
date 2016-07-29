@@ -21,6 +21,7 @@
     "commander": "~2.9.0",
     "connect": "~3.4.1",
     "connect-redirection": "~0.0.1",
+    "escape-html": "^1.0.3",
     "get-port": "~2.1.0",
     "github-markdown-css": "~2.3.0",
     "highlight.js": "^9.5.0",
