@@ -32,7 +32,7 @@ handler:
   remove-path:
   rename-path:
   write-file:
-  # explorer:
+  explorer:
   # search
   content-search:
   glob-search:
@@ -61,4 +61,3 @@ handler:
       - /readme.md
       - .html
       - .htm
-

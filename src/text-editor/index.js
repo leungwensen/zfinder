@@ -6,14 +6,13 @@
  */
 require('./index.less');
 import $ from 'jquery';
-import lang from 'zero-lang';
 import CodeMirror from 'codemirror';
 import globalVars from '../common/global-variables';
-const rc = globalVars.rc;
-const fileInfo = globalVars.fileInfo;
 
-const $loading = $('#loading');
 const $code = $('#code');
+const $loading = $('#loading');
+const fileInfo = globalVars.fileInfo;
+const rc = globalVars.rc;
 
 CodeMirror.modeURL = `${rc.assetsServer}/dist/lib/codemirror/mode/%N/%N.js`;
 
