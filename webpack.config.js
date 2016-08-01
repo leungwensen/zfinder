@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
+    'dist/zfinder/explorer': path.resolve(__dirname, './src/explorer/index.js'),
     'dist/zfinder/markdown-previewer': path.resolve(__dirname, './src/markdown-previewer/index.js'),
     'dist/zfinder/text-editor': path.resolve(__dirname, './src/text-editor/index.js'),
   },
