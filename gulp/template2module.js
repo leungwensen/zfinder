@@ -14,8 +14,16 @@ underscoreEngine.outerScopeVars.JSON = true;
 
 const REGEXP = {
   importTag: /<import\s+src="\S*"><\/import>/g,
+  svgSpriteTag: /<svg-sprite\/>/,
   srcPath: /src="(\S*)"/,
 };
+
+const svgSprite = fs.readFileSync(path.resolve(__dirname, '../dist/zfinder/svg-symbols.svg'), 'utf8');
+
+function parsingSvgSprite(content) {
+  return content.replace(REGEXP.svgSpriteTag, svgSprite);
+}
+
 function importing(content, resourcePath) {
   const match = content.match(REGEXP.importTag);
   if (match) {
@@ -44,7 +52,9 @@ function renderTemplates() {
     try {
       gutil.log(file.path);
       // @TODO add svg sprite file as needed, instead of putting the whole evil-icons svg file
-      const templateContent = importing(file.contents.toString('utf8'), file.path);
+      const templateContent = parsingSvgSprite(
+        importing(file.contents.toString('utf8'), file.path)
+      );
       const content = underscoreEngine.render(templateContent, file.path, 'commonjs');
       file.contents = new Buffer(`/* eslint-disable */ ${content}`);
     } catch (err) {

@@ -8,5 +8,5 @@ const gulp = require('gulp');
 const shell = require('gulp-shell');
 
 gulp.task('svg-sprite', shell.task([
-  './node_modules/.bin/svg-icon build -s lib/data/icons.json -t dist -n icons'
+  './node_modules/.bin/svg-icon build -s lib/data/icons.json -t dist -n zfinder'
 ]));
