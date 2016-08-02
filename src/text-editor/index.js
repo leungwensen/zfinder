@@ -8,9 +8,9 @@ require('./index.less');
 import $ from 'jquery';
 import CodeMirror from 'codemirror';
 import globalVars from '../common/global-variables';
+import loading from '../common/loading';
 
 const $code = $('#code');
-const $loading = $('#loading');
 const fileInfo = globalVars.fileInfo;
 const rc = globalVars.rc;
 
@@ -26,4 +26,4 @@ if (info && info.mode) {
   CodeMirror.autoLoadMode(editor, info.mode);
 }
 
-$loading.hide();
+loading.hide();

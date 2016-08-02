@@ -39,20 +39,22 @@ basic-auth | adding basic authorization for urls | yes
 
 name | description | supported
 -----|-------------|----------
-explorer      | like finder.app or explorer.exe         | no
-make-dir      | creating a directory                    | yes
-read-dir      | returning stats of paths in a directory | yes
-read-file     | returning stats and file content        | yes
-remove-path   | removing a path(file or directory)      | yes
-rename-path   | renaming a path(file or directory)      | yes
-write-file    | creating or updating a file             | yes
+explorer      | explores directories like finder.app or explorer.exe  | no
+make-dir      | creating a directory                                  | yes
+read-dir      | returning stats of paths in a directory               | yes
+read-file     | returning stats and file content                      | yes
+remove-path   | removing a path(file or directory)                    | yes
+rename-path   | renaming a path(file or directory)                    | yes
+write-file    | creating or updating a file                           | yes
 
 ### searching
 
 name | description | supported
 -----|-------------|----------
-content-search | searching keyword in content of files         | yes
-glob-search    | searching with glob expression for path names | yes
+content-search           | searching keyword in content of files               | yes
+glob-search              | searching with glob expression for path names       | yes
+indexed-pathname-search  | searching for path names with indexes               | no
+indexed-content-search   | searching keyword in content of files with indexes  | no
 
 ### [graphviz](http://www.graphviz.org/) (supporting the DOT language via [viz.js](https://github.com/mdaines/viz.js/))
 
@@ -87,5 +89,5 @@ text-editor | editing text file | no
 
 name | description | supported
 -----|-------------|----------
-serve-index | automatically add a suffix to current url | yes
-
+serve-index  | automatically add a suffix to current url if that matches a file            | yes
+serve-static | urls that are not processed by other handlers will be pass to `node-static` | yes

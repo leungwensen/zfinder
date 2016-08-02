@@ -9,10 +9,10 @@ import $ from 'jquery';
 import lang from 'zero-lang';
 import routie from '../common/routie';
 import tg from '../toc-generator/index';
+import loading from '../common/loading';
 
 const $tocBody = $('#toc-body');
 const $markdownBody = $('#markdown-body');
-const $loading = $('#loading');
 
 const toc = tg.generate($markdownBody[0], {
   maxDepth: 6,
@@ -28,6 +28,6 @@ $(window).on('load', () => {
     lang.global.location = `#${headerMeta.uniqueId}`;
   });
 
-  $loading.hide();
+  loading.hide();
 });
 
