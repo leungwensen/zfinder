@@ -6,6 +6,24 @@
 </head>
 <body>
 <svg-sprite/>
+<nav>
+  <z-svg-icon type="arrow-left"></z-svg-icon>
+  <span class="header"></span>
+  <z-svg-icon type="more-vertical"></z-svg-icon>
+</nav>
+<nav>
+  <z-breadcrumb>
+    <z-crumb>
+      <z-svg-icon type="home"></z-svg-icon>
+    </z-crumb>
+  </z-breadcrumb>
+  <z-search-query placehoder="search"></z-search-query>
+</nav>
+<main>
+  <z-path-item basename="../" type="directory"></z-path-item>
+</main>
+<z-path-dialog root="<%= pathInfo.relativePath %>" type="directory"></z-path-dialog>
+<z-action-panel></z-action-panel>
 <import src="./partial/loading.html"></import>
 <import src="./partial/global-variables.html"></import>
 <script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
