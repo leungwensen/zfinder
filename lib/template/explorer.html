@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-  <title><%= title %></title>
+  <import src="./partial/common-header.html"></import>
   <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/zfinder/explorer.css">
 </head>
 <body>
-<div id="loading">
-  <div class="sk-double-bounce">
-    <div class="sk-child sk-double-bounce1"></div>
-    <div class="sk-child sk-double-bounce2"></div>
-  </div>
-</div>
-<script>
-  var GLOBAL_VARIABLES = {
-    pathInfo: <%= JSON.stringify(pathInfo) %>,
-    rc: <%= JSON.stringify(rc) %>,
-  };
-</script>
+<import src="./partial/loading.html"></import>
+<import src="./partial/global-variables.html"></import>
 <script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
 <script src="<%= rc.assetsServer %>/dist/zfinder/explorer.js"></script>
 </body>

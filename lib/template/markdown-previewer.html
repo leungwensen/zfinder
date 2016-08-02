@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-  <title><%= title %></title>
+  <import src="./partial/common-header.html"></import>
   <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/lib/github-markdown.css">
   <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/zfinder/markdown-previewer.css">
 </head>
@@ -16,12 +14,7 @@
     <%= body %>
   </div>
 </article>
-<div id="loading">
-  <div class="sk-double-bounce">
-    <div class="sk-child sk-double-bounce1"></div>
-    <div class="sk-child sk-double-bounce2"></div>
-  </div>
-</div>
+<import src="./partial/loading.html"></import>
 <script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
 <script src="<%= rc.assetsServer %>/dist/zfinder/markdown-previewer.js"></script>
 </body>

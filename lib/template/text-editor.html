@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-  <title><%= title %></title>
+  <import src="./partial/common-header.html"></import>
   <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/lib/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="<%= rc.assetsServer %>/dist/zfinder/text-editor.css">
 </head>
 <body>
 <form id="editor-container">
-<textarea id="code" name="code"><%= content %></textarea>
+  <textarea id="code" name="code"><%= content %></textarea>
 </form>
-<div id="loading">
-  <div class="sk-double-bounce">
-    <div class="sk-child sk-double-bounce1"></div>
-    <div class="sk-child sk-double-bounce2"></div>
-  </div>
-</div>
-<script>
-  var GLOBAL_VARIABLES = {
-    fileInfo: <%= JSON.stringify(fileInfo) %>,
-    rc: <%= JSON.stringify(rc) %>,
-  };
-</script>
+<import src="./partial/loading.html"></import>
+<import src="./partial/global-variables.html"></import>
 <script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
 <script src="<%= rc.assetsServer %>/dist/lib/codemirror/lib/codemirror.js"></script>
 <script src="<%= rc.assetsServer %>/dist/lib/codemirror/addon/mode/loadmode.js"></script>
