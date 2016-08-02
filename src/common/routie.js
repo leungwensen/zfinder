@@ -4,6 +4,7 @@
  * routie module
  * @module routie
  * @see module:index
+ * @see https://github.com/jgallen23/routie/blob/master/lib/routie.js
  */
 var Routie = function (w, isModule) {
 

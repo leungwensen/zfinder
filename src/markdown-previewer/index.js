@@ -8,8 +8,8 @@ require('./index.less');
 import $ from 'jquery';
 import lang from 'zero-lang';
 import routie from '../common/routie';
-import tg from '../toc-generator/index';
-import loading from '../common/loading';
+import tg from '../common/toc-generator/index';
+import loading from '../common/loading/index';
 
 const $tocBody = $('#toc-body');
 const $markdownBody = $('#markdown-body');

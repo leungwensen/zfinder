@@ -13,5 +13,7 @@ gulp.task('sync-libs', () => {
 
   gulp.src(path.resolve(__dirname, '../node_modules/codemirror/**/*.*'))
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/codemirror/')));
-});
 
+  gulp.src(path.resolve(__dirname, '../node_modules/webcomponents.js/webcomponents*.js'))
+    .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
+});

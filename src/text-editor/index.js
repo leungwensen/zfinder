@@ -8,7 +8,7 @@ require('./index.less');
 import $ from 'jquery';
 import CodeMirror from 'codemirror';
 import globalVars from '../common/global-variables';
-import loading from '../common/loading';
+import loading from '../common/loading/index';
 
 const $code = $('#code');
 const fileInfo = globalVars.fileInfo;
