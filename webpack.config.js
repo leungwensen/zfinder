@@ -52,6 +52,7 @@ module.exports = {
   externals: {
     'jquery': 'jQuery',
     'codemirror': 'CodeMirror',
+    'skatejs': 'skate',
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),

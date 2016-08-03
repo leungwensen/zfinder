@@ -4,11 +4,13 @@
  * @module index
  * @see module:index
  */
+require('./index.less');
+
 const svgIcon = Object.create(HTMLElement.prototype);
 
 function generateSvgIcon(url, type) {
   const id = `si-zfinder-${type}`;
-  return `<svg class="si-wrapper"><use xlink:href="${url}#${id}"></use></svg>`;
+  return `<svg class="si"><use xlink:href="${url}#${id}"></use></svg>`;
 }
 
 svgIcon._setContent = function () {
