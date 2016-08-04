@@ -46,6 +46,7 @@
     "module-path": "~0.1.0",
     "open": "~0.0.5",
     "page": "~1.7.1",
+    "screenfull": "^3.0.0",
     "serve-favicon": "~2.3.0",
     "serve-static": "~1.11.1",
     "shelljs": "~0.7.0",
