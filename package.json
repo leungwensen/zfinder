@@ -52,6 +52,7 @@
     "skatejs": "~1.0.1",
     "spinkit": "~1.2.5",
     "sudo": "~1.0.3",
+    "superagent": "^2.1.0",
     "svg-icon": "~0.8.0",
     "try2get": "~0.0.1",
     "urlrouter": "~0.5.4",
