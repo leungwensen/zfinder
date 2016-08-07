@@ -6,7 +6,8 @@
  * @see module:index
  * @see https://github.com/github/time-elements/blob/master/time-elements.js
  */
-require('./index.less');
+import './index.less';
+
 (function() {
   'use strict';
 

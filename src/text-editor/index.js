@@ -4,7 +4,7 @@
  * @module index.js
  * @see module:index
  */
-require('./index.less');
+import './index.less';
 import $ from 'jquery';
 import CodeMirror from 'codemirror';
 import globalVars from '../common/global-variables';

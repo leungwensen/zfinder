@@ -4,7 +4,7 @@
  * @module index
  * @see module:index
  */
-require('./index.less');
+import './index.less';
 
 const svgIcon = Object.create(HTMLElement.prototype);
 
@@ -27,6 +27,6 @@ svgIcon.attributeChangedCallback = function () {
   this._setContent();
 };
 
-export default document.registerElement('z-svg-icon', {
+export default document.registerElement('svg-icon', {
   prototype: svgIcon
 });

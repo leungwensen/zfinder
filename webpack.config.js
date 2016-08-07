@@ -23,7 +23,8 @@ module.exports = {
         exclude: /locale/,
         query: {
           presets: [
-            'es2015'
+            'es2015',
+            'react',
           ]
         }
       },

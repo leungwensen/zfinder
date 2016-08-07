@@ -6,29 +6,38 @@
 </head>
 <body>
 <svg-sprite/>
-<nav>
-  <z-svg-icon type="arrow-left"></z-svg-icon>
-  <span class="header"></span>
-  <z-svg-icon type="more-vertical"></z-svg-icon>
-</nav>
-<nav>
-  <z-breadcrumb>
-    <z-crumb>
-      <z-svg-icon type="home"></z-svg-icon>
-    </z-crumb>
-  </z-breadcrumb>
-  <z-search-query placehoder="search"></z-search-query>
-</nav>
-<main>
-  <z-path-item basename="../" type="directory"></z-path-item>
+<main id="app">
+  <nav id="nav-actions">
+    <table class="width-100">
+      <tr>
+        <td class="align-left">
+          <button class="btn btn-lg btn-back">
+            <svg-icon type="arrow-left"></svg-icon>
+            <span class="info">back</span>
+          </button>
+        </td>
+        <td class="align-center">
+          <span id="basename">basename</span>
+        </td>
+        <td class="align-right">
+          <button class="btn btn-lg btn-more">
+            <span class="info">more</span>
+            <svg-icon type="more-vertical"></svg-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </nav>
+  <nav id="nav-filters">
+    <bread-crumbs></bread-crumbs>
+    <search-bar class="float-right"></search-bar>
+  </nav>
+  <article id="paths"></article>
 </main>
-<z-path-dialog root="<%= pathInfo.relativePath %>" type="directory"></z-path-dialog>
-<z-action-panel></z-action-panel>
 <import src="./partial/loading.html"></import>
 <import src="./partial/global-variables.html"></import>
 <script src="<%= rc.assetsServer %>/dist/lib/jquery.min.js"></script>
 <script src="<%= rc.assetsServer %>/dist/lib/webcomponents.min.js"></script>
-<script src="<%= rc.assetsServer %>/dist/lib/skate-with-deps.min.js"></script>
 <script src="<%= rc.assetsServer %>/dist/zfinder/explorer.js"></script>
 </body>
 </html>

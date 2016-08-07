@@ -4,7 +4,7 @@
  * @module index
  * @see module:index
  */
-require('./index.less');
+import './index.less';
 import lang from 'zero-lang';
 import Toc from './toc';
 import generate from './generate';
