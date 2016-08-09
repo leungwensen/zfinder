@@ -1,4 +1,6 @@
-@import "../index";
+@import "../../../node_modules/lesshat/lesshat";
+@import "../variables";
+@import "../helper";
 .toc-link-list {
   .user-select(none);
   list-style: none;
@@ -12,8 +14,8 @@
     padding: .3em;
     width: 100%;
     &:hover {
-      background-color: #666;
-      color: #fafafa;
+      background-color: @inverse-background-color;
+      color: @inverse-color;
     }
   }
 }

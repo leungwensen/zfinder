@@ -5,7 +5,6 @@
  * @see module:index
  */
 import './index.less';
-
 const searchBar = Object.create(HTMLElement.prototype);
 
 function generateSearchBar() {

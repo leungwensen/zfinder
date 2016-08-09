@@ -8,6 +8,7 @@ import './index.less';
 import '../common/time-elements/index';
 import '../common/svg-icon-element/index';
 import '../common/search-bar-element/index';
+import '../common/bread-crumbs-element/index';
 import globalVars from '../common/global-variables';
 import loading from '../common/loading/index';
 

@@ -61,5 +61,6 @@ module.exports = {
         warnings: false
       }
     }),
+    new webpack.optimize.DedupePlugin(),
   ],
 };

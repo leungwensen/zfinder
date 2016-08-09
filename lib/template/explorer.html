@@ -13,7 +13,6 @@
         <td class="align-left">
           <button class="btn btn-lg btn-back">
             <svg-icon type="arrow-left"></svg-icon>
-            <span class="info">back</span>
           </button>
         </td>
         <td class="align-center">
@@ -21,7 +20,6 @@
         </td>
         <td class="align-right">
           <button class="btn btn-lg btn-more">
-            <span class="info">more</span>
             <svg-icon type="more-vertical"></svg-icon>
           </button>
         </td>
@@ -29,8 +27,16 @@
     </table>
   </nav>
   <nav id="nav-filters">
-    <bread-crumbs></bread-crumbs>
-    <search-bar class="float-right"></search-bar>
+    <table class="width-100">
+      <tr>
+        <td class="align-left bread-crumbs">
+          <bread-crumbs url="/a/b/c/d"></bread-crumbs>
+        </td>
+        <td class="align-right search-bar">
+          <search-bar class="float-right"></search-bar>
+        </td>
+      </tr>
+    </table>
   </nav>
   <article id="paths"></article>
 </main>

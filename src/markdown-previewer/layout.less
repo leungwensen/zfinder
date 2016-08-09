@@ -1,7 +1,6 @@
-@import "../common/print";
 html, body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 
@@ -15,9 +14,9 @@ nav#toc {
   overflow-x: hidden;
   overflow-y: auto;
   width: 300px;
-  color: #666;
-  background-color: #fafafa;
-  outline: 1px solid rgba(0, 0, 0, 0.07);
+  color: @minor-color;
+  background-color: @minor-background-color;
+  outline: 1px solid @border-color;
 }
 
 article#markdown {
@@ -37,6 +36,7 @@ article#markdown {
     .flex-direction(column);
     height: auto;
   }
+
   nav#toc, article#markdown {
     width: 100%;
     height: auto;
