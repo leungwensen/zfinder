@@ -1,4 +1,5 @@
 @import "../variables";
+
 search-bar {
   position: relative;
   display: inline-block;
@@ -19,7 +20,6 @@ search-bar {
     &:valid, &:focus {
       opacity: 1;
       outline: none;
-      border: 2px solid @highlight-border-color;
       + .placeholder {
         text-align: left;
         .placeholder-text {
@@ -31,6 +31,9 @@ search-bar {
           z-index: 2;
         }
       }
+    }
+    &:focus {
+      border: 2px solid @highlight-border-color;
     }
   }
   .placeholder {

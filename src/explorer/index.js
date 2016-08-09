@@ -11,8 +11,9 @@ import '../common/search-bar-element/index';
 import '../common/bread-crumbs-element/index';
 import globalVars from '../common/global-variables';
 import loading from '../common/loading/index';
-
-// const pathInfo = globalVars.pathInfo;
+import router from './router';
+import store from './store';
 
 console.log(globalVars);
+
 loading.hide();

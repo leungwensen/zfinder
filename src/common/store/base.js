@@ -17,6 +17,7 @@ class Store extends EventEmitter {
   set(name, value) {
     const me = this;
     const oldVal = me.get(name);
+    console.log(value, oldVal);
     if (oldVal !== value) {
       me.storage[name] = value;
       me.emit(`changed:${name}`, value);

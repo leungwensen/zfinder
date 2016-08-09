@@ -5,6 +5,9 @@
  * @see module:index
  */
 import './index.less';
+import $ from 'jquery';
+import lang from 'zero-lang';
+
 const searchBar = Object.create(HTMLElement.prototype);
 
 function generateSearchBar() {
@@ -21,7 +24,11 @@ searchBar._setContent = function () {
 };
 
 searchBar.createdCallback = function () {
-  this._setContent();
+  const me = this;
+  me._setContent();
+  $(me).on('click', '.btn-clear', () => {
+    $(me).find('input').val('');
+  });
 };
 
 searchBar.attributeChangedCallback = function () {

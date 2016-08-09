@@ -1,14 +1,23 @@
+html, body {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  color: @primary-color;
+  min-width: 320px;
+}
 nav {
   table {
     border-spacing: 0;
   }
-  button {
+  .btn {
+    display: inline-block;
     cursor: pointer;
     color: @minor-color;
     background: @background-color;
     outline: 1px solid @border-color;
     border: none;
     padding: .5em 1em;
+    &.disabled {
+      cursor: not-allowed;
+    }
   }
   svg-icon {
     svg {
@@ -29,10 +38,15 @@ nav {
   }
 }
 
-bread-crumbs {
+.title {
+  max-width: 15em;
+  .limit-length();
+}
+
+.bread-crumbs {
   box-sizing: border-box;
   padding: .5em 1em;
-  max-width: 100%;
+  max-width: 35em;
   .limit-length();
 }
 
@@ -59,6 +73,3 @@ search-bar {
     width: 100%;
   }
 }
-
-//@media only screen and (max-width: 480px) {
-//}

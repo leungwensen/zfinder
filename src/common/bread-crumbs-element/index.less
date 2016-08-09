@@ -13,17 +13,25 @@ bread-crumbs {
   li {
     display: inline-block;
   }
+  a {
+    text-decoration: none;
+  }
   .url {
     cursor: pointer;
+    color: @minor-color;
+    margin: .1em;
+    &:hover {
+      color: @highlight-color;
+    }
   }
   .separator {
-    width: .5em;
     display: inline-block;
-  }
-  svg-icon {
     svg {
-      height: 1em;
-      width: 1em;
+      height: .9em;
+      width: .9em;
+      &:hover {
+        fill: @minor-color;
+      }
     }
   }
 }
