@@ -5,8 +5,10 @@
  * @see module:index
  */
 import $ from 'jquery';
-import './path-element/index';
+import lang from 'zero-lang';
+import './path-item-element/index';
 import readDirCgi from '../cgi/read-dir';
+import store from './store';
 
 const $paths = $('#paths');
 
@@ -14,8 +16,14 @@ export default {
   render(pathname) {
     readDirCgi(pathname, (err, res) => {
       if (!err && res.ok) {
-        console.log(res.body);
-        $paths.html('');
+        const paths = res.body;
+        console.log(paths);
+        lang.each(paths, (pathInfo) => {
+          store.set(`${store.prefix.PATH_INFO}${pathInfo.relativePath}`, pathInfo);
+        });
+        $paths.html(
+          lang.map(paths, (pathInfo) => `<path-item pathname="${pathInfo.relativePath}"></path-item>`).join('')
+        );
       }
     })
   },

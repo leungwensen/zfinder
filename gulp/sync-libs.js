@@ -17,4 +17,7 @@ gulp.task('sync-libs', () => {
 
   gulp.src(path.resolve(__dirname, '../node_modules/webcomponents.js/webcomponents*.js'))
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
+
+  gulp.src(path.resolve(__dirname, '../node_modules/filesize/lib/*.js'))
+    .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
 });
