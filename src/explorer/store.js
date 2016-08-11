@@ -1,3 +1,9 @@
+'use strict';
+/**
+ * Store module
+ * @module Store
+ * @see module:index
+ */
 import lang from 'zero-lang';
 import Store from '../common/store/base';
 

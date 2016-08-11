@@ -1,5 +1,5 @@
-import lang from 'zero-lang';
 import EventEmitter from 'wolfy87-eventemitter';
+import lang from 'zero-lang';
 
 class Store extends EventEmitter {
   constructor(options) {
@@ -17,7 +17,7 @@ class Store extends EventEmitter {
   set(name, value) {
     const me = this;
     const oldVal = me.get(name);
-    console.log(value, oldVal);
+    console.log(name, value, oldVal);
     if (oldVal !== value) {
       me.storage[name] = value;
       me.emit(`changed:${name}`, value);
@@ -36,24 +36,6 @@ class Store extends EventEmitter {
     me.storage = {};
     me.emit('cleared');
   }
-
-  // getInt(name, defaultValue) {
-  //     const value = this.get(name);
-  //     if (value === null) {
-  //         return defaultValue;
-  //     }
-  //
-  //     return lang.toInteger(value);
-  // }
-
-  // getBoolean(name, defaultValue) {
-  //     const value = this.get(name);
-  //     if (value === null) {
-  //         return defaultValue;
-  //     }
-  //
-  //    return value === 'true';
-  // }
 }
 
 export default Store;

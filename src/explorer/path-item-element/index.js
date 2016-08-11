@@ -13,7 +13,13 @@ import store from '../store';
 const pathItem = Object.create(HTMLElement.prototype);
 
 function generatePathItem(pathInfo) {
-  return `<div class="image"><svg-icon type="${pathInfo.icon}"></svg-icon></div>
+  return `<div class="icon">
+  ${
+    pathInfo.type === 'image' || pathInfo.type === 'svg' ?
+      `<img src="/${pathInfo.relativePath}?_raw" alt="${pathInfo.basename}" />` :
+      `<svg-icon type="${pathInfo.icon}"></svg-icon>`
+    }
+</div>
 <div class="content">
   <p class="name">${pathInfo.basename}</p>
   <relative-time datetime="${pathInfo.mtime}"></relative-time>
