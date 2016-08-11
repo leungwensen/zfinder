@@ -260,3 +260,13 @@ digraph staging {
   d -> c [label="git reset --soft HEAD~"]
 }
 ```
+
+### PlantUML support
+
+```plantuml
+@startuml
+Class01 "1" *-- "many" Class02 : contains
+Class03 o-- Class04 : aggregation
+Class05 --> "1" Class06
+@enduml
+```
