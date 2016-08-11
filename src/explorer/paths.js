@@ -56,9 +56,9 @@ export default {
         currentPaths = paths;
         syncPaths();
       }
-    })
+    });
   },
-  renderByQuery(pathname, query) {
+  renderByQuery(/* pathname, query */) {
   },
   filter() {
   }

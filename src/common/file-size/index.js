@@ -5,8 +5,6 @@
  * @see module:index
  */
 import './index.less';
-import $ from 'jquery';
-import lang from 'zero-lang';
 import filesize from 'filesize';
 
 const fileSize = Object.create(HTMLElement.prototype);

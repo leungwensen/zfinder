@@ -6,7 +6,6 @@
  */
 import './index.less';
 import $ from 'jquery';
-import lang from 'zero-lang';
 
 const searchBar = Object.create(HTMLElement.prototype);
 

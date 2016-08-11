@@ -4,7 +4,7 @@
  * @module index
  * @see module:index
  */
-import "./index.less";
+import './index.less';
 import '../../common/time-elements/index';
 import '../../common/file-size/index';
 import '../../common/svg-icon-element/index';

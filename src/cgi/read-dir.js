@@ -12,5 +12,5 @@ export default (pathname, callback) => {
     .query({
       _handler: 'read-dir',
     })
-    .end(callback)
+    .end(callback);
 };
