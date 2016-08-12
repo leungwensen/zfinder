@@ -14,6 +14,8 @@ const $basename = $('#basename');
 const $breadCrumbs = $('bread-crumbs');
 const $btnBack = $('#btn-back');
 const $query = $('search-bar input');
+const $btnMore = $('#btn-more');
+let actionPanel;
 
 store.on('changed:basename', (value) => {
   $basename.html(value);
@@ -31,6 +33,18 @@ store.on('changed:relativePath', (value) => {
 });
 store.on('changed:query', (value) => {
   $query.val(value);
+});
+store.on('changed:showActionPanel', (value) => {
+  if (value) {
+    actionPanel && actionPanel.open();
+    // init actionPanel
+  } else {
+    actionPanel && actionPanel.close();
+  }
+});
+
+$btnMore.on('click', () => {
+  store.set('showActionPanel', !store.get('showActionPanel'));
 });
 
 function getBasename(pathname) {

@@ -53,6 +53,7 @@ module.exports = {
     'jquery': 'jQuery',
     'codemirror': 'CodeMirror',
     'filesize': 'filesize',
+    'vex-js': 'vex',
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
