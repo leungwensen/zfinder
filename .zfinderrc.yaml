@@ -39,6 +39,9 @@ handler:
   # dot (graphviz)
   dot-previewer:
   dot-renderer:
+  # plantuml
+  plantuml-previewer:
+  plantuml-renderer:
   # markdown (preview and edit)
   # markdown-editor:
   markdown-previewer:

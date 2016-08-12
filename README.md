@@ -64,6 +64,14 @@ dot-editor    | editing DOT file    | no
 dot-previewer | previewing DOT file | yes
 dot-renderer  | rendering DOT code  | yes
 
+### [plantuml](http://plantuml.com)
+
+name | description | supported
+-----|-------------|----------
+plantuml-editor    | editing plantuml file    | no
+plantuml-previewer | previewing plantuml file | yes
+plantuml-renderer  | rendering plantuml code  | yes
+
 ### markdown
 
 name | description | supported

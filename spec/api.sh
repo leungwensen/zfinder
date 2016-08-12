@@ -30,9 +30,18 @@ printf "\ndot-previewer#########################################################
 curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/git.dot?_raw"
 curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/git.dot"
 
+printf "\nplantuml-previewer#########################################################################################\n"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/class-and-interface.plantuml?_raw"
+curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/class-and-interface.plantuml"
+
+
 printf "\ndot-renderer###############################################################################################\n"
 curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090/__HANDLER__/dot-renderer"
 curl -u zfinder:awesome -X GET -d "content=digraph G { main -> parse -> execute; main -> init; main -> cleanup; execute -> make_string; execute -> printf init -> make_string; main -> printf; execute -> compare; }" -L "http://localhost:9090?_handler=dot-renderer"
+
+printf "\nplantuml-renderer##########################################################################################\n"
+curl -u zfinder:awesome -X GET -d $'content=@startuml\n User << Human >>\n :Main Database: as MySql << Application >>\n (Start) << One Shot >>\n (Use the application) as (Use) << Main >>\n User -> (Start)\n User --> (Use)\n MySql --> (Use)\n @enduml' -L "http://localhost:9090/__HANDLER__/plantuml-renderer"
+curl -u zfinder:awesome -X GET -d $'content=@startuml\n User << Human >>\n :Main Database: as MySql << Application >>\n (Start) << One Shot >>\n (Use the application) as (Use) << Main >>\n User -> (Start)\n User --> (Use)\n MySql --> (Use)\n @enduml' -L "http://localhost:9090?_handler=plantuml-renderer"
 
 printf "\nmarkdown-previewer#########################################################################################\n"
 curl -u zfinder:awesome -X GET -L "http://localhost:9090/spec/fixtures/markdown-it-features.md?_raw"
