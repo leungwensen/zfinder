@@ -9,6 +9,7 @@ import '../common/time-elements/index';
 import '../common/svg-icon-element/index';
 import '../common/search-bar-element/index';
 import '../common/bread-crumbs-element/index';
+import '../common/dialog-elements/index';
 import './router';
 import globalVars from '../common/global-variables';
 import loading from '../common/loading/index';

@@ -26,5 +26,4 @@ gulp.task('sync-libs', () => {
     path.resolve(__dirname, '../node_modules/vex-js/css/*.css'),
   ])
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
-
 });
