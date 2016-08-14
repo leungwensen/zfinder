@@ -22,6 +22,7 @@ dialog.createdCallback = function () {
   $(me).on('click', '.btn-clear', () => {
     $(me).find('input').val('');
   });
+  $(me).hide();
 };
 
 dialog.attributeChangedCallback = function () {
@@ -30,9 +31,11 @@ dialog.attributeChangedCallback = function () {
 };
 
 dialog.show = function () {
+  // add class to body
   $(this).show();
 };
 dialog.hide = function () {
+  // remove class from body
   $(this).hide();
 };
 
