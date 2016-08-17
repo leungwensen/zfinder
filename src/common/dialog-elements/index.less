@@ -1,3 +1,8 @@
+@import "../../../node_modules/lesshat/lesshat";
+@import "../variables";
+
+.keyframes(~'fadein, { 0% { opacity: 0; } 100% { opacity: 1; } }');
+
 dialog-alert, dialog-confirm, dialog-prompt {
   display: none;
   position: fixed;
@@ -12,11 +17,7 @@ dialog-alert, dialog-confirm, dialog-prompt {
   padding-top: 160px;
   padding-bottom: 160px;
   .overlay {
-    animation: vex-fadein 0.5s;
-    -webkit-animation: vex-fadein 0.5s;
-    -moz-animation: vex-fadein 0.5s;
-    -ms-animation: vex-fadein 0.5s;
-    -o-animation: vex-fadein 0.5s;
+    .animation(fadein 0.5s);
     -webkit-backface-visibility: hidden;
     position: fixed;
     background: rgba(0, 0, 0, 0.4);
@@ -24,5 +25,17 @@ dialog-alert, dialog-confirm, dialog-prompt {
     right: 0;
     bottom: 0;
     left: 0;
+  }
+  .content {
+    .animation(fadein 0.5s);
+    background: #f0f0f0;
+    color: #444;
+    padding: 1em;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 450px;
+    font-size: 1.1em;
+    line-height: 1.5em;
   }
 }

@@ -99,3 +99,5 @@ name | description | supported
 -----|-------------|----------
 serve-index  | automatically add a suffix to current url if that matches a file            | yes
 serve-static | urls that are not processed by other handlers will be pass to `node-static` | yes
+
+
