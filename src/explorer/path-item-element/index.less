@@ -1,14 +1,20 @@
 @import "../../common/variables";
 
 path-item {
-  //display: inline-block;
-  svg {
-    width: 32px;
-    height: 32px;
+  display: block;
+  padding: .3em .5em;
+  border-bottom: 1px solid @border-color;
+  &:hover {
+    background-color: @highlight-background-color;
   }
-  img {
-    width: 32px;
-    height: 32px;
+  .icon {
+    svg, img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  .icon, .content, .more {
+    display: inline-block;
   }
 }
 

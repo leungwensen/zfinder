@@ -21,10 +21,10 @@ function generatePathItem(pathInfo) {
     }
 </div>
 <div class="content">
-  <p class="name">${pathInfo.basename}</p>
+  <a class="name" href="/${pathInfo.relativePath}" ${pathInfo.isDirectory ? '' : 'target="_blank"'}>${pathInfo.basename}</a>
   <relative-time datetime="${pathInfo.mtime}"></relative-time>
 </div>
-<div class="more">
+<div class="more float-right">
   ${pathInfo.isDirectory ? '' : `<file-size size="${pathInfo.size}"></file-size>`}
   <svg-icon type="more-horizontal" data-pathname="${pathInfo.relativePath}"></svg-icon>
 </div>`;
