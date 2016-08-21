@@ -1,31 +1,24 @@
 @import "../variables";
+@import "../helper";
 
 bread-crumbs {
-  ul {
+  .item {
     display: inline-block;
-    list-style-type: none;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0em;
-    -webkit-margin-end: 0em;
-    -webkit-padding-start: 0em;
-  }
-  li {
-    display: inline-block;
-  }
-  a {
     text-decoration: none;
+    vertical-align: top;
   }
   .url {
-    cursor: pointer;
     color: @minor-color;
-    margin: .1em;
+    cursor: pointer;
+    max-width: 6em;
+    .limit-length();
     &:hover {
       color: @highlight-color;
+      max-width: 100%;
     }
   }
   .separator {
-    display: inline-block;
+    //display: inline-block;
     svg {
       height: .9em;
       width: .9em;

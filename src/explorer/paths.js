@@ -33,7 +33,12 @@ function syncPaths() {
   // stats
   syncStats();
   // sort-by
-  // sort-order
+  const sortBy = persistentStore.get('paths-sort-by', 'isDirectory');
+  const sortOrder = persistentStore.get('paths-sort-order', 'asc');
+  currentPaths = currentPaths.sort((a, b) => {
+    const result = a[sortBy] - b[sortBy];
+    return sortOrder === 'asc' ? 0 - result : result;
+  });
   $paths.html(
     lang.map(currentPaths, (pathInfo) => `<path-item pathname="${pathInfo.relativePath}"></path-item>`).join('')
   );

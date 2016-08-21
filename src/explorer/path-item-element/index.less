@@ -1,24 +1,70 @@
 @import "../../common/variables";
+@import "../../common/helper";
 
 path-item {
-  display: block;
-  padding: .3em .5em;
-  border-bottom: 1px solid @border-color;
+  display: table-row;
   &:hover {
     background-color: @highlight-background-color;
-  }
-  .icon {
     svg, img {
-      width: 32px;
-      height: 32px;
+      opacity: 1;
     }
   }
+  svg, img {
+    vertical-align: middle;
+    width: 1.5em;
+    height: 1.5em;
+    fill: @primary-color;
+    opacity: .5;
+  }
   .icon, .content, .more {
-    display: inline-block;
+    display: table-cell;
+    border-bottom: 1px solid @border-color;
+  }
+  a.name {
+    display: block;
+    text-decoration: none;
+    max-width: 100%;
+    .limit-length();
+    &:hover {
+      text-decoration: underline;
+    }
+    &:link {
+      color: @link-color;
+    }
+    &:visited {
+      color: @link-visited-color;
+    }
+  }
+  .content {
+    vertical-align: bottom;
+    max-width: 0;
+    padding: .1em;
+    .limit-length();
+  }
+  .icon {
+    padding: .4em .5em;
+    width: 1em;
+    border-left: 1px solid @border-color;
+  }
+  .more {
+    padding: .4em .5em;
+    width: 1em;
+    text-align: right;
+    border-right: 1px solid @border-color;
+    .limit-length();
+    svg:hover {
+      fill: @highlight-color;
+    }
+  }
+  .item-more {
+    cursor: pointer;
   }
 }
 
 #paths {
+  border-top: none;
+  display: table;
+  width: 100%;
   &.detail {
   }
   &.card {

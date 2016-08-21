@@ -43,20 +43,14 @@ function parse(url) {
 
 function generateBreadCrumbs(url) {
   const items = parse(url);
-  return `<ul>
-  <li>
-    <a href="/" class="header url"><svg-icon type="home"></svg-icon></a>
+  return `<a ${url === '/' || url === '' ? '' : 'href="/"'} class="header"><svg-icon type="home"></svg-icon></a>
     <svg-icon type="arrow-right" class="separator"></svg-icon>
-  </li>
   ${lang.map(items, (item) => {
     if (item.first || item.last) return '';
-    return `<li>
-      <a class="item url" href="${item.url}">${item.name}</a>
-      <svg-icon type="arrow-right" class="separator"></svg-icon>
-    </li>`;
+    return `<a class="item url" href="${item.url}">${item.name}</a>
+      <svg-icon type="arrow-right" class="separator"></svg-icon>`;
   }).join('')}
-${items.length > 1 ? `<li><a class="item current">${items[items.length - 1].name}</a></li>` : ''}
-</ul>`;
+${items.length > 1 ? `<a class="item current">${items[items.length - 1].name}</a>` : ''}`;
 }
 
 breadCrumbs._setContent = function () {
