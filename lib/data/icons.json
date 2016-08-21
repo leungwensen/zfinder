@@ -79,6 +79,7 @@
   "list-select": "windows/list-select",
   "lua": "logos/lua",
   "markdown": "dev/markdown",
+  "menu": "material/menu",
   "monitor": "windows/monitor",
   "more-horizontal": "material/more-horiz",
   "more-vertical": "material/more-vert",
