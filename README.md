@@ -1,7 +1,7 @@
 zfinder
 =======
 
-zfinder is a simple, powerful, flexible **static server**.
+zfinder is a simple, powerful, flexible **static server** (B/S structure).
 
 you can setup a static server with markdown support and lots of other features using one command: `$ zfinder serve`
 
@@ -64,7 +64,7 @@ dot-editor    | editing DOT file    | no
 dot-previewer | previewing DOT file | yes
 dot-renderer  | rendering DOT code  | yes
 
-### [plantuml](http://plantuml.com)
+### [plantUML](http://plantuml.com) (TODO: converting plantUML into DOT using pure javascript version)
 
 name | description | supported
 -----|-------------|----------
@@ -91,7 +91,7 @@ xmind-previewer | previewing xmind file | no
 
 name | description | supported
 -----|-------------|----------
-text-editor | editing text file | no
+text-editor | editing text file | partly
 
 ### fallback
 
@@ -99,5 +99,3 @@ name | description | supported
 -----|-------------|----------
 serve-index  | automatically add a suffix to current url if that matches a file            | yes
 serve-static | urls that are not processed by other handlers will be pass to `node-static` | yes
-
-
