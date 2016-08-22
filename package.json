@@ -46,6 +46,7 @@
     "markdown-it-sup": "~1.0.0",
     "minimatch": "~3.0.2",
     "module-path": "~0.1.0",
+    "mousetrap": "~1.6.0",
     "open": "~0.0.5",
     "query-string": "~4.2.2",
     "screenfull": "~3.0.0",
