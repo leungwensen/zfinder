@@ -1,29 +1,34 @@
+'use strict';
+/**
+ * dialog module
+ * @module dialog
+ * @see module:index
+ */
 import $ from 'jquery';
+import Dialog from './dialog';
 
-const dialog = Object.create(HTMLElement.prototype);
-
-function generateDialog() {
+function generateDialog(msg) {
   return `<div class="overlay"></div>
 <div class="content">
+  <div class="message">${msg}</div>
+  <div class="buttons">
+    <a class="btn btn-block btn-cancel">Cancel</a>
+    <a class="btn btn-block btn-confirm">OK</a>
+  </div>
 </div>`;
 }
 
-dialog._setContent = function () {
-  this.innerHTML = generateDialog();
-};
+class ConfirmDialog extends Dialog {
+  _setContent() {
+    const me = this;
+    const msg = me.getAttribute('message') || '';
+    me.innerHTML = generateDialog(msg);
+  }
 
-dialog.createdCallback = function () {
-  const me = this;
-  me._setContent();
-  $(me).on('click', '.btn-clear', () => {
-    $(me).find('input').val('');
-  });
-};
+  attributeChangedCallback() {
+    const me = this;
+    $(me).find('.message').html(me.getAttribute('message'));
+  }
+}
 
-dialog.attributeChangedCallback = function () {
-  this._setContent();
-};
-
-export default document.registerElement('dialog-confirm', {
-  prototype: dialog
-});
+export default document.registerElement('dialog-confirm', ConfirmDialog);

@@ -1,31 +1,37 @@
+'use strict';
+/**
+ * dialog module
+ * @module dialog
+ * @see module:index
+ */
 import $ from 'jquery';
+import Dialog from './dialog';
 
-const dialog = Object.create(HTMLElement.prototype);
-
-function generateDialog() {
+function generateDialog(msg, inputs) {
   return `<div class="overlay"></div>
 <div class="content">
+  <div class="message">${msg}</div>
+  <div class="inputs">${inputs}</div>
+  <div class="buttons">
+    <a class="btn btn-block btn-cancel">Cancel</a>
+    <a class="btn btn-block btn-confirm">OK</a>
+  </div>
 </div>`;
 }
 
-dialog._setContent = function () {
-  const me = this;
-  const msg = me.getAttribute('message') || '';
-  this.innerHTML = generateDialog(msg);
-};
+class PromptDialog extends Dialog {
+  _setContent() {
+    const me = this;
+    const msg = me.getAttribute('message') || '';
+    const inputs = me.getAttribute('inputs') || '';
+    me.innerHTML = generateDialog(msg, inputs);
+  }
 
-dialog.createdCallback = function () {
-  const me = this;
-  me._setContent();
-  $(me).on('click', '.btn-clear', () => {
-    $(me).find('input').val('');
-  });
-};
+  attributeChangedCallback() {
+    const me = this;
+    $(me).find('.message').html(me.getAttribute('message'));
+    $(me).find('.inputs').html(me.getAttribute('inputs'));
+  }
+}
 
-dialog.attributeChangedCallback = function () {
-  this._setContent();
-};
-
-export default document.registerElement('dialog-prompt', {
-  prototype: dialog
-});
+export default document.registerElement('dialog-prompt', PromptDialog);
