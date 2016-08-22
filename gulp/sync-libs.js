@@ -21,9 +21,6 @@ gulp.task('sync-libs', () => {
   gulp.src(path.resolve(__dirname, '../node_modules/filesize/lib/*.js'))
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
 
-  gulp.src([
-    path.resolve(__dirname, '../node_modules/vex-js/js/*.js'),
-    path.resolve(__dirname, '../node_modules/vex-js/css/*.css'),
-  ])
+  gulp.src(path.resolve(__dirname, '../node_modules/mousetrap/mousetrap.*'))
     .pipe(gulp.dest(path.resolve(__dirname, '../dist/lib/')));
 });

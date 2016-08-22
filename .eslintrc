@@ -17,6 +17,7 @@
     "global-require": 1,
     "import/no-unresolved": 1,
     "key-spacing": 0,
+    "new-cap": 1,
     "no-cond-assign": 1,
     "no-fallthrough": 1,
     "no-param-reassign": 1,
