@@ -1,7 +1,7 @@
 const WebpackDevServer = require('webpack-dev-server');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
-const open = require('open');
+// const open = require('open');
 const webpack = require('webpack');
 const config = require('./config');
 const webpackDevConf = require('../webpack-dev.config');
@@ -24,7 +24,7 @@ gulp.task('dev', (/** done */) => {
     }
     const url = `http://${LOCALHOST}:${devPort}/`;
     gutil.log('[webpack-dev-server]', url);
-    open(url);
+    // open(url);
     // keep the devSvr alive
     // done();
   });
