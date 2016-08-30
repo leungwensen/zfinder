@@ -1,12 +1,10 @@
-port: 9090
 assetsServer: '/__ZFINDER__'
 debug: true
-openOnStart: false
-locale: zh_CN
 dotfiles: ignore # dotfiles: [allow|deny|ignore]
-path:
-  zfinder: __ZFINDER__
-  handler: __HANDLER__
+locale: zh_CN
+openOnStart: false
+port: 9090
+build:
 handler:
   # basic authorization
   basic-auth:
@@ -64,3 +62,6 @@ handler:
       - /readme.md
       - .html
       - .htm
+path:
+  zfinder: __ZFINDER__
+  handler: __HANDLER__
