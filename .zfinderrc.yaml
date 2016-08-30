@@ -1,6 +1,7 @@
 assetsServer: '/__ZFINDER__'
 debug: true
-dotfiles: ignore # dotfiles: [allow|deny|ignore]
+# dotfiles: [allow|deny|ignore]
+dotfiles: ignore
 locale: zh_CN
 openOnStart: false
 port: 9090
