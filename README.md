@@ -39,7 +39,7 @@ basic-auth | adding basic authorization for urls | yes
 
 name | description | supported
 -----|-------------|----------
-explorer      | explores directories like finder.app or explorer.exe  | no
+explorer      | explores directories like finder.app or explorer.exe  | partly
 make-dir      | creating a directory                                  | yes
 read-dir      | returning stats of paths in a directory               | yes
 read-file     | returning stats and file content                      | yes

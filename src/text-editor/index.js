@@ -15,10 +15,16 @@ const pathInfo = globalVars.pathInfo;
 const rc = globalVars.rc;
 
 // FIXME mode url for CodeMirror
-CodeMirror.modeURL = `${rc.assetsServer}/dist/lib/codemirror/mode/%N/%N.js`;
+CodeMirror.modeURL = `${rc.assetsServer}/dist/lib/codemirror-5.18.2/mode/%N/%N.js`;
 
 const editor = CodeMirror.fromTextArea($code[0], {
-  lineNumbers: true
+  foldGutter: true,
+  lineNumbers: true,
+  lineWrapping: true,
+  gutters: [
+    'CodeMirror-linenumbers',
+    'CodeMirror-foldgutter'
+  ],
 });
 
 const info = CodeMirror.findModeByExtension(pathInfo.extname);
