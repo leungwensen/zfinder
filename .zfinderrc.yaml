@@ -12,9 +12,9 @@ build:
   recursive: true
   basenameMap:
     README.markdown: index.html
-    README.md: index.htm
+    README.md: index.html
     readme.markdown: index.html
-    readme.md: index.htm
+    readme.md: index.html
 handler:
   # basic authorization
   basic-auth:
