@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1"/>
+<title>zfinder</title>
+
+  <link rel="stylesheet" href="http://leungwensen.github.io/zfinder/dist/lib/github-markdown-2.3.0.min.css">
+  <link rel="stylesheet" href="http://leungwensen.github.io/zfinder/dist/zfinder/markdown-previewer.css">
+</head>
+<body>
+<nav id="toc">
+  <div id="toc-body" class="toc-body"></div>
+</nav>
+<article id="markdown">
+  <div id="markdown-body" class="markdown-body"><h1>zfinder</h1>
+<p>zfinder is a simple, powerful, flexible <strong>static server</strong> (B/S structure).</p>
+<p>you can setup a static server with markdown support and lots of other features using one command: <code>$ zfinder serve</code></p>
+<h2>installation</h2>
+<pre><code class="language-shell">$ npm install zfinder -g
+</code></pre>
+<h2>usage</h2>
+<p>start a zfinder server:</p>
+<pre><code class="language-shell">$ zfinder serve
+</code></pre>
+<p>kill all existing zfinder processes:</p>
+<pre><code class="language-shell">$ zfinder kill
+</code></pre>
+<h2>handlers</h2>
+<p>handlers are designed to deal with specific urls, or serve as an web API.</p>
+<h3>authorization</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic-auth</td>
+<td>adding basic authorization for urls</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3>file system</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>explorer</td>
+<td>explores directories like finder.app or explorer.exe</td>
+<td>partly</td>
+</tr>
+<tr>
+<td>make-dir</td>
+<td>creating a directory</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>read-dir</td>
+<td>returning stats of paths in a directory</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>read-file</td>
+<td>returning stats and file content</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>remove-path</td>
+<td>removing a path(file or directory)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>rename-path</td>
+<td>renaming a path(file or directory)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>write-file</td>
+<td>creating or updating a file</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3>searching</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content-search</td>
+<td>searching keyword in content of files</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>glob-search</td>
+<td>searching with glob expression for path names</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>indexed-pathname-search</td>
+<td>searching for path names with indexes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>indexed-content-search</td>
+<td>searching keyword in content of files with indexes</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h3><a href="http://www.graphviz.org/">graphviz</a> (supporting the DOT language via <a href="https://github.com/mdaines/viz.js/">viz.js</a>)</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dot-editor</td>
+<td>editing DOT file</td>
+<td>no</td>
+</tr>
+<tr>
+<td>dot-previewer</td>
+<td>previewing DOT file</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>dot-renderer</td>
+<td>rendering DOT code</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3><a href="http://plantuml.com">plantUML</a> (TODO: converting plantUML into DOT using pure javascript version)</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plantuml-editor</td>
+<td>editing plantuml file</td>
+<td>no</td>
+</tr>
+<tr>
+<td>plantuml-previewer</td>
+<td>previewing plantuml file</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>plantuml-renderer</td>
+<td>rendering plantuml code</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3>markdown</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>markdown-editor</td>
+<td>editing markdown file</td>
+<td>no</td>
+</tr>
+<tr>
+<td>markdown-previewer</td>
+<td>previewing markdown file</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>markdown-renderer</td>
+<td>rendering markdown file</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3>xmind</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xmind-editor</td>
+<td>editing xmind file</td>
+<td>no</td>
+</tr>
+<tr>
+<td>xmind-previewer</td>
+<td>previewing xmind file</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h3>text</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text-editor</td>
+<td>editing text file</td>
+<td>partly</td>
+</tr>
+</tbody>
+</table>
+<h3>fallback</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serve-index</td>
+<td>automatically add a suffix to current url if that matches a file</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>serve-static</td>
+<td>urls that are not processed by other handlers will be pass to <code>node-static</code></td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article>
+<div id="loading">
+  <div class="sk-double-bounce">
+    <div class="sk-child sk-double-bounce1"></div>
+    <div class="sk-child sk-double-bounce2"></div>
+  </div>
+</div>
+
+<script src="http://leungwensen.github.io/zfinder/dist/lib/jquery-3.1.0.min.js"></script>
+<script src="http://leungwensen.github.io/zfinder/dist/zfinder/markdown-previewer.js"></script>
+</body>
+</html>
