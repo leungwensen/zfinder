@@ -6,6 +6,15 @@ locale: zh_CN
 openOnStart: false
 port: 9090
 build:
+  assetsServer: http://leungwensen.github.io/zfinder
+  force: true
+  gitignore: true
+  recursive: true
+  basenameMap:
+    README.markdown: index.html
+    README.md: index.htm
+    readme.markdown: index.html
+    readme.md: index.htm
 handler:
   # basic authorization
   basic-auth:

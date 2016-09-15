@@ -4,9 +4,8 @@
   "homepage": "https://github.com/leungwensen/zfinder",
   "main": "lib/index.js",
   "name": "zfinder",
-  "readme": "./README.md",
   "title": "zfinder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "bin": {
     "zfinder": "./bin/zfinder.js",
     "zfinder-cli": "./bin/zfinder.js"
@@ -44,7 +43,7 @@
     "markdown-it-math": "~4.0.1",
     "markdown-it-sub": "~1.0.0",
     "markdown-it-sup": "~1.0.0",
-    "minimatch": "~3.0.2",
+    "minimatch": "~3.0.3",
     "module-path": "~0.1.0",
     "mousetrap": "~1.6.0",
     "open": "~0.0.5",
