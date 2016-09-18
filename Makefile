@@ -7,6 +7,7 @@ all:
 	make
 	make publish
 publish:
+ make push-github
  make publish-npm
  make publish-homepage
 
@@ -17,6 +18,8 @@ install:
 	cnpm install
 	npm install
 test:
+push-github:
+ git push
 publish-homepage:
 	git checkout gh-pages && git merge master && git push && git checkout master
 publish-npm:
