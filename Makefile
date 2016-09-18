@@ -6,6 +6,9 @@ all:
 	make preinstall
 	make
 	make publish
+publish:
+ make publish-npm
+ make publish-homepage
 
 # tasks
 preinstall:
@@ -14,6 +17,9 @@ install:
 	cnpm install
 	npm install
 test:
-publish:
+publish-homepage:
+	git checkout gh-pages && git merge master && git push && git checkout master
+publish-npm:
 	npm publish
 	cnpm sync zfinder
+
