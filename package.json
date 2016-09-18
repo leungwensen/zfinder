@@ -105,7 +105,12 @@
     "url": "https://github.com/leungwensen/zfinder.git"
   },
   "scripts": {
-    "eslint": "gulp eslint"
+    "eslint": "gulp eslint",
+    "push-master": "git checkout master && git push",
+    "push-tags": "git push --tag",
+    "push-gh-pages": "git checkout gh-pages && git merge master && git push && git checkout master",
+    "sync-cnpm": "cnpm sync zfinder",
+    "publish-all": "npm run push-tags && npm run push-master && npm run push-gh-pages && npm publish && npm run sync-cnpm"
   },
   "precommit": {
     "run": [
