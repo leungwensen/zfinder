@@ -13,13 +13,31 @@ $ npm install zfinder -g
 
 ## usage
 
-start a zfinder server:
+### starting a zfinder server
 
 ```shell
 $ zfinder serve
 ```
 
-kill all existing zfinder processes:
+### building files
+
+building is to convert source files of specified formats(Markdown, etc.) into target formats.
+
+![building-map](./doc/dot/building-map.png)
+
+build all files in a directory
+
+```shell
+$ zfinder build $directory
+```
+
+build one file
+
+```shell
+$ zfinder build $file
+```
+
+### kill all existing zfinder processes
 
 ```shell
 $ zfinder kill

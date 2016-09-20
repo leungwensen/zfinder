@@ -1,0 +1,28 @@
+digraph building_map {
+  rankdir=LR;
+
+  subgraph cluster_0 {
+    color=grey;
+		label="source";
+
+		node[shape=box];
+		"Markdown(.md/.markdown)" "Graphviz(.gv/.dot)" "Plantuml(.plantuml)";
+		"XMind(.xmind)" [style=dashed];
+		"readme.md" [style=filled,fillcolor=lightyellow];
+	}
+
+  subgraph cluster_1 {
+    color=grey;
+		label="target";
+
+		node[style=filled,shape=box];
+		"SVG(.svg)" "HTML(.html)";
+		"index.html" [style=filled,fillcolor=lightyellow];
+	}
+
+	"XMind(.xmind)" -> "SVG(.svg)";
+	"Plantuml(.plantuml)" -> "SVG(.svg)";
+	"Graphviz(.gv/.dot)" -> "SVG(.svg)";
+	"Markdown(.md/.markdown)" -> "HTML(.html)";
+	"readme.md" -> "index.html"
+}
