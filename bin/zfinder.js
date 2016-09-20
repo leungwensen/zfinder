@@ -42,7 +42,8 @@ commander
   .command('build [root]')
   .description('build a directory')
   .action((root) => {
-    zfinder.build(zfinder.loadRC(root));
+    const rc = zfinder.loadRC(root);
+    zfinder.build(rc.root, rc);
   });
 
 // kill all zfinder processes
