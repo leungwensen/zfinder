@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "name": "zfinder",
   "title": "zfinder",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "bin": {
     "zfinder": "./bin/zfinder.js",
     "zfinder-cli": "./bin/zfinder.js"
@@ -105,6 +105,7 @@
     "url": "https://github.com/leungwensen/zfinder.git"
   },
   "scripts": {
+    "build": "./bin/zfinder.js build",
     "eslint": "gulp eslint",
     "dev": "nodemon --watch lib ./bin/zfinder.js serve",
     "push-all": "npm run push-master && npm run push-tags && npm run push-gh-pages",
