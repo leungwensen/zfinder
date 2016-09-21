@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "name": "zfinder",
   "title": "zfinder",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "bin": {
     "zfinder": "./bin/zfinder.js",
     "zfinder-cli": "./bin/zfinder.js"
