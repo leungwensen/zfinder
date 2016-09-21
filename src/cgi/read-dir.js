@@ -11,6 +11,7 @@ export default (pathname, callback) => {
     .set('Accept', 'application/json')
     .query({
       _handler: 'read-dir',
+      summary: true,
     })
     .end(callback);
 };

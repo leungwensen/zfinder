@@ -21,9 +21,16 @@ function generatePathItem(pathInfo) {
     }
 </div>
 <div class="content">
-  <a class="name" href="${pathInfo.previewLink}" ${pathInfo.isDirectory ? '' : 'target="_blank"'}>
-    ${pathInfo.basename}
-  </a>
+  <div class="pathname">
+    <a class="name" href="${pathInfo.previewLink}" ${pathInfo.isDirectory ? '' : 'target="_blank"'}>
+      ${pathInfo.basename}
+    </a>
+    ${
+    pathInfo.extname === 'markdown' || pathInfo.extname === 'md' ?
+      `<span class="summary">${pathInfo.summary}</span>` :
+      ''
+    }
+  </div>
   <relative-time datetime="${pathInfo.mtime}"></relative-time>
 </div>
 <div class="more">

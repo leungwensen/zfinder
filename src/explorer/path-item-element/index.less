@@ -20,11 +20,12 @@ path-item {
     display: table-cell;
     border-bottom: 1px solid @border-color;
   }
-  a.name {
-    display: block;
-    text-decoration: none;
+  div.pathname {
     max-width: 100%;
     .limit-length();
+  }
+  a.name {
+    text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
@@ -35,17 +36,24 @@ path-item {
       color: @link-visited-color;
     }
   }
+  .summary {
+    color: @minor-color;
+    margin-left: .5em;
+  }
+
   .content {
     vertical-align: bottom;
     max-width: 0;
     padding: .1em;
     .limit-length();
   }
+
   .icon {
     padding: .4em .5em;
     width: 1em;
     border-left: 1px solid @border-color;
   }
+
   .more {
     padding: .4em .5em;
     width: 1em;
@@ -56,9 +64,11 @@ path-item {
       fill: @highlight-color;
     }
   }
+
   .item-more {
     cursor: pointer;
   }
+
 }
 
 #paths {
