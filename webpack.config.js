@@ -51,9 +51,10 @@ module.exports = {
     ]
   },
   externals: {
-    'jquery': 'jQuery',
     'codemirror': 'CodeMirror',
     'filesize': 'filesize',
+    'jquery': 'jQuery',
+    'screenfull': 'screenfull',
     'vex-js': 'vex',
   },
   plugins: [

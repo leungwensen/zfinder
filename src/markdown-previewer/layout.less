@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-width: 320px;
 }
 
 body {
@@ -21,11 +22,29 @@ nav#toc {
 
 article#markdown {
   height: 100%;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  .display(flex);
+  .flex-direction(column);
   .flex(1);
   .order(1);
+  .markdown-header {
+    position: absolute;
+    width: 100%;
+    .si {
+      opacity: .3;
+      cursor: pointer;
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
   .markdown-body {
+    .flex(1);
+    .order(1);
+    height: auto;
+    overflow-y: auto;
     padding: 2em;
   }
 }
@@ -33,8 +52,8 @@ article#markdown {
 // responsive
 @media only screen and (max-width: 768px) {
   body {
-    .flex-direction(column);
     height: auto;
+    .flex-direction(column);
   }
 
   nav#toc, article#markdown {
@@ -45,7 +64,7 @@ article#markdown {
 
 // for printing
 @media print {
-  #toc {
+  #toc,#markdown-header {
     display: none;
   }
 }
