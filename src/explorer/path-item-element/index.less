@@ -23,6 +23,11 @@ path-item {
   div.pathname {
     max-width: 100%;
     .limit-length();
+    &:hover {
+      .summary {
+        color: @primary-color;
+      }
+    }
   }
   a.name {
     text-decoration: none;
