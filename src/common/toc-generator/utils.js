@@ -6,13 +6,14 @@
  */
 import $ from 'jquery';
 import lang from 'zero-lang';
+import htmlEncoding from '../html-encoding';
 
 function getHeaderLevel(header) {
   return lang.toInteger(header.tagName.replace(/h/i, ''));
 }
 
 function getHeaderText(header) {
-  const text = $(header).text().replace(/[<>]/g, '');
+  const text = htmlEncoding.escape($(header).text());
   return text;
 }
 

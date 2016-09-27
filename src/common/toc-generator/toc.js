@@ -18,8 +18,9 @@ const linkListMarkup = '<ul class="toc-link-list"></ul>';
 
 function addHeaderExpander(header, options) {
   if (!header.$expanderElement) {
-    header.$element.prepend(`<span class="${options.expanderClassName}"
-data-unique="${header.uniqueId}">&blacktriangledown;</span>`);
+    header.$element.prepend(
+      `<span class="${options.expanderClassName}" data-unique="${header.uniqueId}">&blacktriangledown;</span>`
+    );
     header.$expanderElement = header.$element.find(`.${options.expanderClassName}`);
   }
 }

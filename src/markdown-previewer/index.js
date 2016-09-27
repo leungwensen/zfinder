@@ -29,6 +29,7 @@ $(window).on('load', () => {
   });
 
   toc.on('clicked', (headerMeta) => {
+    console.log(headerMeta);
     lang.global.location = `#${headerMeta.uniqueId}`;
   });
 

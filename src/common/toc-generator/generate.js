@@ -15,6 +15,7 @@ import {
   getHeaderSelector,
   getHeaderText
 } from './utils';
+import htmlEncoding from '../html-encoding';
 
 const body = document.body;
 
@@ -28,17 +29,25 @@ function locationCallback() {
 function generate(element = body, options = {}) {
   options = lang.extend({}, DEFAULT_OPTIONS, options);
   const $element = $(element);
-
   const links = [];
   const $headers = $element.find(getHeaderSelector(options.maxDepth));
   const headerMetaById = {};
+  const uniqueIdSeparator = options.uniqueIdSeparator;
 
   function getHeaderUniqueId(text) {
-    const id = text
-      .replace(/\s+/g, options.uniqueIdSeparator)
-      .replace(/\\/g, options.uniqueIdSeparator)
-      .replace(/\//g, options.uniqueIdSeparator);
+    const id = htmlEncoding.unescape(text)
+      .replace(/"/g, uniqueIdSeparator)
+      .replace(/&/g, uniqueIdSeparator)
+      .replace(/'/g, uniqueIdSeparator)
+      .replace(/</g, uniqueIdSeparator)
+      .replace(/>/g, uniqueIdSeparator)
+      .replace(/\(/g, uniqueIdSeparator)
+      .replace(/\)/g, uniqueIdSeparator)
+      .replace(/\//g, uniqueIdSeparator)
+      .replace(/\\/g, uniqueIdSeparator)
+      .replace(/\s+/g, uniqueIdSeparator);
     const resultId = options.uniqueIdPrefix + id;
+
     if (!lang.hasKey(headerMetaById, resultId)) return resultId;
 
     return getHeaderUniqueId(id + options.uniqueIdSuffix);
@@ -53,8 +62,7 @@ function generate(element = body, options = {}) {
       uniqueId,
       level,
     };
-    const $anchorElement = $(`<span class="toc-anchor" data-unique="${meta.uniqueId}"
-style="font-weight: normal !important;">&#9875;</span>`);
+    const $anchorElement = $(`<span class="toc-anchor" data-unique="${meta.uniqueId}">&#9875;</span>`);
     meta.$anchorElement = $anchorElement;
     $(header).prepend($anchorElement);
     headerMetaById[uniqueId] = meta;
