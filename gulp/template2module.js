@@ -80,4 +80,4 @@ lang.each(config.templateDirs, (dir) => {
       .pipe(gulp.dest(path.resolve(__dirname, `../${dir}/`))));
 });
 
-gulp.task('template2module', lang.map(config.templateDirs, (dir) => `template2module-${dir}`));
+gulp.task('template2module', lang.map(config.templateDirs, dir => `template2module-${dir}`));

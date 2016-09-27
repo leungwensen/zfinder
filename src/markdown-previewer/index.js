@@ -4,10 +4,10 @@
  * @module index
  * @see module:index
  */
-import './index.less';
 import $ from 'jquery';
 import screenfull from 'screenfull';
 import lang from 'zero-lang';
+import './index.less';
 import routie from '../common/routie';
 import tg from '../common/toc-generator/index';
 import loading from '../common/loading/index';

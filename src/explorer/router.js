@@ -5,7 +5,6 @@
  * @see module:index
  */
 import $ from 'jquery';
-import queryString from 'query-string';
 import store from './store';
 import paths from './paths';
 import globalVars from '../common/global-variables';
@@ -38,10 +37,8 @@ store.on('changed:show-action-panel', (value) => {
       actionPanel.open();
     }
     // init actionPanel
-  } else {
-    if (actionPanel) {
-      actionPanel.close();
-    }
+  } else if (actionPanel) {
+    actionPanel.close();
   }
 });
 

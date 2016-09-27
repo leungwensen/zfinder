@@ -27,4 +27,4 @@ lang.each(config.lintingDirs, (dir) => {
   );
 });
 
-gulp.task('eslint', lang.map(config.lintingDirs, (dir) => `eslint-${dir}`));
+gulp.task('eslint', lang.map(config.lintingDirs, dir => `eslint-${dir}`));

@@ -4,9 +4,9 @@
  * @module index.js
  * @see module:index
  */
-import './index.less';
 import $ from 'jquery';
 import CodeMirror from 'codemirror';
+import './index.less';
 import globalVars from '../common/global-variables';
 import loading from '../common/loading/index';
 

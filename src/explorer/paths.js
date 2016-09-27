@@ -39,7 +39,7 @@ function syncPaths() {
   const filter = store.get('paths-filter', '');
   if (filter) {
     console.log(filter);
-    paths = lang.filter(paths, (path) => lang.hasSubString(path.basename, filter));
+    paths = lang.filter(paths, path => lang.hasSubString(path.basename, filter));
   }
 
   // sort-by
@@ -51,7 +51,7 @@ function syncPaths() {
   });
 
   $paths.html(
-    lang.map(paths, (pathInfo) => `<path-item pathname="${pathInfo.relativePath}"></path-item>`).join('')
+    lang.map(paths, pathInfo => `<path-item pathname="${pathInfo.relativePath}"></path-item>`).join('')
   );
 }
 lang.each([

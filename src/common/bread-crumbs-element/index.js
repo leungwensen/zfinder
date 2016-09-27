@@ -4,8 +4,8 @@
  * @module index
  * @see module:index
  */
-import './index.less';
 import lang from 'zero-lang';
+import './index.less';
 
 const breadCrumbs = Object.create(HTMLElement.prototype);
 

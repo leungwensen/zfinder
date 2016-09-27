@@ -5,6 +5,7 @@
  * @see module:index
  */
 import './index.less';
+
 const svgIcon = Object.create(HTMLElement.prototype);
 
 function generateSvgIcon(url, type) {

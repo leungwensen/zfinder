@@ -4,8 +4,8 @@
  * @module index
  * @see module:index
  */
-import './index.less';
 import lang from 'zero-lang';
+import './index.less';
 import Toc from './toc';
 import generate from './generate';
 import utils from './utils';

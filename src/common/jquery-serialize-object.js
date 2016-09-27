@@ -4,6 +4,7 @@
  * @module jquery-serialize-object
  * @see module:index
  */
+import $ from 'jquery';
 
 $.fn.serializeObject = function () {
   const o = {};

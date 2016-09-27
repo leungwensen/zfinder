@@ -24,4 +24,4 @@ lang.each(config.jsdocDirs, (dir) => {
   );
 });
 
-gulp.task('jsdoc', lang.map(config.jsdocDirs, (dir) => `jsdoc-${dir}`));
+gulp.task('jsdoc', lang.map(config.jsdocDirs, dir => `jsdoc-${dir}`));

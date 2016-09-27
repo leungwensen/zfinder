@@ -4,8 +4,8 @@
  * @module index
  * @see module:index
  */
-import './index.less';
 import $ from 'jquery';
+import './index.less';
 
 const searchBar = Object.create(HTMLElement.prototype);
 

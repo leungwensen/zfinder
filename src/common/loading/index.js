@@ -4,8 +4,8 @@
  * @module loading
  * @see module:index
  */
-import './index.less';
 import $ from 'jquery';
+import './index.less';
 
 const $loading = $('#loading');
 

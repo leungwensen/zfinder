@@ -4,8 +4,8 @@
  * @module index
  * @see module:index
  */
-import './index.less';
 import filesize from 'filesize';
+import './index.less';
 
 const fileSize = Object.create(HTMLElement.prototype);
 

@@ -7,6 +7,7 @@
  * @see https://github.com/github/time-elements/blob/master/time-elements.js
  */
 import './index.less';
+
 (function() {
   'use strict';
 

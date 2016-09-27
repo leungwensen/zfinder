@@ -14,4 +14,4 @@ lang.each(config.htmlhintDirs, (dir) => {
   );
 });
 
-gulp.task('htmlhint', lang.map(config.htmlhintDirs, (dir) => `htmlhint-${dir}`));
+gulp.task('htmlhint', lang.map(config.htmlhintDirs, dir => `htmlhint-${dir}`));
