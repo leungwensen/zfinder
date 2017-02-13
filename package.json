@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "name": "zfinder",
   "title": "zfinder",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "bin": {
     "zfinder": "./bin/zfinder.js",
     "zfinder-cli": "./bin/zfinder.js"
@@ -34,8 +34,8 @@
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-implicit-figures": "^0.3.2",
     "markdown-it-ins": "^2.0.0",
+    "markdown-it-katex": "^2.0.3",
     "markdown-it-mark": "^2.0.0",
-    "markdown-it-math": "^4.0.1",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "minimatch": "^3.0.3",
